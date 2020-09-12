@@ -79,7 +79,7 @@ header{
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: initial;
+  justify-content: center;
 }
 
 header .colored{
