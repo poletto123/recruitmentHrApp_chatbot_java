@@ -2,11 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
 
-/*url(/v3/assets/images/nonLoggedModule/home/spotlight@2x.png) no-repeat scroll 50%/cover #364450;
-
-*/
 /*
-
 CORES B2W:
  #333
  #27ecd4;
@@ -222,6 +218,7 @@ footer h1 a:hover {
     position: relative;
     cursor: pointer;
     -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .mobile-btn::after,
@@ -281,6 +278,10 @@ footer h1 a:hover {
     color: white;
   }
 
+  header{
+    justify-content: space-between;
+  }
+
   header .title-list {
     display: block;
     width: 100%;
@@ -291,7 +292,7 @@ footer h1 a:hover {
   }
 
   footer h1 {
-    font-size: 1em;
+    font-size: 0.6em;
   }
 
   header nav li a::after {
