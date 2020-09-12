@@ -13,7 +13,6 @@ public class TesteAddVaga {
 			VagaDAO dao = new VagaDAO();
 			Vaga vaga = new Vaga();
 			
-			vaga.setNumeroVaga(Resume.i("ID da Vaga: "));
 			vaga.setNomeVaga(Resume.s("Nome da Vaga: "));
 			vaga.setDescVaga(Resume.s("Descrição da Vaga: "));
 			vaga.setSalario(Resume.d("Salário: "));

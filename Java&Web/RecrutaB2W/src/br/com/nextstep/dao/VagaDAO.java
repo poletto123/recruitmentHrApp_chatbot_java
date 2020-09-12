@@ -27,12 +27,10 @@ public class VagaDAO {
 
 		con = ConectaBanco.conectar();
 
-		stmt = con.prepareStatement("INSERT INTO T_RBW_VAGA (NR_VAGA, NM_VAGA, DS_VAGA, VL_SALARIO) VALUES (?, ?, ?, ?)");
-
-		stmt.setInt(1, objeto.getNumeroVaga());
-		stmt.setString(2, objeto.getNomeVaga());
-		stmt.setString(3, objeto.getDescVaga());
-		stmt.setDouble(4, objeto.getSalario());
+		stmt = con.prepareStatement("INSERT INTO T_RBW_VAGA (NM_VAGA, DS_VAGA, VL_SALARIO) VALUES (?, ?, ?)");
+		stmt.setString(1, objeto.getNomeVaga());
+		stmt.setString(2, objeto.getDescVaga());
+		stmt.setDouble(3, objeto.getSalario());
 
 		return stmt.executeUpdate();
 	}

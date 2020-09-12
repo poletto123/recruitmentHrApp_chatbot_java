@@ -10,7 +10,6 @@ public class AddVaga {
 	
 	public static void cadastrar(VagaDAO dao, Vaga vaga) throws Exception{
 			
-			vaga.setNumeroVaga(Resume.i("ID da Vaga: "));
 			vaga.setNomeVaga(Resume.s("Nome da Vaga: "));
 			vaga.setDescVaga(Resume.s("Descrição da Vaga: "));
 			vaga.setSalario(Resume.d("Salário: "));
