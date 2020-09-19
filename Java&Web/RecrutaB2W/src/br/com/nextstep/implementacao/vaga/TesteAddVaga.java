@@ -13,11 +13,11 @@ public class TesteAddVaga {
 			Vaga vaga = new Vaga();
 			
 			vaga.setNomeVaga(Resume.s("Nome da Vaga: "));
-			vaga.setDescVaga(Resume.s("Descri��o da Vaga: "));
-			vaga.setSalario(Resume.d("Sal�rio: "));
+			vaga.setDescVaga(Resume.s("Descrição da Vaga: "));
+			vaga.setSalario(Resume.d("Salário: "));
 			
 			if(dao.add(vaga) == 0) {
-				System.out.println("N�o Gravou");
+				System.out.println("Não Gravou");
 			}else {
 				System.out.println("Gravado");
 			}
