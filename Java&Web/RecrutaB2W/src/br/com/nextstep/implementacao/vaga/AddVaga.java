@@ -1,9 +1,7 @@
 package br.com.nextstep.implementacao.vaga;
 
-import javax.swing.JOptionPane;
-import br.com.nextstep.excecao.*;
-import br.com.nextstep.dao.VagaDAO;
 import br.com.nextstep.beans.Vaga;
+import br.com.nextstep.dao.VagaDAO;
 import br.com.nextstep.util.Resume;
 
 public class AddVaga {
@@ -11,11 +9,11 @@ public class AddVaga {
 	public static void cadastrar(VagaDAO dao, Vaga vaga) throws Exception{
 			
 			vaga.setNomeVaga(Resume.s("Nome da Vaga: "));
-			vaga.setDescVaga(Resume.s("Descrição da Vaga: "));
-			vaga.setSalario(Resume.d("Salário: "));
+			vaga.setDescVaga(Resume.s("Descriï¿½ï¿½o da Vaga: "));
+			vaga.setSalario(Resume.d("Salï¿½rio: "));
 			
 			if(dao.add(vaga) == 0) {
-				System.out.println("Não Gravou");
+				System.out.println("Nï¿½o Gravou");
 			}else {
 				System.out.println("Gravado");
 			}

@@ -1,7 +1,5 @@
 package br.com.nextstep.beans;
 
-import java.util.Date;
-
 public class Candidato extends Usuario{
     
 	private String dataNascimento;

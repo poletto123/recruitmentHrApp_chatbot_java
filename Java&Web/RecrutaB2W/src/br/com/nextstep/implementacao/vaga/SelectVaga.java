@@ -1,6 +1,5 @@
 package br.com.nextstep.implementacao.vaga;
 
-import br.com.nextstep.excecao.*;
 import br.com.nextstep.dao.VagaDAO;
 import br.com.nextstep.util.Resume;
 
