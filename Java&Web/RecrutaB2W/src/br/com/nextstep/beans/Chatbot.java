@@ -25,7 +25,4 @@ public class Chatbot implements Serializable {
 		return "Chatbot [respostas=" + respostas + "]";
 	}
 	
-}
-	
-
-	
+}	
