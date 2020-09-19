@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 public class Chatbot implements Serializable {
 
-    private int conversaId;
+	private static final long serialVersionUID = 1L;
+	private int conversaId;
     private ArrayList<String> respostas = new ArrayList<String>();
     private String resposta;
     
@@ -25,7 +26,7 @@ public class Chatbot implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Chatbot [conversaId=" + conversaId + ", respostas=" + respostas + ", resposta" + resposta "]";
+		return "Chatbot [conversaId=" + conversaId + ", respostas=" + respostas + ", resposta" + resposta + "]";
 	}
 	
 }
