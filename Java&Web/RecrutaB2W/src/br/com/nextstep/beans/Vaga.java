@@ -2,17 +2,10 @@ package br.com.nextstep.beans;
 
 public class Vaga {
 	
-	private int numeroVaga;
 	private String nomeVaga;
 	private String descVaga;
 	private double salario;
-	
-	public int getNumeroVaga() {
-		return numeroVaga;
-	}
-	public void setNumeroVaga(int numeroVaga) {
-		this.numeroVaga = numeroVaga;
-	}
+
 	public String getNomeVaga() {
 		return nomeVaga;
 	}
@@ -39,18 +32,15 @@ public class Vaga {
 	}
 	public Vaga(int numeroVaga, String nomeVaga, String descVaga, double salario) {
 		super();
-		this.numeroVaga = numeroVaga;
 		this.nomeVaga = nomeVaga;
 		this.descVaga = descVaga;
 		this.salario = salario;
 	}
-	@Override
-	public String toString() {
-		return "Vaga [numeroVaga=" + numeroVaga + ", nomeVaga=" + nomeVaga + ", descVaga=" + descVaga + ", salario="
-				+ salario + "]";
-	}
 
 	
-	
-	
+	@Override
+	public String toString() {
+		return "Vaga [nomeVaga=" + nomeVaga + ", descVaga=" + descVaga + ", salario=" + salario + "]";
+	}
+		
 }
