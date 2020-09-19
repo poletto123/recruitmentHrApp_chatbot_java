@@ -13,7 +13,7 @@ public class TesteDelVaga {
 			int apaga = Resume.i("Digite o ID da vaga que deseja apagar: ");
 			
 			if(dao.delete(apaga) == 0) {
-				System.out.println("NÃ£o Apagou");
+				System.out.println("Não Apagou");
 			}else {
 				System.out.println("Apagou");
 			}
