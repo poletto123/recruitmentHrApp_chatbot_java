@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Chatbot</title>
+ <link rel="stylesheet" href="./css/global.css">
+<link rel="stylesheet" type="text/css" href="./css/chatbot.css" />
+ <link href="./img/B2W_Digital_logo.png" rel="icon" type="image/x-icon" />
+</head>
+<body>
+
+	<header>
+		<figure>
+			<img src="./img/B2W_Digital_logo.png" class="logo" alt="">
+		</figure>
+		<span class="mobile-btn"></span>
+		<nav class="menu-nav mobile-menu">
+			<ul class="title-list">
+				<li><h1>
+						<a href="home.html">Home</a>
+					</h1></li>
+				<li><h1>
+						<a href="chatbot.html">Chatbot</a>
+					</h1></li>
+				<li><h1>
+						<a href="video.html">Vídeo</a>
+					</h1></li>
+				<li><h1>
+						<a href="ranking.html">Ranking</a>
+					</h1></li>
+				<li><h1>
+						<a href="logout.html">Log Out</a>
+					</h1></li>
+			</ul>
+		</nav>
+	</header>
+	
+	<main>
+		<div class="principal">
+			<div class="conversa">
+				<span>Digitando ...</span>
+			</div>
+			<input type="text" id="pergunta" name="pergunta" class="campo"
+				placeholder="Digite sua pergunta" />
+			<button id="enviar" onclick="carregarDados()">Enviar</button>
+		</div>
+	</main>
+	
+  <footer>
+    <h1>RecrutaB2W</h1>
+    <h1>1TDST - NextStep - FIAP</h1>
+  </footer>
+  
+	<script type="text/javascript" src="./js/chatbot.js"></script>
+  	
+</body>
+</html>
