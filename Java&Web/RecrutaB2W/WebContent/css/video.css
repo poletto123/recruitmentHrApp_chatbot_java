@@ -1,0 +1,35 @@
+.general {
+    padding-top: 150px;
+}
+
+.video {
+    max-height: 500px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid;
+    border-color: beige;
+    border-radius: 5px;
+    margin: 0px 150px;
+}
+
+.video .texto {
+    margin: 30px 100px;
+}
+
+.video .texto .txt-1 {
+    margin: 0 auto;
+}
+
+.video .texto .txt-1 p,
+li {
+    margin: 5px 0px;
+}
+
+.video .texto .txt-2 {
+    width: 400px;
+    min-width: 200px;
+    margin: 0;
+    margin-top: 200px;
+}
