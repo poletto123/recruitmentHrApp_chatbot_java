@@ -26,8 +26,44 @@ public class AudioVideoBO {
 		
 		AudioVideoDAO dao = new AudioVideoDAO();
 		AudioVideo resposta = dao.mostrar(id);
-
+		
+		dao.fecharConexao();
+		
 		return resposta;
+	}
+	
+	public static String atualizaAudio(int id, AudioVideo av)throws Exception{
+		if(id < 1) {
+			return "ID inválido";
+		}
+		
+		if(av.getPathAudio() == null) {
+			return "Arquivo inexistente de Áudio";
+		}
+		
+		AudioVideoDAO dao = new AudioVideoDAO();
+
+		dao.modifyAudio(id, av);
+		dao.fecharConexao();
+		
+		return "Arquivo de Áudio Atualizado";
+	}
+	
+	public static String atualizaVideo(int id, AudioVideo av)throws Exception{
+		if(id < 1) {
+			return "ID inválido";
+		}
+		
+		if(av.getPathAudio() == null) {
+			return "Arquivo inexistente de Vídeo";
+		}
+		
+		AudioVideoDAO dao = new AudioVideoDAO();
+
+		dao.modifyVideo(id, av);
+		dao.fecharConexao();
+		
+		return "Arquivo de Vídeo Atualizado";
 	}
 	
 	public static String novoAudioVideo(AudioVideo av) throws Exception{
@@ -36,7 +72,6 @@ public class AudioVideoBO {
 			return "Arquivo inexistente de Áudio ou Vídeo";
 		}
 		
-		//é preferível deixar a conexão do BD no final
 		AudioVideoDAO dao = new AudioVideoDAO();
 
 		dao.add(av);
