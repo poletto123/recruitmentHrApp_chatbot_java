@@ -1,25 +1,16 @@
-.general {
-    padding-top: 150px;
-}
-
 .video {
-    max-height: 500px;
     display: flex;
-    align-content: center;
-    flex-direction: column;
-    flex-wrap: wrap;
+    align-items: center;
     border: 2px solid;
     border-color: beige;
     border-radius: 5px;
-    margin: 0px 150px;
-}
-
-.video .texto {
-    margin: 30px 100px;
+    padding: 15px;
+    justify-content: space-between;
 }
 
 .video .texto .txt-1 {
     margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .video .texto .txt-1 p,
@@ -28,8 +19,20 @@ li {
 }
 
 .video .texto .txt-2 {
-    width: 400px;
-    min-width: 200px;
     margin: 0;
-    margin-top: 200px;
+}
+
+.video__container{
+    text-align: center;
+}
+
+@media screen and (max-width:767px){
+    .video{
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .video__container{
+        margin: 20px 0;
+    }
 }

@@ -1,6 +1,6 @@
-.general{
+/* .general{
 	padding-top: 120px;
-}
+} */
 
 .chatbot{
 	width: 60%;
@@ -19,6 +19,7 @@
 	background: rgb(31, 33, 35);
 	outline: none;
 	color: #fff;
+	border: 1px solid #3a3a3b;
 }
 
 input::placeholder {
@@ -34,6 +35,7 @@ input::placeholder {
 	font-family: verdana;
 	overflow: auto;
 	position: relative;
+	border: 1px solid #3a3a3b;
 }
 
 .conversa span {
@@ -93,9 +95,9 @@ span.ativo {
 .me {
 	align-self: flex-end;
 	background: #05eac2;
-	color: white;
+	color: black;
 	float: right;
-	margin: 5px 45px 5px 20px;
+	margin: 15px 35px 5px 20px;
 }
 
 .me:after {
@@ -135,4 +137,21 @@ button:hover {
 	cursor: pointer;
 	font-weight: 700;
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.34);
+}
+
+
+@media screen and (max-width:767px){
+
+	.general{
+		/* padding-bottom: 50px; */
+	}
+
+	.conversa{
+		min-height: 300px;
+	}
+
+	.chatbot{
+		width: auto;
+		margin-bottom: 50px;
+	}
 }

@@ -1,6 +1,6 @@
-.general{
+/* .general{
     padding-top: 100px;
-}
+} */
 
 .ranking{
     min-width: 300px;
@@ -16,6 +16,12 @@
     text-align: center;
 }
 
+.headin{
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .ranking__title--content{
     text-transform: uppercase;
     font-weight: 300;
@@ -25,7 +31,7 @@
 }
 
 th{
-    border: 4px solid #95f3e8;
+    border: 2px solid#95f3e8;
 }
 
 td{
@@ -38,4 +44,19 @@ td{
     color: #fff;
     
     width: 100%;
+}
+
+@media screen and (max-width:767px){
+
+    .general{
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .ranking{
+        min-width: 0;
+        width: auto;
+        border: none;
+        padding: 0;
+    }
 }

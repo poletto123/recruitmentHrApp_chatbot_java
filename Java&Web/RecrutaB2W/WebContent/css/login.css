@@ -5,15 +5,15 @@
 
 .login {
     padding: 78px 50px;
-    height: 500px;
+    height: auto;
     width: 500px;
     min-width: 200px;
     margin: 0 auto;
-    margin-bottom: 200px;
     background-color: #E9E9E9;
     border: 2px solid #27E2CB;
     text-align: center;
     position: relative;
+    text-transform: uppercase;
 }
 
 .login h2 {
@@ -28,11 +28,28 @@
     margin-bottom: 30px;
 }
 
+.login label {
+    color: black;
+}
+
 .login .field input {
     padding: 5px;
     margin-top: 2px;
     border: 1px solid #FFFFFF;
     outline: none;
+    padding: 10px;
+}
+
+#pass{
+    width: 80%;
+}
+
+.input-password{
+    display: flex;
+    background: #fff;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
 }
 
 .olho {
@@ -40,6 +57,7 @@
     left: 58%;
     right: 0%; */
     width: 20px;
+    cursor: pointer;
 }
 
 .login .btn-acessar {
@@ -47,4 +65,25 @@
     border: none;
     padding: 15px;
     width: 150px;
+    cursor: pointer;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.login .btn-acessar:hover {
+    background-color: #11c2ad;
+    transition: 0.3s;
+}
+
+@media screen and (max-width:767px) {
+
+    .general{
+        padding: 0 30px 0;
+    }
+
+    .login{
+        padding: 30px;
+    }
 }

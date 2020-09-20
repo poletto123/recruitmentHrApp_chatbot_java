@@ -1,7 +1,4 @@
 .drop-zone {
-    margin: 45px 0px 0px 0px;
-    width: 600px;
-    height: 300px;
     padding: 25px;
     display: flex;
     align-items: center;
@@ -13,7 +10,8 @@
     cursor: pointer;
     color: #cccccc;
     border: 4px dashed #06EAC3;
-    border-radius: 10px
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .drop-zone--over {
@@ -48,10 +46,10 @@
 }
 
 .video .btn-enviar {
-    margin: auto;
-    margin-top: 50px;
     padding: 12px;
     cursor: pointer;
     border: none;
     background-color: #06EAC3;
+    width: 50%;
+    margin: 0 auto;
 }

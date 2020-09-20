@@ -22,6 +22,7 @@ Cores sugestivas:
     font-family: "Montserrat";
     text-decoration: none;
     list-style: none;
+    outline: none;
 }
 
 :root {
@@ -63,7 +64,7 @@ h1 {
 .general {
     /* width: 100vw; */
     height: 100vh;
-    padding: 100px 30px 0px;
+    padding: 100px 30px 50px;
 }
 
 a {
