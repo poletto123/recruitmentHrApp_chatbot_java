@@ -1,7 +1,5 @@
 package br.com.nextstep.implementacao.vaga;
 
-import javax.swing.JOptionPane;
-import br.com.nextstep.excecao.*;
 import br.com.nextstep.dao.VagaDAO;
 import br.com.nextstep.util.Resume;
 

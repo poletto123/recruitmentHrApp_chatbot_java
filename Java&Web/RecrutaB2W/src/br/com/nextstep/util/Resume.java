@@ -1,7 +1,5 @@
 package br.com.nextstep.util;
 
-import java.text.SimpleDateFormat;
-
 import javax.swing.JOptionPane;
 
 public class Resume {
