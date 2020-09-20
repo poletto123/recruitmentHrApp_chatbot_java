@@ -37,13 +37,17 @@
 	</header>
 	
 	<main>
-		<div class="principal">
-			<div class="conversa">
-				<span>Digitando ...</span>
+		<div class="general">
+
+			<div class="chatbot">
+				<div class="conversa">
+					<span>Digitando ...</span>
+				</div>
+				<textarea type="text" id="pergunta" name="pergunta" class="campo"
+					placeholder="Digite sua pergunta"></textarea>
+				<button id="enviar" onclick="carregarDados()">Enviar</button>
+
 			</div>
-			<input type="text" id="pergunta" name="pergunta" class="campo"
-				placeholder="Digite sua pergunta" />
-			<button id="enviar" onclick="carregarDados()">Enviar</button>
 		</div>
 	</main>
 	

@@ -31,7 +31,13 @@ Cores sugestivas:
   --footer-f-color: #27ecd4;
   --font-h1-color: #27ecd4;
   --pink-color: #ed145b;
+  --bk-color:#181a1b;
   font-size: 16px;
+}
+
+body{
+  background: var(--bk-color);
+  color: #fff;
 }
 
 body::-webkit-scrollbar {
@@ -86,10 +92,16 @@ header nav li a .colored {
   color: white;
 }
 
-header img {
+header .logo {
   width: 50px;
   margin-right: 30px;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+header .logo:hover{
+  filter: drop-shadow(1px 2px 6px rgba(0, 0, 0, 0.3));
+  transition: 0.3s;
 }
 
 header .title-list {
@@ -106,6 +118,10 @@ header .title-list li {
   letter-spacing: 1px;
   text-shadow: 1px 1px 2px darkcyan;
   transition: 0.3s;
+}
+
+header .title-list li a{
+  color: #fff;
 }
 
 header nav li a::after {

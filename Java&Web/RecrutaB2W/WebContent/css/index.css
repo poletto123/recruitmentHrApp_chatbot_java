@@ -1,37 +1,53 @@
-.content-background{
+.content-background {
   max-width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(90deg, #364450, rgba(0, 255, 255, 0.425)),url(".././img/cytonn-photography-n95VMLxqM2I-unsplash.jpg");
+  background-image: linear-gradient(90deg, #364450, rgba(0, 255, 255, 0.425)), url(".././img/cytonn-photography-n95VMLxqM2I-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  text-align: center;
+  text-align: left;
   background-position: center;
   margin: 0 -30px;
-  padding-top: 100px;
+  padding: 100px 15px 0;
 }
 
-.txt-type > .txt::after{
+.txt-type>.txt::after {
   content: "|";
   animation: blink .6s ease-in-out infinite;
   opacity: 1;
   margin-left: 5px;
 }
 
-@keyframes blink{
-  0%,100% {
+@keyframes blink {
+
+  0%,
+  100% {
     opacity: 1;
   }
 
   50% {
-      opacity: 0;
+    opacity: 0;
   }
 }
 
-.content-background .saiba-mais{
-  margin-top: 180px;
+.content-background .saudacoes {
+  padding-bottom: 30px;
 }
 
-.content-background .btn-saiba-mais{
+.content-background .slogan h2 {
+  display: inline;
+  background: rgb(0, 0, 0);
+  color: #fff;
+  padding: 2px 5px;
+  font-weight: 300;
+}
+
+.content-background .buttons {
+  margin-top: 180px;
+
+}
+
+.content-background .btn-saiba-mais,
+.teste-sistema {
   min-width: 200px;
   max-width: 300px;
   border-radius: 5px;
@@ -45,14 +61,51 @@
   border: 2px solid var(--pink-color);
 }
 
+.teste-sistema {
+  border: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  position: relative;
+  text-transform: uppercase;
+  background-image: linear-gradient(to left,
+      #ed145b,
+      #ed145b);
+  z-index: 1;
+}
 
-.content-background .btn-saiba-mais:hover{
+.teste-sistema::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to right,
+      #ed145b,
+      #181a1b);
+  z-index: -1;
+  transition: opacity 1s ease;
+  opacity: 0;
+}
+
+.teste-sistema:hover::before {
+  opacity: 1;
+}
+
+.teste-sistema a:after {
+  content: "";
+  background: none;
+  height: 0;
+  width: 0;
+}
+
+.content-background .btn-saiba-mais:hover {
   background-color: rgba(2, 2, 2, 0.801);
   color: var(--pink-color);
   text-shadow: 1px 1px 1px black;
 }
 
-.content-infos{
+.content-infos {
   display: flex;
   margin: 30px 0 100px;
   align-items: center;
@@ -60,66 +113,109 @@
   justify-content: space-between;
 }
 
-.content-infos .content-infos__text h1{
+.content-infos .content-infos__text h1 {
   font-weight: bold;
   text-shadow: 2px 2px 1px black;
+  margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
-.content-infos .content-infos__text h2{
-  border-bottom:10px solid cyan ;
+.content-infos .content-infos__text h2 {
+  border-bottom: 10px solid cyan;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 300;
 }
 
 
-.content-infos .content-infos__text{
+.content-infos .content-infos__text {
   flex: 1.3;
   margin-right: 100px;
+  line-height: 1.5;
 }
 
-.content-infos .content-infos__image{
+.content-infos .content-infos__text--button {
+  background: #ed145b;
+  border: none;
+  padding: 10px;
+  color: #fff;
+  font-size: 1em;
+  width: 150px;
+  outline: none;
+  cursor: pointer;
+}
+
+.content-infos .content-infos__text p {
+  margin-top: 20px;
+}
+
+.content-infos .content-infos__text a {
+  color: #D5D5D5;
+}
+
+.content-infos .content-infos__image {
   flex: 1;
 }
 
-.content-infos .content-infos__image img{
+.content-infos .content-infos__image img {
   min-width: 200px;
   max-width: 400px;
   float: right;
-
 }
 
-.content-infos:nth-child(3){
+.content-infos .content-infos__image img.ecommerce{
+  filter: hue-rotate(310deg);
+}
+
+
+
+.content-infos:nth-child(3) {
   flex-direction: row-reverse;
 
 }
 
-.content-infos:nth-child(3) .content-infos__image img{
+.content-infos:nth-child(3) .content-infos__image img {
   border-radius: 5px;
   margin-right: 50px;
   float: none;
 
 }
 
-.content-infos:nth-child(4) .content-infos__image img{
+.content-infos .content-infos__image img.curriculo {
+  width: 100%;
   border-radius: 5px;
-  /* filter: hue-rotate(150deg); */
-
 }
 
-.content-infos:nth-child(6) .content-infos__text ul{
+.content-infos:nth-child(6) .content-infos__text ul {
   border: 2px solid cyan;
-  padding: 10px 0 ;
+  padding: 10px 0;
   overflow: auto;
 }
 
-.content-infos:nth-child(6) .content-infos__text{
+.content-infos:nth-child(6) .content-infos__text {
   margin-right: 0;
 }
 
-.carousel{
+.content-infos .content-infos__text--hidden {
+  opacity: 0;
+  max-height: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.content-infos .content-infos__text--hidden.active {
+  opacity: 1;
+  max-height: 999em;
+  visibility: visible;
+  transition: 0.3s;
+}
+
+.carousel {
   margin: 0 auto 30px;
   width: 60%;
 }
 
-.contato{
+.contato {
   margin: 0 auto;
   width: 50%;
   background: var(--footer-bk-color);
@@ -128,7 +224,7 @@
   color: white;
 }
 
-.contato .title h1{
+.contato .title h1 {
   text-align: center;
   color: var(--pink-color);
   margin-bottom: 30px;
@@ -136,42 +232,44 @@
   text-transform: uppercase;
 }
 
-.contato__form .secao{
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin: 0 auto 10px;
-}
-
-.contato__form .secao input{
-  padding: 5px 10px;
-  border: none;
-  margin-bottom: 15px;
-  border-bottom: 5px solid rgb(243, 152, 167);
-}
-
-.contato__form .secao label,.contato__form .msg label{
-  padding-bottom: 5px;
-  font-size: 0.9em;
-}
-
-.contato__form .msg{
+.contato__form .secao {
   display: flex;
   flex-direction: column;
   width: 90%;
   margin: 0 auto 10px;
 }
 
-.contato__form .msg textarea{
+.contato__form .secao input {
+  padding: 5px 10px;
+  border: none;
+  margin-bottom: 15px;
+  border-bottom: 5px solid rgb(243, 152, 167);
+}
+
+.contato__form .secao label,
+.contato__form .msg label {
+  padding-bottom: 5px;
+  font-size: 0.9em;
+}
+
+.contato__form .msg {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto 10px;
+}
+
+.contato__form .msg textarea {
   padding: 5px 10px;
   border: none;
 }
 
-.contato__form .secao input:focus,.contato__form .msg textarea:focus{
+.contato__form .secao input:focus,
+.contato__form .msg textarea:focus {
   outline: none;
 }
 
-.contato__form .msg .btn-enviar{
+.contato__form .msg .btn-enviar {
   padding: 10px;
   margin-top: 20px;
   padding: 16px;
@@ -185,7 +283,7 @@
   font-size: 16px;
 }
 
-.contato__form .msg .btn-enviar:hover{
+.contato__form .msg .btn-enviar:hover {
   background-color: black;
   color: var(--pink-color);
   text-shadow: 1px 1px 1px black;
@@ -195,155 +293,123 @@
   margin-top: 100px;
 }
 
-#integrantes .content-infos__text ul{
+#integrantes .content-infos__text ul {
   line-height: 1.2;
   margin-top: 10px;
   text-align: center;
   display: grid;
-  grid-template-columns:repeat(5,minmax(40px,1fr));
+  grid-template-columns: repeat(5, minmax(40px, 1fr));
 }
 
-#integrantes .content-infos__text ul li{
+#integrantes .content-infos__text ul li {
   padding-bottom: 10px;
 }
 
-.credits{
+.credits {
   background-color: #D5D5D5;
   margin: 25px -30px 15px;
-  filter:drop-shadow(8px 8px 10px black);
+  filter: drop-shadow(8px 8px 10px black);
   text-align: center;
 }
 
-.credits figure .fiap-logo{
+.credits figure .fiap-logo {
   min-width: 100px;
   width: 10%;
   margin: 20px 10px 50px;
-  filter:drop-shadow(2px 4px 2px var(--pink-color));
+  filter: drop-shadow(2px 4px 2px var(--pink-color));
 }
 
 /* Efeito de transition com gradient */
 /* https://keithjgrant.com/posts/2017/07/transitioning-gradients/ */
 
-.teste-sistema {
-	padding: 15px;
-	border: 2px solid black;
-	border-radius: 5px;
-	font-weight: bold;
-	font-size: 1.2em;
-  position: relative;
-  background-image: linear-gradient(
-    to left,
-    hsl(173deg 72% 47%),
-    hsl(229deg 93% 88%)
-  );
-  z-index: 1;
-}
 
-.teste-sistema::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(
-    to right,
-    hsl(173deg 100% 69%),
-    hsl(0deg 0% 100%)
-  );
-  z-index: -1;
-  transition: opacity 1s ease;
-  opacity: 0;
-}
+@media screen and (min-width:1444px) {
 
-.teste-sistema:hover::before {
-	opacity: 1;
-}
-
-@media screen and (min-width:1444px){
-  
-  header .title-list li{
+  header .title-list li {
     font-size: 1.1rem;
   }
-  
+
   .content-infos .content-infos__text {
     font-size: 1.4em;
-  } 
+  }
 
-  .contato__form .secao label,.contato__form .msg label{
+  .contato__form .secao label,
+  .contato__form .msg label {
     padding-bottom: 5px;
     font-size: 1.1em;
   }
 }
 
-@media screen and (min-width:1600px){
-  
-  .content-background{
+@media screen and (min-width:1600px) {
+
+  .content-background {
     font-size: 1.2em;
   }
 
-  header .title-list li{
+  header .title-list li {
     font-size: 1.2rem;
   }
-  
+
 }
 
-@media screen and (max-width:1240px){
-  #integrantes .content-infos__text ul{
+@media screen and (max-width:1240px) {
+  #integrantes .content-infos__text ul {
     display: flex;
     flex-direction: column;
     flex-basis: 30px;
   }
 }
 
-@media screen and (max-width:767px){
-  footer h1 a{
+@media screen and (max-width:767px) {
+  footer h1 a {
     font-size: 1em;
   }
 
-  footer h1{
+  footer h1 {
     font-size: 1em;
   }
 
-  .carousel{width:100%;}
+  .carousel {
+    width: 100%;
+  }
 
-  .content-infos{
+  .content-infos {
     flex-direction: column !important;
     margin-bottom: 70px;
   }
 
-  .content-infos .content-infos__text{
+  .content-infos .content-infos__text {
     margin-right: 0;
   }
 
-  .content-infos .content-infos__text h2{
+  .content-infos .content-infos__text h2 {
     margin-top: 10px;
     font-size: 1.2em
   }
 
-  .content-infos .content-infos__image{
+  .content-infos .content-infos__image {
     text-align: center;
     margin: 20px 0 40px;
   }
 
-  .content-infos .content-infos__image img{
+  .content-infos .content-infos__image img {
     max-width: 200px;
   }
 
-  .content-infos:nth-child(3) .content-infos__image img{
+  .content-infos:nth-child(3) .content-infos__image img {
     margin-right: 0;
   }
 
-  #integrantes .content-infos__text ul{
+  #integrantes .content-infos__text ul {
     display: flex;
     flex-direction: column;
   }
 
-  .contato{
+  .contato {
     width: 100%;
   }
 
-  .credits{
+  .credits {
     margin-bottom: -15px;
   }
 

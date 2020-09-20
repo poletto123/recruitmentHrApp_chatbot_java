@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,9 @@
 
 
 </head>
+
 <body>
-  
+
   <header>
     <figure>
       <img src="./img/B2W_Digital_logo.png" class="logo" alt="">
@@ -19,14 +21,17 @@
     <span class="mobile-btn"></span>
     <nav class="menu-nav mobile-menu">
       <ul class="title-list">
-        <li><h1><a href="#sobre">Sobre a B2W</a></h1></li>
-        <li><h1><a href="#problema">Problema</a></h1></li>
-        <li><h1><a href="#solucao">Solução</a></h1></li>
-        <li><h1><a href="#contato">Contato</a></h1></li>
         <li>
-       		<button class="teste-sistema">
-       			<a href="home.html">Teste o sistema!</a>
-       		</button>
+          <h1><a href="#sobre">Sobre a B2W</a></h1>
+        </li>
+        <li>
+          <h1><a href="#problema">Problema</a></h1>
+        </li>
+        <li>
+          <h1><a href="#solucao">Solução</a></h1>
+        </li>
+        <li>
+          <h1><a href="#contato">Contato</a></h1>
         </li>
       </ul>
     </nav>
@@ -34,125 +39,176 @@
 
   <main class="general">
 
-    <section class="content-background" >
-      <h1>Olá B2W,<br/> somos
-        <span class="txt-type" data-wait="3000" data-words='["desenvolvedores","entusiastas","a NextStep"]'></span>
-      </h1>
+    <section class="content-background">
 
-      <h2>
-        Estaremos junto a você no seu próximo passo!
-      </h2>
+      <div class="saudacoes">
+        <h1>Olá B2W,<br /> somos
+          <span class="txt-type" data-wait="3000" data-words='["desenvolvedores","entusiastas","a NextStep"]'></span>
+        </h1>
+      </div>
 
-    <div class="saiba-mais">
-      <a href="#sobre" class="btn-saiba-mais">SAIBA MAIS</a>
-    </div>
-      
+      <div class="slogan">
+        <h2>
+          Junto com você no seu próximo passo!
+        </h2>
+      </div>
+
+      <div class="buttons">
+        <div class="saiba-mais">
+          <a href="#sobre" class="btn-saiba-mais">SAIBA MAIS</a>
+        </div>
+
+        <button class="teste-sistema">
+          <a href="home.html">Teste o sistema</a>
+        </button>
+      </div>
+
     </section>
 
     <section class="content-infos" id="sobre">
       <div class="content-infos__text">
-        
-        <h1>A B2W</h1>
-        <h2>Um pouco sobre a maior empresa e-commerce brasileira</h2>
-        
-        <br/>
-    
-        <p>
-          O propósito da B2W é <strong>conectar pessoas, negócios, produtos e serviços em uma mesma plataforma digital</strong>. Por isso, a B2W Digital quer, cada vez mais, estar sempre próxima dos clientes, oferecendo a melhor experiência de compra e desenvolvendo os melhores talentos.
-        </p>
-    
-        <br/>
 
-        <p>
-          Líder na América Latina, a B2W Digital tem um modelo de negócio único, multicanal, multimarca e multinegócio. A Companhia atua nas seguintes frentes: e-commerce nas marcas Americanas.com, Submarino, Shoptime e Sou Barato; plataformas de serviços de crédito ao consumidor, com o Submarino Finance e o Digital Finance; plataforma de tecnologia; plataforma de logística, distribuição e atendimento ao cliente; e Marketplace.
-        </p>
-    
-        <br/>
+        <div class="content-infos__text--visible">
 
-        <p>
-          Você pode conhecer mais detalhes sobre a Companhia no site <strong>www.b2wdigital.com</strong> 
-        </p>
+          <h1>A B2W</h1>
+          <h2>Um pouco sobre a maior empresa e-commerce brasileira</h2>
+
+          <p>
+            O propósito da B2W é <strong>conectar pessoas, negócios, produtos e serviços em uma mesma plataforma
+              digital</strong>. Por isso, a B2W Digital quer, cada vez mais, estar sempre próxima dos clientes,
+            oferecendo
+            a melhor experiência de compra e desenvolvendo os melhores talentos.
+          </p>
+        </div>
+
+        <div class="content-infos__text--hidden">
+          <p>
+            Líder na América Latina, a B2W Digital tem um modelo de negócio único, multicanal, multimarca e
+            multinegócio.
+            A Companhia atua nas seguintes frentes: e-commerce nas marcas Americanas.com, Submarino, Shoptime e Sou
+            Barato; plataformas de serviços de crédito ao consumidor, com o Submarino Finance e o Digital Finance;
+            plataforma de tecnologia; plataforma de logística, distribuição e atendimento ao cliente; e Marketplace.
+          </p>
+
+          <p>
+            Você pode conhecer mais detalhes sobre a Companhia no site <a href="https://ri.b2w.digital/">
+              <strong>www.b2wdigital.com</strong></a>
+          </p>
+        </div>
+
+        <button class="content-infos__text--button">
+          Leia Mais
+        </button>
+
       </div>
 
       <figure class="content-infos__image">
-        <img src="./img/mobile_brands.png" alt="">
+        <img src="./img/ecommerce.gif" class="ecommerce" alt="">
       </figure>
     </section>
 
     <section class="content-infos" id="problema">
       <div class="content-infos__text">
-        <h1>Problema</h1>
-        <h2>
-          Atuaremos no recrutamento, após o algoritmo de filtragem e antes da entrevista. 
-        </h2>
-        <br/>
-          <p>
-            Existe uma lacuna nessa entre a filtragem e a entrevista, onde a companhia tem uma visão que contempla <i>hard skills</i>, sem conhecer traços da personalidade do candidato. Isso gera uma pressão no recrutador já que a entrevista, que é um espaço de tempo curto, é o principal momento para se ter um contato mais pessoal com o candidato. Além disso, o recrutador também deve verificar informações básicas sobre o candidato na hora da entrevista, o que acaba reduzindo o tempo útil da entrevista, além de sua qualidade.
+        <div class="content-infos__text--visible">
+          <h1>Problema</h1>
+          <h2>
+            Atuaremos no recrutamento, após o algoritmo de filtragem e antes da entrevista.
+          </h2>
 
-          </p>
-        <br/>
           <p>
+            Existe uma lacuna nessa entre a filtragem e a entrevista, onde a companhia tem uma visão que contempla
+            <i>hard
+              skills</i>, sem conhecer traços da personalidade do candidato.
           </p>
+        </div>
+
+        <div class="content-infos__text--hidden">
+
+          <p>
+            Isso gera uma pressão no recrutador já que a entrevista, que é um espaço de tempo curto, é o principal
+            momento
+            para se ter um contato mais pessoal com o candidato.
+          </p>
+
+          <p>Além disso, o recrutador também deve verificar informações básicas sobre o candidato na hora da entrevista,
+            o
+            que acaba reduzindo o tempo útil da entrevista, além de sua qualidade.</p>
+          <p>
+        </div>
+
+        <button class="content-infos__text--button">
+          Leia Mais
+        </button>
+
       </div>
 
       <figure class="content-infos__image">
-        <img src="./img/7-most-common-mistakes.png" alt="">
+        <img src="./img/diferenciais.gif" alt="">
       </figure>
-      
+
     </section>
 
     <section class="content-infos" id="solucao">
       <div class="content-infos__text">
-        <h1>Solução - Recruta B2W</h1>
 
-        <h2>
-          Queremos coletar informações sobre as <i>soft skills</i> do candidato, antes da entrevista, e através de um app
-        </h2>
-        
-        <br/>
+        <div class="content-infos__text--visible">
+          <h1>Solução - Recruta B2W</h1>
 
-        <p>
-          Essa informações coletadas serão disponibilizadas para o recrutamento a fim de proporcionar uma visão mais ampla sobre o candidato. 
-        </p>
+          <h2>
+            Queremos coletar informações sobre as <i>soft skills</i> do candidato, antes da entrevista, e através de um
+            app
+          </h2>
 
-        <br/>
 
-        <p>
-          Algumas respostas básicas de entrevista também serão coletadas, permitindo assim ao recrutador focar-se em detalhes, ou em questões que não foram abordadas no app.
-        </p>
-        <br/>
+          <p>
+            Essa informações coletadas serão disponibilizadas para o recrutamento a fim de proporcionar uma visão mais
+            ampla sobre o candidato.
+          </p>
+        </div>
 
-        <p>
-          O app contará com um teste de personalidade, um chatbot para a coleta geral de informações referentes à entrevista, e um vídeo de apresentação, o qual terá tanto vídeo quanto áudio analisados por um algoritmo de detecção de modos de fala e de emoções.
-        </p>
+
+        <div class="content-infos__text--hidden">
+          <p>
+            Algumas respostas básicas de entrevista também serão coletadas, permitindo assim ao recrutador focar-se em
+            detalhes, ou em questões que não foram abordadas no app.
+          </p>
+
+
+          <p>
+            O app contará com um teste de personalidade, um chatbot para a coleta geral de informações referentes à
+            entrevista, e um vídeo de apresentação, o qual terá tanto vídeo quanto áudio analisados por um algoritmo de
+            detecção de modos de fala e de emoções.
+          </p>
+        </div>
+
+        <button class="content-infos__text--button">
+          Leia Mais
+        </button>
+
       </div>
 
       <figure class="content-infos__image">
-        <img src="./img/interviews-e1433244493315.jpg" alt="">
+        <img src="./img/curriculo.gif" alt="" class="curriculo">
       </figure>
 
     </section>
 
     <section class="carousel">
-      <img src="./img/slides/mateus-campos-felipe-PERcXdKzYh0-unsplash.jpg" alt="">
-      <img src="./img/slides/tetiana-shyshkina-TswOPhWcrmQ-unsplash.jpg" alt="">
-      <img src="./img/slides/austin-distel-21GWwco-JBQ-unsplash.jpg" alt="">
-      <img src="./img/slides/headway-5QgIuuBxKwM-unsplash.jpg" alt="">
     </section>
 
     <section class="content-infos" id="integrantes">
-      
+
       <div class="content-infos__text">
         <h1>Integrantes:</h1>
-      
+
         <h2>Turma: 1º TDST | NextStep</h2>
-        
+
         <ul>
-          <li>Celso L. da Silva Filho, <br/> RM 86158 - <strong>Banco de dados.</strong> </li>
-          <li>Eduardo Vinícius B. Costa,  <br/>RM 85915 - <strong>Front-end.</strong> </li>
-          <li>Guilherme R. De Souza,  <br/>RM 85499 - <strong>Back-end.</strong> </li>
-          <li>Rogerio Pizzo dos Santos, <br/> RM 84088 - <strong>Infraestrutura.</strong> </li>
-          <li>William Butler Poletto, <br/> RM 85008 - <strong>Gestão.</strong></li>
+          <li>Celso L. da Silva Filho, <br />RM 86158 - <strong>Banco de dados.</strong> </li>
+          <li>Eduardo Vinícius B. Costa, <br />RM 85915 - <strong>Front-end.</strong> </li>
+          <li>Guilherme R. De Souza, <br />RM 85499 - <strong>Back-end.</strong> </li>
+          <li>Rogerio Pizzo dos Santos, <br /> RM 84088 - <strong>Infraestrutura.</strong> </li>
+          <li>William Butler Poletto, <br /> RM 85008 - <strong>Gestão.</strong></li>
         </ul>
       </div>
     </section>
@@ -169,8 +225,8 @@
           <label for="nome">Nome:</label>
           <input type="text" name="" id="nome" placeholder="Nome">
         </div>
-        
-        
+
+
         <div class="secao">
           <label for="emaik">Email:</label>
           <input type="text" name="" id="email" placeholder="Email">
@@ -178,7 +234,7 @@
 
         <div class="secao">
           <label for="telefone">Telefone:</label>
-          <input type="text" name="" id="telefone"placeholder="Telefone"> 
+          <input type="text" name="" id="telefone" placeholder="Telefone">
         </div>
 
         <div class="secao">
@@ -196,17 +252,17 @@
     </section>
 
     <section class="credits">
-      
+
       <figure>
 
         <a href="https://www.fiap.com.br/" target="_blank"><img class="fiap-logo" src="./img/fiap-logo.png" alt=""></a>
 
-        
+
       </figure>
-    
+
     </section>
-   
-    
+
+
   </main>
 
 
@@ -225,4 +281,5 @@
   <script src="https://smtpjs.com/v3/smtp.js"></script>
 
 </body>
+
 </html>
