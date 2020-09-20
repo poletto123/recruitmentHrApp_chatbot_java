@@ -3,23 +3,33 @@
 }
 
 .video {
+    max-height: 500px;
     display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid;
+    border-color: beige;
+    border-radius: 5px;
+    margin: 0px 150px;
 }
 
-.video .txt-1 {
+.video .texto {
+    margin: 30px 100px;
+}
+
+.video .texto .txt-1 {
     margin: 0 auto;
-    padding: 20px 20px;
-    background: yellow;
 }
 
-.video .txt-1 p {
-    margin: 5px;
+.video .texto .txt-1 p,
+li {
+    margin: 5px 0px;
 }
 
-.video .txt-2 {
-    background-color: blue;
-}
-
-.video .envio {
-    background-color: green;
+.video .texto .txt-2 {
+    width: 400px;
+    min-width: 200px;
+    margin: 0;
+    margin-top: 200px;
 }
