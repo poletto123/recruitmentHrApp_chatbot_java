@@ -2,11 +2,34 @@ package br.com.nextstep.beans;
 
 public class Usuario {
 
+	private int id;
 	private String nome;
     private String email;
     private String senha;
     private String cpf;
     
+       
+	public Usuario(int id, String nome, String email, String senha, String cpf) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.cpf = cpf;
+	}
+	
+	public Usuario() {
+		super();
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -31,23 +54,10 @@ public class Usuario {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	//CONSTRUTORES
-	public Usuario() {
-		super();
-	}
-	public Usuario(String nome, String email, String senha, String cpf) {
-		super();
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		this.cpf = cpf;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf + "]";
+		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf + "]";
 	}
-    
-	
     
 }

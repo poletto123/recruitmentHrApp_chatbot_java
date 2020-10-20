@@ -4,11 +4,13 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import br.com.nextstep.beans.AudioVideo;
 import br.com.nextstep.conexao.ConectaBanco;
+import br.com.nextstep.util.PadraoDAO;
 
-public class AudioVideoDAO {
+public class AudioVideoDAO implements PadraoDAO<AudioVideo> {
 	
 	private Connection con;
 	private PreparedStatement stmt;
@@ -21,11 +23,12 @@ public class AudioVideoDAO {
 		con =  ConectaBanco.conectar();
 	}
 	
-	public void fecharConexao() throws Exception{
-
+	@Override
+	public void fechar() throws Exception{
 		con.close();
 	}
 	
+	@Override
 	public int add(AudioVideo objeto) throws Exception{
 		
 		con = ConectaBanco.conectar();
@@ -41,7 +44,8 @@ public class AudioVideoDAO {
 		return stmt.executeUpdate();
 	}
 	
-	public int delete(int id) throws Exception{
+	@Override
+	public int deleteById(int id) throws Exception{
 		Connection con = ConectaBanco.conectar();
 		
 		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_AUDIO_VIDEO WHERE CD_ENVIO=?");
@@ -73,7 +77,8 @@ public class AudioVideoDAO {
 		return stmt.executeUpdate();
 	}
 	
-	public AudioVideo mostrar(int id) throws Exception{
+	@Override
+	public AudioVideo getById(int id) throws Exception{
 		stmt = con.prepareStatement("SELECT * FROM T_RBW_AUDIO_VIDEO WHERE CD_ENVIO=?");
 		stmt.setInt(1, id);
 		
@@ -90,6 +95,12 @@ public class AudioVideoDAO {
 		}
 		
 		return new AudioVideo();
+	}
+
+	@Override
+	public List<AudioVideo> getAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

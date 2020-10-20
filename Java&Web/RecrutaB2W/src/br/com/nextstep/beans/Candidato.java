@@ -1,10 +1,23 @@
 package br.com.nextstep.beans;
 
-public class Candidato extends Usuario{
+public class Candidato extends Usuario {
     
 	private String dataNascimento;
     private String vaga; 
     private int pontuacao;
+     
+	public Candidato(int id, String nome, String email, String senha, String cpf, String dataNascimento, String vaga,
+			int pontuacao) {
+		super(id, nome, email, senha, cpf);
+		this.dataNascimento = dataNascimento;
+		this.vaga = vaga;
+		this.pontuacao = pontuacao;
+	}
+	
+	public Candidato(int id, String nome, String email, String senha, String cpf) {
+		super(id, nome, email, senha, cpf);
+	}
+
 
 	public String getDataNascimento() {
 		return dataNascimento;
@@ -24,26 +37,12 @@ public class Candidato extends Usuario{
 	public void setPontuacao(int pontuacao) {
 		this.pontuacao = pontuacao;
 	}
-	
-	//CONTRUTORES
-	public Candidato() {
-		super();
 
-	}
-	public Candidato(String nome, String email, String senha, String cpf) {
-		super(nome, email, senha, cpf);
-
-	}
-	public Candidato(String dataNascimento, String vaga, int pontuacao) {
-		super();
-		this.dataNascimento = dataNascimento;
-		this.vaga = vaga;
-		this.pontuacao = pontuacao;
-	}
-	
 	@Override
 	public String toString() {
-		return "Candidato [dataNascimento=" + dataNascimento + ", vaga=" + vaga + ", pontuacao=" + pontuacao + "]";
-	} 
-	
+		return "Candidato [dataNascimento=" + dataNascimento + ", vaga=" + vaga + ", pontuacao=" + pontuacao
+				+ ", getId()=" + getId() + ", getNome()=" + getNome() + ", getEmail()=" + getEmail() + ", getSenha()="
+				+ getSenha() + ", getCpf()=" + getCpf() + "]";
+	}
+		
 }

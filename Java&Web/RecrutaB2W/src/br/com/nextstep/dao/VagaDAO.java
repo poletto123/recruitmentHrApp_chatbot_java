@@ -3,11 +3,13 @@ package br.com.nextstep.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import br.com.nextstep.beans.Vaga;
 import br.com.nextstep.conexao.ConectaBanco;
+import br.com.nextstep.util.PadraoDAO;
 
-public class VagaDAO {
+public class VagaDAO implements PadraoDAO<Vaga> {
 
 	private Connection con;
 	private PreparedStatement stmt;
@@ -18,11 +20,12 @@ public class VagaDAO {
 		con =  ConectaBanco.conectar();
 	}
 	
-	public void fecharConexao() throws Exception{
-
+	@Override
+	public void fechar() throws Exception{
 		con.close();
 	}
 	
+	@Override
 	public int add(Vaga objeto) throws Exception{
 
 		con = ConectaBanco.conectar();
@@ -35,7 +38,8 @@ public class VagaDAO {
 		return stmt.executeUpdate();
 	}
 	
-	public int delete(int id) throws Exception{
+	@Override
+	public int deleteById(int id) throws Exception{
 		Connection con = ConectaBanco.conectar();
 		
 		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_VAGA WHERE NR_VAGA=?");
@@ -53,7 +57,8 @@ public class VagaDAO {
 		return stmt.executeUpdate();
 	}
 	
-	public Vaga mostrar(int id) throws Exception{
+	@Override
+	public Vaga getById(int id) throws Exception{
 		stmt = con.prepareStatement("SELECT * FROM T_RBW_VAGA WHERE NR_VAGA=?");
 		stmt.setInt(1, id);
 		
@@ -72,6 +77,12 @@ public class VagaDAO {
 		}
 		
 		return new Vaga();
+	}
+
+	@Override
+	public List<Vaga> getAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

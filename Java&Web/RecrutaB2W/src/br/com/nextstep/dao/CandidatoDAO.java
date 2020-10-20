@@ -8,41 +8,26 @@ import java.sql.ResultSet;
 import br.com.nextstep.beans.Candidato;
 import br.com.nextstep.beans.Usuario;
 import br.com.nextstep.conexao.ConectaBanco;
+import br.com.nextstep.util.PadraoDAO;
 
-public class CandidatoDAO {
+public class CandidatoDAO implements PadraoDAO<Candidato> {
 
 	private Connection con;
 	private PreparedStatement stmt;
 	private ResultSet rs;
 	
 	public CandidatoDAO() throws Exception{
-
-		con =  ConectaBanco.conectar();
+		con = ConectaBanco.conectar();
 	}
 	
-	public void fecharConexao() throws Exception{
-
+	@Override
+	public void fechar() throws Exception{
 		con.close();
 	}
 	
-	public int addUsuario(Usuario objeto) throws Exception{
-
-		con = ConectaBanco.conectar();
-
-		stmt = con.prepareStatement("INSERT INTO T_RBW_USUA (NR_CPF, NM_USUA, DS_EMAIL, NM_SENHA) VALUES (?, ?, ?, ?)");
-		
-		stmt.setString(1, objeto.getCpf());
-		stmt.setString(2, objeto.getNome());
-		stmt.setString(3, objeto.getEmail());
-		stmt.setString(4, objeto.getSenha());
-
-		return stmt.executeUpdate();
-	}
-	
-	public int addCandidato(Candidato objeto) throws Exception{
-		
-		con = ConectaBanco.conectar();
-		
+	@Override
+	public int add(Candidato objeto) throws Exception{
+				
 		stmt = con.prepareStatement("INSERT INTO T_RBW_CAND (NR_CPF,DT_NASCIMENTO, NM_PONTUACAO, NM_VAGA) VALUES(?, ?, ?, ?)");
 
 		stmt.setString(1, objeto.getCpf());
@@ -53,11 +38,11 @@ public class CandidatoDAO {
 		return stmt.executeUpdate();
 	}
 	
-	public int delete(String cpf) throws Exception{
-		Connection con = ConectaBanco.conectar();
+	@Override
+	public int deleteById(int id) throws Exception{
 		
-		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_CAND WHERE NR_CPF=?");
-		stmt.setString(1, cpf);
+		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_CAND WHERE NR_ID=?");
+		stmt.setInt(1, id);
 		
 		return stmt.executeUpdate();
 		
@@ -71,10 +56,13 @@ public class CandidatoDAO {
 		return stmt.executeUpdate();
 	}
 	
-	public Candidato mostrar(String cpf) throws Exception{
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_CAND WHERE NR_CPF=?");
+	@Override
+	public Candidato getById(int id) throws Exception{
 		
-		stmt.setString(1, cpf);
+		stmt = con.prepareStatement("SELECT * FROM TB_RBW_CAND INNER JOIN T_RBW_USUA "
+				+ "ON TB_RBW_CAND.NR_ID = T_RBW_USUA.NR_ID "
+				+ "WHERE T_RBW_USUA.NR_ID=?");
+		stmt.setInt(1, id);
 		
 		rs = stmt.executeQuery();
 		
@@ -82,6 +70,7 @@ public class CandidatoDAO {
 			
 			return new Candidato(
 					
+					rs.getInt("NR_ID"),
 					rs.getString("DT_NASCIMENTO"),
 					rs.getString("NM_VAGA"),
 					rs.getInt("NM_PONTUACAO")

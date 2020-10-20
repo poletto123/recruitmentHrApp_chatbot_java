@@ -3,51 +3,53 @@ package br.com.nextstep.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 import br.com.nextstep.beans.Usuario;
 import br.com.nextstep.conexao.ConectaBanco;
+import br.com.nextstep.util.PadraoDAO;
 
-public class UsuarioDAO {
+public class UsuarioDAO implements PadraoDAO<Usuario> {
 
 	private Connection con;
 	private PreparedStatement stmt;
 	private ResultSet rs;
 	
 	public UsuarioDAO() throws Exception{
-
 		con =  ConectaBanco.conectar();
 	}
 	
-	public void fecharConexao() throws Exception{
-
+	@Override
+	public void fechar() throws Exception{
 		con.close();
 	}
 	
+	@Override
 	public int add(Usuario objeto) throws Exception{
 
-		con = ConectaBanco.conectar();
+		stmt = con.prepareStatement("INSERT INTO T_RBW_USUA (NR_ID, NR_CPF, NM_USUA, DS_EMAIL, NM_SENHA) VALUES (?, ?, ?, ?, ?)");
 
-		stmt = con.prepareStatement("INSERT INTO T_RBW_USUA (NR_CPF, NM_USUA, DS_EMAIL, NM_SENHA) VALUES (?, ?, ?, ?)");
-
-		stmt.setString(1, objeto.getCpf());
-		stmt.setString(2, objeto.getNome());
-		stmt.setString(3, objeto.getEmail());
-		stmt.setString(4, objeto.getSenha());
+		stmt.setInt(1, objeto.getId());
+		stmt.setString(2, objeto.getCpf());
+		stmt.setString(3, objeto.getNome());
+		stmt.setString(4, objeto.getEmail());
+		stmt.setString(5, objeto.getSenha());
 
 		return stmt.executeUpdate();
 	}
 	
-	public int delete(String cpf) throws Exception{
-		Connection con = ConectaBanco.conectar();
-		
-		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_USUA WHERE NR_CPF=?");
-		stmt.setString(1, cpf);
+	@Override
+	public int deleteById(int id) throws Exception{
+	
+		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_USUA WHERE NR_ID=?");
+		stmt.setInt(1, id);
 		
 		return stmt.executeUpdate();
 		
 	}
 	
 	public int modifyEmail(String email, String cpf) throws Exception {
+		
 		stmt = con.prepareStatement("UPDATE T_RBW_USUA SET DS_EMAIL=? WHERE NR_CPF=?");
 		stmt.setString(1, email);
 		stmt.setString(2, cpf);
@@ -55,9 +57,11 @@ public class UsuarioDAO {
 		return stmt.executeUpdate();
 	}
 	
-	public Usuario mostrar(String cpf) throws Exception{
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_USUA WHERE NR_CPF=?");
-		stmt.setString(1, cpf);
+	@Override
+	public Usuario getById(int id) throws Exception{
+		
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_USUA WHERE NR_ID=?");
+		stmt.setInt(1, id);
 		
 		rs = stmt.executeQuery();
 		
@@ -65,6 +69,7 @@ public class UsuarioDAO {
 			
 			return new Usuario(
 					
+					rs.getInt("NR_ID"),
 					rs.getString("NM_USUA"),
 					rs.getString("DS_EMAIL"),
 					rs.getString("NM_SENHA"),
@@ -74,6 +79,12 @@ public class UsuarioDAO {
 		}
 		
 		return new Usuario();
+	}
+
+	@Override
+	public List<Usuario> getAll() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
