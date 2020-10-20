@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -23,7 +25,7 @@
           <h1><a href="chatbot.html">Chatbot</a></h1>
         </li>
         <li>
-          <h1><a href="video.html">Vídeo</a></h1>
+          <h1><a href="video.html">VÃ­deo</a></h1>
         </li>
         <li>
           <h1><a href="ranking.html">Ranking</a></h1>
@@ -38,7 +40,7 @@
   <div class="general">
     <div class="ranking">
       <div class="ranking__title">
-        <h1 class="ranking__title--content">Pontuação Geral</h1>
+        <h1 class="ranking__title--content">PontuaÃ§Ã£o Geral</h1>
       </div>
 
       <div class="ranking__table">
@@ -47,7 +49,7 @@
             <th>#</th>
             <th>Nome</th>
             <th>Chatbot</th>
-            <th>Áudio / Vídeo</th>
+            <th>Áudio / VÃ­deo</th>
             <th>PTS</th>
           </tr>
           <tr class="pos">
