@@ -81,9 +81,9 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 					rs.getString("T_RBW_USUA.DS_EMAIL"),
 				    rs.getString("T_RBW_USUA.NM_SENHA"),
 				    rs.getString("T_RBW_USUA.NR_CPF"),
-					rs.getString("DT_NASCIMENTO"),
-					rs.getInt("NM_PONTUACAO"),
-					rs.getString("NM_VAGA")
+					rs.getString("T_RBW_CAND.DT_NASCIMENTO"),
+					rs.getInt("T_RBW_CAND.NM_PONTUACAO"),
+					rs.getString("T_RBW_CAND.NM_VAGA")
 					
 					);
 
