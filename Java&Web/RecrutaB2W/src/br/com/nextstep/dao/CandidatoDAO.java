@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.nextstep.beans.Candidato;
 import br.com.nextstep.beans.Usuario;
@@ -27,10 +29,14 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	
 	@Override
 	public int add(Candidato objeto) throws Exception{
-				
-		stmt = con.prepareStatement("INSERT INTO T_RBW_CAND (NR_CPF,DT_NASCIMENTO, NM_PONTUACAO, NM_VAGA) VALUES(?, ?, ?, ?)");
-
-		stmt.setString(1, objeto.getCpf());
+			
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Usuario usuario = new Usuario(objeto.getId(), objeto.getNome(), objeto.getEmail(), objeto.getSenha(), objeto.getCpf());
+		usuarioDAO.add(usuario);
+		
+		stmt = con.prepareStatement("INSERT INTO T_RBW_CAND (NR_ID, DT_NASCIMENTO, NM_PONTUACAO, NM_VAGA) VALUES(?, ?, ?, ?)");
+		
+		stmt.setInt(1, objeto.getId());
 		stmt.setString(2, objeto.getDataNascimento());
 		stmt.setInt(3, objeto.getPontuacao());
 		stmt.setString(4, objeto.getVaga());
@@ -70,10 +76,14 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 			
 			return new Candidato(
 					
-					rs.getInt("NR_ID"),
+					rs.getInt("T_RBW_USUA.NR_ID"),
+					rs.getString("T_RBW_USUA.NM_USUA"),
+					rs.getString("T_RBW_USUA.DS_EMAIL"),
+				    rs.getString("T_RBW_USUA.NM_SENHA"),
+				    rs.getString("T_RBW_USUA.NR_CPF"),
 					rs.getString("DT_NASCIMENTO"),
-					rs.getString("NM_VAGA"),
-					rs.getInt("NM_PONTUACAO")
+					rs.getInt("NM_PONTUACAO"),
+					rs.getString("NM_VAGA")
 					
 					);
 
@@ -81,28 +91,37 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		
 		return new Candidato();
 	}
+
+	@Override
+	public List<Candidato> getAll() throws Exception {
+
+		stmt = con.prepareStatement("SELECT * FROM TB_RBW_CAND INNER JOIN T_RBW_USUA "
+				+ "ON TB_RBW_CAND.NR_ID = T_RBW_USUA.NR_ID");
 	
-	public Usuario mostrarUsuario(String cpf) throws Exception{
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_USUA WHERE NR_CPF=?");
-		
-		stmt.setString(1, cpf);
-		
 		rs = stmt.executeQuery();
 		
-		if(rs.next()) {
+		List<Candidato> listaCandidatos = new ArrayList<Candidato>();
+		
+		while(rs.next()) {
 			
-			return new Usuario(
+			Candidato candidato = new Candidato(
 					
-					rs.getString("NM_USUA"),
-					rs.getString("DS_EMAIL"),
-					rs.getString("NM_SENHA"),
-					rs.getString("NR_CPF")
+					rs.getInt("T_RBW_USUA.NR_ID"),
+					rs.getString("T_RBW_USUA.NM_USUA"),
+					rs.getString("T_RBW_USUA.DS_EMAIL"),
+				    rs.getString("T_RBW_USUA.NM_SENHA"),
+				    rs.getString("T_RBW_USUA.NR_CPF"),
+					rs.getString("T_RBW_CAND.DT_NASCIMENTO"),
+					rs.getInt("T_RBW_CAND.NM_PONTUACAO"),
+					rs.getString("T_RBW_CAND.NM_VAGA")
 					
 					);
+		
+			listaCandidatos.add(candidato);
 
 		}
 		
-		return new Usuario();
+		return listaCandidatos;
 	}
 	
 }

@@ -6,18 +6,15 @@ public class Candidato extends Usuario {
     private String vaga; 
     private int pontuacao;
      
-	public Candidato(int id, String nome, String email, String senha, String cpf, String dataNascimento, String vaga,
-			int pontuacao) {
+	public Candidato(int id, String nome, String email, String senha,
+				String cpf, String dataNascimento, int pontuacao, String vaga) {
 		super(id, nome, email, senha, cpf);
 		this.dataNascimento = dataNascimento;
-		this.vaga = vaga;
 		this.pontuacao = pontuacao;
+		this.vaga = vaga;
 	}
 	
-	public Candidato(int id, String nome, String email, String senha, String cpf) {
-		super(id, nome, email, senha, cpf);
-	}
-
+	public Candidato() {}
 
 	public String getDataNascimento() {
 		return dataNascimento;

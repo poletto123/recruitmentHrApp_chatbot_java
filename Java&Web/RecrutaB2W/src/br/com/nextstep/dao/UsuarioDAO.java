@@ -3,6 +3,7 @@ package br.com.nextstep.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.nextstep.beans.Usuario;
@@ -27,7 +28,8 @@ public class UsuarioDAO implements PadraoDAO<Usuario> {
 	@Override
 	public int add(Usuario objeto) throws Exception{
 
-		stmt = con.prepareStatement("INSERT INTO T_RBW_USUA (NR_ID, NR_CPF, NM_USUA, DS_EMAIL, NM_SENHA) VALUES (?, ?, ?, ?, ?)");
+		stmt = con.prepareStatement("INSERT INTO T_RBW_USUA "
+				+ "(NR_ID, NR_CPF, NM_USUA, DS_EMAIL, NM_SENHA) VALUES (?, ?, ?, ?, ?)");
 
 		stmt.setInt(1, objeto.getId());
 		stmt.setString(2, objeto.getCpf());
@@ -83,8 +85,31 @@ public class UsuarioDAO implements PadraoDAO<Usuario> {
 
 	@Override
 	public List<Usuario> getAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_USUA");
+	
+		rs = stmt.executeQuery();
+		
+		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+		
+		while(rs.next()) {
+			
+			Usuario usuario = new Usuario(
+					
+					rs.getInt("T_RBW_USUA.NR_ID"),
+					rs.getString("T_RBW_USUA.NM_USUA"),
+					rs.getString("T_RBW_USUA.DS_EMAIL"),
+				    rs.getString("T_RBW_USUA.NM_SENHA"),
+				    rs.getString("T_RBW_USUA.NR_CPF")
+					
+					);
+		
+			listaUsuarios.add(usuario);
+
+		}
+		
+		return listaUsuarios;
 	}
+	
 	
 }
