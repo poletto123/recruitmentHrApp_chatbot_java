@@ -64,8 +64,8 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public Candidato getById(int id) throws Exception{
 		
-		stmt = con.prepareStatement("SELECT * FROM TB_RBW_CAND INNER JOIN T_RBW_USUA "
-				+ "ON TB_RBW_CAND.NR_ID = T_RBW_USUA.NR_ID "
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CAND INNER JOIN T_RBW_USUA "
+				+ "ON T_RBW_CAND.NR_ID = T_RBW_USUA.NR_ID "
 				+ "WHERE T_RBW_USUA.NR_ID=?");
 		stmt.setInt(1, id);
 		
@@ -81,8 +81,8 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 				    rs.getString("T_RBW_USUA.NM_SENHA"),
 				    rs.getString("T_RBW_USUA.NR_CPF"),
 					rs.getString("T_RBW_CAND.DT_NASCIMENTO"),
-					rs.getInt("T_RBW_CAND.NM_PONTUACAO"),
-					rs.getString("T_RBW_CAND.NM_VAGA")
+					rs.getInt("T_RBW_CAND.NR_PONTUACAO"),
+					rs.getString("T_RBW_CAND.NR_VAGA")
 					
 					);
 
@@ -94,8 +94,8 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public List<Candidato> getAll() throws Exception {
 
-		stmt = con.prepareStatement("SELECT * FROM TB_RBW_CAND INNER JOIN T_RBW_USUA "
-				+ "ON TB_RBW_CAND.NR_ID = T_RBW_USUA.NR_ID");
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CAND INNER JOIN T_RBW_USUA "
+				+ "ON T_RBW_CAND.NR_ID = T_RBW_USUA.NR_ID");
 	
 		rs = stmt.executeQuery();
 		
@@ -105,14 +105,14 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 			
 			Candidato candidato = new Candidato(
 					
-					rs.getInt("T_RBW_USUA.NR_ID"),
-					rs.getString("T_RBW_USUA.NM_USUA"),
-					rs.getString("T_RBW_USUA.DS_EMAIL"),
-				    rs.getString("T_RBW_USUA.NM_SENHA"),
-				    rs.getString("T_RBW_USUA.NR_CPF"),
-					rs.getString("T_RBW_CAND.DT_NASCIMENTO"),
-					rs.getInt("T_RBW_CAND.NR_PONTUACAO"),
-					rs.getString("T_RBW_CAND.NR_VAGA")
+					rs.getInt("NR_ID"),
+					rs.getString("NM_USUA"),
+					rs.getString("DS_EMAIL"),
+				    rs.getString("NM_SENHA"),
+				    rs.getString("NR_CPF"),
+					rs.getString("DT_NASCIMENTO"),
+					rs.getInt("NR_PONTUACAO"),
+					rs.getString("NR_VAGA")
 					
 					);
 		

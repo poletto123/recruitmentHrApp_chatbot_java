@@ -15,7 +15,7 @@ import br.com.nextstep.bo.CandidatoBO;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/ranking", ""})
+@WebServlet(urlPatterns = {"/ranking"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

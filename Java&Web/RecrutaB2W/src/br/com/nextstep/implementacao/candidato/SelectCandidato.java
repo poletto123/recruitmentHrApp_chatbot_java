@@ -6,8 +6,8 @@ import br.com.nextstep.util.Resume;
 public class SelectCandidato {
 
 	public static void retornarDados(CandidatoDAO dao) throws Exception{
-		String cpf = Resume.s("Digite o CPF do Usuário: ");
-		System.out.println(dao.getById(cpf)); // AQUI DEVEMOS FAZER UM MÉTODO DE DELETE NO DAO QUE TENHA COMO PARÂMETRO UMA STRING
+		String cpf = Resume.s("Digite o CPF do Usuï¿½rio: ");
+		System.out.println(dao.getById(cpf)); // AQUI DEVEMOS FAZER UM Mï¿½TODO DE DELETE NO DAO QUE TENHA COMO PARï¿½METRO UMA STRING
 		dao.fechar();
 	}
 	
