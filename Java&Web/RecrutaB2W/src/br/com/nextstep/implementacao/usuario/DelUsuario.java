@@ -9,12 +9,12 @@ public class DelUsuario {
 		
 		String apaga = Resume.s("Digite o CPF do Usuário que deseja apagar: ");
 		
-		if(dao.delete(apaga) == 0) {
+		if(dao.delete(apaga) == 0) { // AQUI DEVEMOS FAZER UM MÉTODO DE DELETE NO DAO QUE TENHA COMO PARÂMETRO UMA STRING
 			System.out.println("Não Apagou");
 		}else {
 			System.out.println("Apagou");
 		}
-		dao.fecharConexao();
+		dao.fechar();
 	}
 
 }

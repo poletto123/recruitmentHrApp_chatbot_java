@@ -18,7 +18,7 @@ public class TesteUpdateVaga {
 				System.out.println("Gravado");
 			}
 			
-			dao.fecharConexao();
+			dao.fechar();
 		}catch(Exception e){
 			Excecao.tratarExcecao(e);
 		}

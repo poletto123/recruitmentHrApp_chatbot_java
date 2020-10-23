@@ -22,7 +22,7 @@ public class TesteAddVaga {
 				System.out.println("Gravado");
 			}
 			
-			dao.fecharConexao();
+			dao.fechar();
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println(Excecao.tratarExcecao(e));

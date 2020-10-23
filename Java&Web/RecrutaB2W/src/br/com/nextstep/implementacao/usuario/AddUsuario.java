@@ -19,6 +19,6 @@ public class AddUsuario {
 			System.out.println("Gravado");
 		}
 		
-		dao.fecharConexao();
+		dao.fechar();
 	}
 }

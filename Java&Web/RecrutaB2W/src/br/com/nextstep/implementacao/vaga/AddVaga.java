@@ -18,6 +18,6 @@ public class AddVaga {
 				System.out.println("Gravado");
 			}
 			
-			dao.fecharConexao();
+			dao.fechar();
 	}
 }

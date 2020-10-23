@@ -8,9 +8,9 @@ public class SelectVaga {
 	public static void retornarDados(VagaDAO dao) throws Exception{
 
 			int id = Resume.i("Digite o id da vaga: ");
-			System.out.println(dao.mostrar(id));
+			System.out.println(dao.getById(id));
 			
-			dao.fecharConexao();
+			dao.fechar();
 		
 	}
 

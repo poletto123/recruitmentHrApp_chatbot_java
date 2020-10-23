@@ -21,20 +21,20 @@ public class AddCandidato {
 		candidato.setVaga(Resume.s("Vaga"));
 		
 		
-		if(dao.addUsuario(usuario) == 0) {
+		if(dao.add(usuario) == 0) {
 			System.out.println("Não Gravou usuario");
 		}else {
 			System.out.println("Gravado usuario");
 		}
 		
-		if(dao.addCandidato(candidato) == 0) {
+		if(dao.add(candidato) == 0) {
 			System.out.println("Não Gravou candidato");
 		}else {
 			System.out.println("Gravado candidato");
 		}
 		
 		
-		dao.fecharConexao();
+		dao.fechar();
 	}
 
 }

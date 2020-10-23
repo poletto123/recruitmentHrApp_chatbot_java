@@ -7,9 +7,8 @@ public class SelectCandidato {
 
 	public static void retornarDados(CandidatoDAO dao) throws Exception{
 		String cpf = Resume.s("Digite o CPF do Usuário: ");
-		System.out.println(dao.mostrar(cpf));
-		System.out.println(dao.mostrarUsuario(cpf));
-		dao.fecharConexao();
+		System.out.println(dao.getById(cpf)); // AQUI DEVEMOS FAZER UM MÉTODO DE DELETE NO DAO QUE TENHA COMO PARÂMETRO UMA STRING
+		dao.fechar();
 	}
 	
 }

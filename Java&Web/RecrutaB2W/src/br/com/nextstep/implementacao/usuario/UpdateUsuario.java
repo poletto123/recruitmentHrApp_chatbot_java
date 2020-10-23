@@ -17,7 +17,7 @@ public class UpdateUsuario {
 			System.out.println("Gravado");
 		}
 		
-		dao.fecharConexao();
+		dao.fechar();
 	}
 
 }

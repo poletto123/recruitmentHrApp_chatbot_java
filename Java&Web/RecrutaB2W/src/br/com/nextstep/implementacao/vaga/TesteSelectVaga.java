@@ -11,9 +11,9 @@ public class TesteSelectVaga {
 			VagaDAO dao = new VagaDAO();
 			
 			int id = Resume.i("Digite o id da vaga: ");
-			System.out.println(dao.mostrar(id));
+			System.out.println(dao.getById(id));
 			
-			dao.fecharConexao();
+			dao.fechar();
 		}catch(Exception e) {
 			Excecao.tratarExcecao(e);
 		}

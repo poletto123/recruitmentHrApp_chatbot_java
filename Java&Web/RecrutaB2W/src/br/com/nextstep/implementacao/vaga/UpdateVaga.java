@@ -14,6 +14,6 @@ public class UpdateVaga {
 				System.out.println("Gravado");
 			}
 			
-			dao.fecharConexao();
+			dao.fechar();
 	}
 }

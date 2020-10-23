@@ -17,6 +17,6 @@ public class UpdateCandidato {
 			System.out.println("Gravado");
 		}
 		
-		dao.fecharConexao();
+		dao.fechar();
 	}
 }
