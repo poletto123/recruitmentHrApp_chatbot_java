@@ -2,9 +2,7 @@ package br.com.nextstep.bo;
 
 import java.util.List;
 
-import br.com.nextstep.beans.AudioVideo;
 import br.com.nextstep.beans.Candidato;
-import br.com.nextstep.dao.AudioVideoDAO;
 import br.com.nextstep.dao.CandidatoDAO;
 
 public class CandidatoBO {
@@ -20,6 +18,7 @@ public class CandidatoBO {
 		dao.fechar();
 		
 		return "Apagou";
+	
 	}
 	
 	public static Candidato mostraCandidato(int id) throws Exception{
@@ -36,7 +35,7 @@ public class CandidatoBO {
 	}
 	
 	public static List<Candidato> mostraCandidato() throws Exception{
-
+			
 		CandidatoDAO dao = new CandidatoDAO();
 			
 		List<Candidato> listaCandidatos = dao.getAll();
@@ -44,23 +43,26 @@ public class CandidatoBO {
 		dao.fechar();
 		
 		return listaCandidatos;
+		
+		
 	}
 	
-	public static String atualizaEmail(int id, AudioVideo av)throws Exception{
+	public static String atualizaEmail(int id, Candidato candidato) throws Exception{
 		if(id < 1) {
 			return "ID inválido";
 		}
 		
-		if(av.getPathAudio() == null) {
-			return "Arquivo inexistente de Áudio";
+		if(candidato.getEmail() == null) {
+			return "Email nulo";
 		}
-		
-		AudioVideoDAO dao = new AudioVideoDAO();
+				
+		CandidatoDAO dao = new CandidatoDAO();
 
-		dao.modifyAudio(id, av);
-		dao.fechar();
+		dao.modifyEmail(id, candidato.getEmail());
 		
-		return "Arquivo de Áudio Atualizado";
+		return "Email atualizado";
+	
+				
 	}
 	
 	public static String add(Candidato candidato) throws Exception {
@@ -70,12 +72,13 @@ public class CandidatoBO {
 		} else if (candidato.getVaga() == null) {
 			return "Uma vaga é necessária para adicionar o candidato";
 		}
-		
+				
 		CandidatoDAO dao = new CandidatoDAO();
 
 		dao.add(candidato);
 		dao.fechar();
 		return "Cadastrado";
+
 	}
 
 }

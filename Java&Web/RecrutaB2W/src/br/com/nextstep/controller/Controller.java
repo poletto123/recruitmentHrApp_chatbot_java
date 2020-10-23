@@ -1,4 +1,4 @@
-package br.com.nexstep.controller;
+package br.com.nextstep.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,15 +31,22 @@ public class Controller extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		switch (request.getRequestURI()) {
-	
-			case "/RecrutaB2W/ranking":
-				mostraRanking(request, response);
-				break;
+		
+		try {
 			
-			default:
-				response.sendRedirect("index.jsp");
-			}
+			switch (request.getRequestURI()) {
+		
+				case "/RecrutaB2W/ranking":
+					mostraRanking(request, response);
+					break;
+					
+				default:
+					response.sendRedirect("index.jsp");
+			} 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 			
 	
 	}

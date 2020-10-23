@@ -53,10 +53,10 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		
 	}
 	
-	public int modifyEmail(String email, int cpf) throws Exception {
-		stmt = con.prepareStatement("UPDATE T_RBW_USUA SET DS_EMAIL=? WHERE NR_CPF=?");
+	public int modifyEmail(int id, String email) throws Exception {
+		stmt = con.prepareStatement("UPDATE T_RBW_USUA SET DS_EMAIL=? WHERE NR_ID=?");
 		stmt.setString(1, email);
-		stmt.setInt(2, cpf);
+		stmt.setInt(2, id);
 		
 		return stmt.executeUpdate();
 	}
@@ -111,8 +111,8 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 				    rs.getString("T_RBW_USUA.NM_SENHA"),
 				    rs.getString("T_RBW_USUA.NR_CPF"),
 					rs.getString("T_RBW_CAND.DT_NASCIMENTO"),
-					rs.getInt("T_RBW_CAND.NM_PONTUACAO"),
-					rs.getString("T_RBW_CAND.NM_VAGA")
+					rs.getInt("T_RBW_CAND.NR_PONTUACAO"),
+					rs.getString("T_RBW_CAND.NR_VAGA")
 					
 					);
 		

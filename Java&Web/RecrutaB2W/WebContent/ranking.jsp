@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -48,45 +50,19 @@
           <tr class="col">
             <th>#</th>
             <th>Nome</th>
-            <th>Chatbot</th>
-            <th>Áudio / VÃ­deo</th>
+<!--             <th>Chatbot</th>
+            <th>Áudio / VÃ­deo</th> -->
             <th>PTS</th>
           </tr>
+     	<c:forEach var="cand" items="${listaCandidatos}" varStatus="id">
           <tr class="pos">
-            <td>1</td>
-            <td>Celso</td>
-            <td>OK</td>
-            <td>OK</td>
-            <td>100</td>
+            <td>${id.count}</td>
+            <td>${cand.nome}</td>
+<!--             <td>OK</td>
+            <td>OK</td> -->
+            <td>${cand.pontuacao}</td>
           </tr>
-          <tr class="pos">
-            <td>2</td>
-            <td>Guilherme</td>
-            <td>OK</td>
-            <td>OK</td>
-            <td>100</td>
-          </tr>
-          <tr class="pos">
-            <td>3</td>
-            <td>William</td>
-            <td>OK</td>
-            <td>--</td>
-            <td>50</td>
-          </tr>
-          <tr class="pos">
-            <td>4</td>
-            <td>Rogério</td>
-            <td>--</td>
-            <td>OK</td>
-            <td>50</td>
-          </tr>
-          <tr class="pos">
-            <td>5</td>
-            <td>Eduardo</td>
-            <td>--</td>
-            <td>--</td>
-            <td>0</td>
-          </tr>
+         </c:forEach>
         </table>
       </div>
     </div>
