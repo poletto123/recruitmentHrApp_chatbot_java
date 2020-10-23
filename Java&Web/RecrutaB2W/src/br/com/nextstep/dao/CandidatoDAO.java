@@ -1,7 +1,6 @@
 package br.com.nextstep.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -54,9 +53,9 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		
 	}
 	
-	public int modifyDate(Date data, int cpf) throws Exception {
+	public int modifyEmail(String email, int cpf) throws Exception {
 		stmt = con.prepareStatement("UPDATE T_RBW_USUA SET DS_EMAIL=? WHERE NR_CPF=?");
-		stmt.setDate(1, data);
+		stmt.setString(1, email);
 		stmt.setInt(2, cpf);
 		
 		return stmt.executeUpdate();
