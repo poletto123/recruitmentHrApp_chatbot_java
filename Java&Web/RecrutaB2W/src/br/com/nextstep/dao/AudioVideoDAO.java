@@ -1,6 +1,5 @@
 package br.com.nextstep.dao;
 
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,13 +32,11 @@ public class AudioVideoDAO implements PadraoDAO<AudioVideo> {
 		
 		con = ConectaBanco.conectar();
 		
-		stmt = con.prepareStatement("INSERT INTO T_RBW_AUDIO_VIDEO (FL_VIDEO, FL_AUDIO, ) VALUES (?, ?)");
+		stmt = con.prepareStatement("INSERT INTO T_RBW_AUDIO_VIDEO (FL_VIDEO, FL_AUDIO) VALUES (?, ?)");
+
 		
-		FileInputStream video = new FileInputStream(objeto.getPathVideo());
-		FileInputStream audio = new FileInputStream(objeto.getPathAudio());
-		
-		stmt.setBinaryStream(1, video);
-		stmt.setBinaryStream(2, audio);
+		stmt.setString(1, objeto.getPathVideo());
+		stmt.setString(2, objeto.getPathAudio());
 		
 		return stmt.executeUpdate();
 	}
@@ -48,7 +45,7 @@ public class AudioVideoDAO implements PadraoDAO<AudioVideo> {
 	public int deleteById(int id) throws Exception{
 		Connection con = ConectaBanco.conectar();
 		
-		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_AUDIO_VIDEO WHERE CD_ENVIO=?");
+		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_AUDIO_VIDEO WHERE CD_AUDIO_VIDEO=?");
 		stmt.setInt(1, id);
 		
 		return stmt.executeUpdate();
@@ -56,22 +53,18 @@ public class AudioVideoDAO implements PadraoDAO<AudioVideo> {
 	}
 	
 	public int modifyVideo(int id,AudioVideo objeto) throws Exception {
-		stmt = con.prepareStatement("UPDATE T_RBW_AUDIO_VIDEO SET FL_VIDEO=? WHERE CD_ENVIO=?");
-		
-		FileInputStream video = new FileInputStream(objeto.getPathVideo());
-		
-		stmt.setBinaryStream(1, video);
+		stmt = con.prepareStatement("UPDATE T_RBW_AUDIO_VIDEO SET FL_VIDEO=? WHERE CD_AUDIO_VIDEO=?");
+
+		stmt.setString(1, objeto.getPathVideo());
 		stmt.setInt(2, id);
 		
 		return stmt.executeUpdate();
 	}
 	
 	public int modifyAudio(int id,AudioVideo objeto) throws Exception {
-		stmt = con.prepareStatement("UPDATE T_RBW_AUDIO_VIDEO SET FL_AUDIO=? WHERE CD_ENVIO=?");
-		
-		FileInputStream audio = new FileInputStream(objeto.getPathAudio());
-		
-		stmt.setBinaryStream(1, audio);
+		stmt = con.prepareStatement("UPDATE T_RBW_AUDIO_VIDEO SET FL_AUDIO=? WHERE CD_AUDIO_VIDEO=?");
+
+		stmt.setString(1, objeto.getPathAudio());
 		stmt.setInt(2, id);
 		
 		return stmt.executeUpdate();
@@ -79,7 +72,7 @@ public class AudioVideoDAO implements PadraoDAO<AudioVideo> {
 	
 	@Override
 	public AudioVideo getById(int id) throws Exception{
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_AUDIO_VIDEO WHERE CD_ENVIO=?");
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_AUDIO_VIDEO WHERE CD_AUDIO_VIDEO=?");
 		stmt.setInt(1, id);
 		
 		rs = stmt.executeQuery();
@@ -89,8 +82,9 @@ public class AudioVideoDAO implements PadraoDAO<AudioVideo> {
 			return new AudioVideo(
 					
 					rs.getString("FL_AUDIO"),
-					rs.getString("FL_VIDEO")
-					
+					rs.getString("FL_VIDEO"),
+					rs.getInt("CD_AUDIO_VIDEO")
+										
 					);
 		}
 		

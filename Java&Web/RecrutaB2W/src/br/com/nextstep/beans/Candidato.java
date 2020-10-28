@@ -12,20 +12,22 @@ public class Candidato implements Serializable{
     private String senha;
 	private String dataNascimento;
     private Vaga vaga; 
-    private int qtdeMedalha;
+    private int numeroMedalha;
     private String cpf;
+    private int codigoRecrutador;
 	
 	//CONSTRUTORES	
-	public Candidato(int id, String dataNascimento, Vaga vaga, int qtdeMedalha, String nome, String email, String senha, String cpf) {
+	public Candidato(int id, String dataNascimento, Vaga vaga, int numeroMedalha, String nome, String email, String senha, String cpf, int codigoRecrutador) {
 		super();
 		this.id = id;
 		this.dataNascimento = dataNascimento;
 		this.vaga = vaga;
-		this.qtdeMedalha = qtdeMedalha;
+		this.numeroMedalha = numeroMedalha;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 		this.cpf = cpf;
+		this.codigoRecrutador = codigoRecrutador;
 	}
 
 	public Candidato() {
@@ -54,14 +56,6 @@ public class Candidato implements Serializable{
 
 	public void setVaga(Vaga vaga) {
 		this.vaga = vaga;
-	}
-
-	public int getQtdeMedalha() {
-		return qtdeMedalha;
-	}
-
-	public void setQtdeMedalha(int qtdeMedalha) {
-		this.qtdeMedalha = qtdeMedalha;
 	}
 
 	public String getNome() {
@@ -94,6 +88,29 @@ public class Candidato implements Serializable{
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public int getNumeroMedalha() {
+		return numeroMedalha;
+	}
+
+	public void setNumeroMedalha(int numeroMedalha) {
+		this.numeroMedalha = numeroMedalha;
+	}
+
+	public int getCodigoRecrutador() {
+		return codigoRecrutador;
+	}
+
+	public void setCodigoRecrutador(int codigoRecrutador) {
+		this.codigoRecrutador = codigoRecrutador;
+	}
+
+	@Override
+	public String toString() {
+		return "Candidato [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", dataNascimento="
+				+ dataNascimento + ", vaga=" + vaga + ", numeroMedalha=" + numeroMedalha + ", cpf=" + cpf
+				+ ", codigoRecrutador=" + codigoRecrutador + "]";
 	}
 
 		

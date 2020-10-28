@@ -12,10 +12,11 @@ public class AudioVideo implements Serializable{
 
 
 	//CONSTRUTORES	
-    public AudioVideo(String pathAudio, String pathVideo) {
+    public AudioVideo(String pathAudio, String pathVideo, int id) {
 		super();
 		this.pathAudio = pathAudio;
 		this.pathVideo = pathVideo;
+		this.id = id;
 	}
 
     public AudioVideo(){}
@@ -23,7 +24,6 @@ public class AudioVideo implements Serializable{
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -38,6 +38,11 @@ public class AudioVideo implements Serializable{
 	}
 	public void setPathVideo(String pathVideo) {
 		this.pathVideo = pathVideo;
+	}
+
+	@Override
+	public String toString() {
+		return "AudioVideo [id=" + id + ", pathAudio=" + pathAudio + ", pathVideo=" + pathVideo + "]";
 	}
 
 
