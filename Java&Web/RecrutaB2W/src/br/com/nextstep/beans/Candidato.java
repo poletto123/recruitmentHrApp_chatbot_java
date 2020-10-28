@@ -11,8 +11,7 @@ public class Candidato{
     private String senha;
     private String cpf;
 	
-	public Candidato(int id, String dataNascimento, String vaga, int qtdeMedalha, String nome, String email,
-			String senha, String cpf) {
+	public Candidato(int id, String dataNascimento, String vaga, int qtdeMedalha, String nome, String email, String senha, String cpf) {
 		super();
 		this.id = id;
 		this.dataNascimento = dataNascimento;

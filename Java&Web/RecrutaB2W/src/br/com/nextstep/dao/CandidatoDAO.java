@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.nextstep.beans.Candidato;
-import br.com.nextstep.beans.Usuario;
+import br.com.nextstep.beans.Recrutador;
 import br.com.nextstep.conexao.ConectaBanco;
 import br.com.nextstep.util.PadraoDAO;
 
@@ -30,7 +30,7 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	public int add(Candidato objeto) throws Exception{
 			
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Usuario usuario = new Usuario(objeto.getId(), objeto.getNome(), objeto.getEmail(), objeto.getSenha(), objeto.getCpf());
+		Recrutador usuario = new Recrutador(objeto.getId(), objeto.getNome(), objeto.getEmail(), objeto.getSenha(), objeto.getCpf());
 		usuarioDAO.add(usuario);
 		
 		stmt = con.prepareStatement("INSERT INTO T_RBW_CAND (NR_ID, DT_NASCIMENTO, NM_PONTUACAO, NM_VAGA) VALUES(?, ?, ?, ?)");
