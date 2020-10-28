@@ -88,8 +88,8 @@ public class AudioVideoDAO implements PadraoDAO<AudioVideo> {
 			
 			return new AudioVideo(
 					
-					rs.getBlob("FL_VIDEO"),
-					rs.getBlob("FL_AUDIO")
+					rs.getString("FL_AUDIO"),
+					rs.getString("FL_VIDEO")
 					
 					);
 		}

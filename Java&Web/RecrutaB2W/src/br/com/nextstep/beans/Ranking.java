@@ -1,11 +1,14 @@
 package br.com.nextstep.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.nextstep.dao.CandidatoDAO;
 
-public class Ranking {
+public class Ranking implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private List<Candidato> candidatos;
 

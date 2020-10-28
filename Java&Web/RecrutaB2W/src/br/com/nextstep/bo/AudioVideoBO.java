@@ -7,7 +7,7 @@ public class AudioVideoBO {
 
 	public static String apagarAudioVideo(int id) throws Exception{
 		if(id < 1) {
-			return "ID invÃ¡lido";
+			return "ID inválido";
 		}
 		
 		AudioVideoDAO dao = new AudioVideoDAO();
@@ -20,7 +20,7 @@ public class AudioVideoBO {
 	
 	public static AudioVideo pesquisarAudioVideo(int id) throws Exception{
 		if(id < 1) {
-			//throw new RuntimeException("ID invï¿½lido");
+			//throw new RuntimeException("ID inválido");
 			return new AudioVideo();
 		}
 		
@@ -34,11 +34,11 @@ public class AudioVideoBO {
 	
 	public static String atualizaAudio(int id, AudioVideo av)throws Exception{
 		if(id < 1) {
-			return "ID invÃ¡lido";
+			return "ID inválidoo";
 		}
 		
 		if(av.getPathAudio() == null) {
-			return "Arquivo inexistente de Ãudio";
+			return "Arquivo inexistente de áudio";
 		}
 		
 		AudioVideoDAO dao = new AudioVideoDAO();
@@ -46,16 +46,16 @@ public class AudioVideoBO {
 		dao.modifyAudio(id, av);
 		dao.fechar();
 		
-		return "Arquivo de Ãudio Atualizado";
+		return "Arquivo de áudio Atualizado";
 	}
 	
 	public static String atualizaVideo(int id, AudioVideo av)throws Exception{
 		if(id < 1) {
-			return "ID invÃ¡lido";
+			return "ID inválido";
 		}
 		
 		if(av.getPathAudio() == null) {
-			return "Arquivo inexistente de VÃ­deo";
+			return "Arquivo inexistente de vídeo";
 		}
 		
 		AudioVideoDAO dao = new AudioVideoDAO();
@@ -63,13 +63,13 @@ public class AudioVideoBO {
 		dao.modifyVideo(id, av);
 		dao.fechar();
 		
-		return "Arquivo de VÃ­deo Atualizado";
+		return "Arquivo de vídeo Atualizado";
 	}
 	
 	public static String novoAudioVideo(AudioVideo av) throws Exception{
 
 		if(av.getPathVideo() == null || av.getPathAudio() == null) {
-			return "Arquivo inexistente de Ãudio ou VÃ­deo";
+			return "Arquivo inexistente de áudio ou vídeo";
 		}
 		
 		AudioVideoDAO dao = new AudioVideoDAO();

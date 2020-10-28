@@ -10,13 +10,13 @@ import br.com.nextstep.beans.Recrutador;
 import br.com.nextstep.conexao.ConectaBanco;
 import br.com.nextstep.util.PadraoDAO;
 
-public class UsuarioDAO implements PadraoDAO<Recrutador> {
+public class RecrutadorDAO implements PadraoDAO<Recrutador> {
 
 	private Connection con;
 	private PreparedStatement stmt;
 	private ResultSet rs;
 	
-	public UsuarioDAO() throws Exception{
+	public RecrutadorDAO() throws Exception{
 		con =  ConectaBanco.conectar();
 	}
 	
@@ -28,14 +28,11 @@ public class UsuarioDAO implements PadraoDAO<Recrutador> {
 	@Override
 	public int add(Recrutador objeto) throws Exception{
 
-		stmt = con.prepareStatement("INSERT INTO T_RBW_USUA "
-				+ "(NR_ID, NR_CPF, NM_USUA, DS_EMAIL, NM_SENHA) VALUES (?, ?, ?, ?, ?)");
+		stmt = con.prepareStatement("INSERT INTO T_RBW_RECRUTADOR (NM_RECRUTADOR, DS_EMAIL, NM_SENHA) VALUES (?, ?, ?)");
 
-		stmt.setInt(1, objeto.getId());
-		stmt.setString(2, objeto.getCpf());
-		stmt.setString(3, objeto.getNome());
-		stmt.setString(4, objeto.getEmail());
-		stmt.setString(5, objeto.getSenha());
+		stmt.setString(1, objeto.getNome());
+		stmt.setString(2, objeto.getEmail());
+		stmt.setString(3, objeto.getSenha());
 
 		return stmt.executeUpdate();
 	}
@@ -43,18 +40,18 @@ public class UsuarioDAO implements PadraoDAO<Recrutador> {
 	@Override
 	public int deleteById(int id) throws Exception{
 	
-		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_USUA WHERE NR_ID=?");
+		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_RECRUTADOR WHERE CD_RECRUTADOR=?");
 		stmt.setInt(1, id);
 		
 		return stmt.executeUpdate();
 		
 	}
 	
-	public int modifyEmail(String email, String cpf) throws Exception {
+	public int modifyEmail(String email, String senha) throws Exception {
 		
-		stmt = con.prepareStatement("UPDATE T_RBW_USUA SET DS_EMAIL=? WHERE NR_CPF=?");
+		stmt = con.prepareStatement("UPDATE T_RBW_RECRUTADOR SET DS_EMAIL=? WHERE NM_SENHA=?");
 		stmt.setString(1, email);
-		stmt.setString(2, cpf);
+		stmt.setString(2, senha);
 		
 		return stmt.executeUpdate();
 	}
@@ -62,7 +59,7 @@ public class UsuarioDAO implements PadraoDAO<Recrutador> {
 	@Override
 	public Recrutador getById(int id) throws Exception{
 		
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_USUA WHERE NR_ID=?");
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_RECRUTADOR WHERE CD_RECRUTADOR=?");
 		stmt.setInt(1, id);
 		
 		rs = stmt.executeQuery();
@@ -72,11 +69,10 @@ public class UsuarioDAO implements PadraoDAO<Recrutador> {
 			return new Recrutador(
 					
 					rs.getInt("NR_ID"),
-					rs.getString("NM_USUA"),
+					rs.getString("NM_RECRUTADOR"),
 					rs.getString("DS_EMAIL"),
-					rs.getString("NM_SENHA"),
-					rs.getString("NR_CPF")
-					
+					rs.getString("NM_SENHA")
+	
 					);
 		}
 		
@@ -86,7 +82,7 @@ public class UsuarioDAO implements PadraoDAO<Recrutador> {
 	@Override
 	public List<Recrutador> getAll() throws Exception {
 
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_USUA");
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_RECRUTADOR");
 	
 		rs = stmt.executeQuery();
 		
@@ -96,14 +92,13 @@ public class UsuarioDAO implements PadraoDAO<Recrutador> {
 			
 			Recrutador usuario = new Recrutador(
 					
-					rs.getInt("T_RBW_USUA.NR_ID"),
-					rs.getString("T_RBW_USUA.NM_USUA"),
-					rs.getString("T_RBW_USUA.DS_EMAIL"),
-				    rs.getString("T_RBW_USUA.NM_SENHA"),
-				    rs.getString("T_RBW_USUA.NR_CPF")
-					
+					rs.getInt("NR_ID"),
+					rs.getString("NM_RECRUTADOR"),
+					rs.getString("DS_EMAIL"),
+					rs.getString("NM_SENHA")
+	
 					);
-		
+			
 			listaUsuarios.add(usuario);
 
 		}

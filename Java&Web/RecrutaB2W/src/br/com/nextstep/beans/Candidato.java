@@ -1,16 +1,21 @@
 package br.com.nextstep.beans;
 
-public class Candidato{
+import java.io.Serializable;
+
+public class Candidato implements Serializable{
+
+	private static final long serialVersionUID = 1L; //O QUE É vaga???
     
 	private int id;
-	private String dataNascimento;
-    private String vaga; 
-    private int qtdeMedalha;
 	private String nome;
     private String email;
     private String senha;
+	private String dataNascimento;
+    private String vaga; 
+    private int qtdeMedalha;
     private String cpf;
 	
+	//CONSTRUTORES	
 	public Candidato(int id, String dataNascimento, String vaga, int qtdeMedalha, String nome, String email, String senha, String cpf) {
 		super();
 		this.id = id;
@@ -23,7 +28,9 @@ public class Candidato{
 		this.cpf = cpf;
 	}
 
-	public Candidato() {}
+	public Candidato() {
+		super();
+	}
 
 	public int getId() {
 		return id;

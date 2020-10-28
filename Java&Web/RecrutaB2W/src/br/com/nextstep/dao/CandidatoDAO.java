@@ -29,16 +29,15 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public int add(Candidato objeto) throws Exception{
 			
-		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Recrutador usuario = new Recrutador(objeto.getId(), objeto.getNome(), objeto.getEmail(), objeto.getSenha(), objeto.getCpf());
-		usuarioDAO.add(usuario);
+		RecrutadorDAO usuarioDAO = new RecrutadorDAO();
+
+		stmt = con.prepareStatement("INSERT INTO T_RBW_CAND (NR, CPF, DT_NASCIMENTO, NM_CADIDATO, NM_SENHA, DS_EMAIL, NM_VAGA) VALUES(?, ?, ?, ?, ?)");
 		
-		stmt = con.prepareStatement("INSERT INTO T_RBW_CAND (NR_ID, DT_NASCIMENTO, NM_PONTUACAO, NM_VAGA) VALUES(?, ?, ?, ?)");
-		
-		stmt.setInt(1, objeto.getId());
+		stmt.setString(1, objeto.getCpf());
 		stmt.setString(2, objeto.getDataNascimento());
-		stmt.setInt(3, objeto.getPontuacao());
-		stmt.setString(4, objeto.getVaga());
+		stmt.setString(3, objeto.getNome());
+		stmt.setString(4, objeto.getSenha());
+		stmt.setString(5, objeto.getEmail());
 		
 		return stmt.executeUpdate();
 	}
@@ -46,7 +45,7 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public int deleteById(int id) throws Exception{
 		
-		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_CAND WHERE NR_ID=?");
+		PreparedStatement stmt = con.prepareStatement("DELETE FROM T_RBW_CANDIDATO WHERE NR_ID=?");
 		stmt.setInt(1, id);
 		
 		return stmt.executeUpdate();
@@ -54,7 +53,7 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	}
 	
 	public int modifyEmail(int id, String email) throws Exception {
-		stmt = con.prepareStatement("UPDATE T_RBW_USUA SET DS_EMAIL=? WHERE NR_ID=?");
+		stmt = con.prepareStatement("UPDATE T_RBW_CANDIDATO SET DS_EMAIL=? WHERE NR_ID=?");
 		stmt.setString(1, email);
 		stmt.setInt(2, id);
 		
@@ -64,9 +63,7 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public Candidato getById(int id) throws Exception{
 		
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_CAND INNER JOIN T_RBW_USUA "
-				+ "ON T_RBW_CAND.NR_ID = T_RBW_USUA.NR_ID "
-				+ "WHERE T_RBW_USUA.NR_ID=?");
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO WHERE NR_ID=?");
 		stmt.setInt(1, id);
 		
 		rs = stmt.executeQuery();
@@ -75,15 +72,14 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 			
 			return new Candidato(
 					
-					rs.getInt("T_RBW_USUA.NR_ID"),
-					rs.getString("T_RBW_USUA.NM_USUA"),
-					rs.getString("T_RBW_USUA.DS_EMAIL"),
-				    rs.getString("T_RBW_USUA.NM_SENHA"),
-				    rs.getString("T_RBW_USUA.NR_CPF"),
-					rs.getString("T_RBW_CAND.DT_NASCIMENTO"),
-					rs.getInt("T_RBW_CAND.NR_PONTUACAO"),
-					rs.getString("T_RBW_CAND.NR_VAGA")
-					
+					rs.getInt("NR_ID"),
+					rs.getString("DT_NASCIMENTO"),
+					rs.getString("NM_VAGA"),
+					rs.getInt("NR_MEDALHA"),
+					rs.getString("NM_CANDIDATO"),
+					rs.getString("DS_EMAIL"),
+				    rs.getString("NM_SENHA"),
+				    rs.getString("NR_CPF")
 					);
 
 		}
@@ -94,8 +90,7 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public List<Candidato> getAll() throws Exception {
 
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_CAND INNER JOIN T_RBW_USUA "
-				+ "ON T_RBW_CAND.NR_ID = T_RBW_USUA.NR_ID");
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO");
 	
 		rs = stmt.executeQuery();
 		
@@ -106,14 +101,13 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 			Candidato candidato = new Candidato(
 					
 					rs.getInt("NR_ID"),
-					rs.getString("NM_USUA"),
+					rs.getString("DT_NASCIMENTO"),
+					rs.getString("NM_VAGA"),
+					rs.getInt("NR_MEDALHA"),
+					rs.getString("NM_CANDIDATO"),
 					rs.getString("DS_EMAIL"),
 				    rs.getString("NM_SENHA"),
-				    rs.getString("NR_CPF"),
-					rs.getString("DT_NASCIMENTO"),
-					rs.getInt("NR_PONTUACAO"),
-					rs.getString("NR_VAGA")
-					
+				    rs.getString("NR_CPF")
 					);
 		
 			listaCandidatos.add(candidato);

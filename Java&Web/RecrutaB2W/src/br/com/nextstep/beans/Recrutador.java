@@ -1,6 +1,10 @@
 package br.com.nextstep.beans;
 
-public class Recrutador {
+import java.io.Serializable;
+
+public class Recrutador implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private int id;
 	private String nome;
@@ -8,7 +12,7 @@ public class Recrutador {
     private String senha;
 
     
-       
+	//CONSTRUTORES	
 	public Recrutador(int id, String nome, String email, String senha) {
 		super();
 		this.id = id;
