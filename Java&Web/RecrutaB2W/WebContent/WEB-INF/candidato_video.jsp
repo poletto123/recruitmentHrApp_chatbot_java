@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -24,7 +26,7 @@
                     <h1><a href="chatbot.html">Chatbot</a></h1>
                 </li>
                 <li>
-                    <h1><a href="video.html">Vídeo</a></h1>
+                    <h1><a href="video.html">VÃ­deo</a></h1>
                 </li>
                 <li>
                     <h1><a href="ranking.html">Ranking</a></h1>
@@ -40,25 +42,25 @@
         <div class="video">
             <div class="texto">
                 <div class="txt-1">
-                    <h2>Vídeo Introdutório</h2>
-                    <p>Nos conte mais sobre você e da pessoa que você é:</p>
-                    <p>Você poderá nos mandar um vídeo se descrevendo dizendo coisas como:</p>
+                    <h2>VÃ­deo IntrodutÃ³rio</h2>
+                    <p>Nos conte mais sobre vocÃª e da pessoa que vocÃª Ã©:</p>
+                    <p>VocÃª poderÃ¡ nos mandar um vÃ­deo se descrevendo dizendo coisas como:</p>
                     <li>
                         <ul>Descrever o momento mais importante da sua vida;</ul>
-                        <ul>Dizer quais são as 3 coisas mais importantes pra você;</ul>
+                        <ul>Dizer quais sÃ£o as 3 coisas mais importantes pra vocÃª;</ul>
                         <ul></ul>
                     </li>
                 </div>
                 <div class="txt-2">
-                    <p>* O vídeo deve estar nos <u>formatos de mp4, mkv, avi</u> com a <u>resolução mínima de
-                            1280x720(HD)</u> e com o som audível,
-                        <u>tamanho máximo de 100mb.</u>
+                    <p>* O vÃ­deo deve estar nos <u>formatos de mp4, mkv, avi</u> com a <u>resoluÃ§Ã£o mÃ­nima de
+                            1280x720(HD)</u> e com o som audÃ­vel,
+                        <u>tamanho mÃ¡ximo de 100mb.</u>
                     </p>
                 </div>
             </div>
             <div class="video__container">
                 <div class="drop-zone">
-                    <span class="drop-zone__prompt">Clique para enviar ou arraste o vídeo aqui</span>
+                    <span class="drop-zone__prompt">Clique para enviar ou arraste o vÃ­deo aqui</span>
                     <input type="file" name="myFile" class="drop-zone__input">
                 </div>
                 <button type="submit" class="btn-enviar">Enviar</button>

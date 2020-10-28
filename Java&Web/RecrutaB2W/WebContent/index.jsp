@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="./css/index.css">
   <link href="./img/B2W_Digital_logo.png" rel="icon" type="image/x-icon" />
 
-
 </head>
 
 <body>
