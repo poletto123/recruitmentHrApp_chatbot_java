@@ -10,9 +10,7 @@ public class Chatbot implements Serializable {
 	private int id;
     private ArrayList<String> respostas = new ArrayList<String>();
 
-	public ArrayList<String> getRespostas() {return respostas;}
-	public void setRespostas(ArrayList<String> resposta) {this.respostas = resposta;}
-	public void addRespostas(String resposta) {respostas.add(resposta);}
+
     
 	//CONSTRUTORES
 	public Chatbot() {}
@@ -23,6 +21,24 @@ public class Chatbot implements Serializable {
 		this.respostas = respostas;
 	}
 	
+	public ArrayList<String> getRespostas() {
+		return respostas;
+	}
+	public void setRespostas(ArrayList<String> resposta) {
+		this.respostas = resposta;
+	}
+	public void addRespostas(String resposta) {
+		respostas.add(resposta);
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "Chatbot [id=" + id + ", respostas=" + respostas + "]";

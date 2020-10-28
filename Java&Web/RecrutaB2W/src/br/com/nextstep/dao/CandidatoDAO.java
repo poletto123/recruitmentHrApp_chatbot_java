@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.nextstep.beans.AudioVideo;
 import br.com.nextstep.beans.Candidato;
-import br.com.nextstep.beans.Recrutador;
+import br.com.nextstep.beans.Chatbot;
 import br.com.nextstep.beans.Vaga;
 import br.com.nextstep.conexao.ConectaBanco;
 import br.com.nextstep.util.PadraoDAO;
@@ -30,13 +31,14 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public int add(Candidato objeto) throws Exception{
 
-		stmt = con.prepareStatement("INSERT INTO T_RBW_CANDIDATO (NR_CPF, DT_NASCIMENTO, NM_CANDIDATO, NM_SENHA, DS_EMAIL) VALUES(?, ?, ?, ?, ?)");
+		stmt = con.prepareStatement("INSERT INTO T_RBW_CANDIDATO (NR_CPF, DT_NASCIMENTO, NR_MEDALHA, NM_CANDIDATO, NM_SENHA, DS_EMAIL) VALUES(?, TO_DATE(?,'YYYY-MM-DD'), ?, ?, ?, ?)");
 		
 		stmt.setString(1, objeto.getCpf());
 		stmt.setString(2, objeto.getDataNascimento());
-		stmt.setString(3, objeto.getNome());
-		stmt.setString(4, objeto.getSenha());
-		stmt.setString(5, objeto.getEmail());
+		stmt.setInt(3, 0);
+		stmt.setString(4, objeto.getNome());
+		stmt.setString(5, objeto.getSenha());
+		stmt.setString(6, objeto.getEmail());
 		
 		return stmt.executeUpdate();
 	}
@@ -55,6 +57,22 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		stmt = con.prepareStatement("UPDATE T_RBW_CANDIDATO SET DS_EMAIL=? WHERE CD_CANDIDATO=?");
 		stmt.setString(1, email);
 		stmt.setInt(2, id);
+		
+		return stmt.executeUpdate();
+	}
+	
+	public int modifyChatbot(int cpf, Chatbot objeto) throws Exception {
+		stmt = con.prepareStatement("UPDATE T_RBW_CANDIDATO SET CD_CHATBOT=? WHERE NR_CPF=?");
+		stmt.setInt(1, objeto.getId());
+		stmt.setInt(2, cpf);
+		
+		return stmt.executeUpdate();
+	}
+	
+	public int modifyAudioVideo(int cpf, AudioVideo objeto) throws Exception {
+		stmt = con.prepareStatement("UPDATE T_RBW_CANDIDATO SET CD_AUDIO_VIDEO=? WHERE NR_CPF=?");
+		stmt.setInt(1, objeto.getId());
+		stmt.setInt(2, cpf);
 		
 		return stmt.executeUpdate();
 	}
