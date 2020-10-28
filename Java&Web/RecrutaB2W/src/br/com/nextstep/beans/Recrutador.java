@@ -6,16 +6,15 @@ public class Recrutador {
 	private String nome;
     private String email;
     private String senha;
-    private String cpf;
+
     
        
-	public Recrutador(int id, String nome, String email, String senha, String cpf) {
+	public Recrutador(int id, String nome, String email, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.cpf = cpf;
 	}
 	
 	public Recrutador() {
@@ -48,16 +47,10 @@ public class Recrutador {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf + "]";
+		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
 	}
     
 }
