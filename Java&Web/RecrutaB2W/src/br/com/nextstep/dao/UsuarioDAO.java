@@ -6,11 +6,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.nextstep.beans.Usuario;
+import br.com.nextstep.beans.Recrutador;
 import br.com.nextstep.conexao.ConectaBanco;
 import br.com.nextstep.util.PadraoDAO;
 
-public class UsuarioDAO implements PadraoDAO<Usuario> {
+public class UsuarioDAO implements PadraoDAO<Recrutador> {
 
 	private Connection con;
 	private PreparedStatement stmt;
@@ -26,7 +26,7 @@ public class UsuarioDAO implements PadraoDAO<Usuario> {
 	}
 	
 	@Override
-	public int add(Usuario objeto) throws Exception{
+	public int add(Recrutador objeto) throws Exception{
 
 		stmt = con.prepareStatement("INSERT INTO T_RBW_USUA "
 				+ "(NR_ID, NR_CPF, NM_USUA, DS_EMAIL, NM_SENHA) VALUES (?, ?, ?, ?, ?)");
@@ -60,7 +60,7 @@ public class UsuarioDAO implements PadraoDAO<Usuario> {
 	}
 	
 	@Override
-	public Usuario getById(int id) throws Exception{
+	public Recrutador getById(int id) throws Exception{
 		
 		stmt = con.prepareStatement("SELECT * FROM T_RBW_USUA WHERE NR_ID=?");
 		stmt.setInt(1, id);
@@ -69,7 +69,7 @@ public class UsuarioDAO implements PadraoDAO<Usuario> {
 		
 		if(rs.next()) {
 			
-			return new Usuario(
+			return new Recrutador(
 					
 					rs.getInt("NR_ID"),
 					rs.getString("NM_USUA"),
@@ -80,21 +80,21 @@ public class UsuarioDAO implements PadraoDAO<Usuario> {
 					);
 		}
 		
-		return new Usuario();
+		return new Recrutador();
 	}
 
 	@Override
-	public List<Usuario> getAll() throws Exception {
+	public List<Recrutador> getAll() throws Exception {
 
 		stmt = con.prepareStatement("SELECT * FROM T_RBW_USUA");
 	
 		rs = stmt.executeQuery();
 		
-		List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+		List<Recrutador> listaUsuarios = new ArrayList<Recrutador>();
 		
 		while(rs.next()) {
 			
-			Usuario usuario = new Usuario(
+			Recrutador usuario = new Recrutador(
 					
 					rs.getInt("T_RBW_USUA.NR_ID"),
 					rs.getString("T_RBW_USUA.NM_USUA"),

@@ -1,6 +1,6 @@
 package br.com.nextstep.beans;
 
-public class Usuario {
+public class Recrutador {
 
 	private int id;
 	private String nome;
@@ -9,7 +9,7 @@ public class Usuario {
     private String cpf;
     
        
-	public Usuario(int id, String nome, String email, String senha, String cpf) {
+	public Recrutador(int id, String nome, String email, String senha, String cpf) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -18,7 +18,7 @@ public class Usuario {
 		this.cpf = cpf;
 	}
 	
-	public Usuario() {
+	public Recrutador() {
 		super();
 	}
 	
