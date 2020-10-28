@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 public class Candidato implements Serializable{
 
-	private static final long serialVersionUID = 1L; //O QUE É vaga???
+	private static final long serialVersionUID = 1L;
     
 	private int id;
 	private String nome;
     private String email;
     private String senha;
 	private String dataNascimento;
-    private String vaga; 
+    private Vaga vaga; 
     private int qtdeMedalha;
     private String cpf;
 	
 	//CONSTRUTORES	
-	public Candidato(int id, String dataNascimento, String vaga, int qtdeMedalha, String nome, String email, String senha, String cpf) {
+	public Candidato(int id, String dataNascimento, Vaga vaga, int qtdeMedalha, String nome, String email, String senha, String cpf) {
 		super();
 		this.id = id;
 		this.dataNascimento = dataNascimento;
@@ -48,11 +48,11 @@ public class Candidato implements Serializable{
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getVaga() {
+	public Vaga getVaga() {
 		return vaga;
 	}
 
-	public void setVaga(String vaga) {
+	public void setVaga(Vaga vaga) {
 		this.vaga = vaga;
 	}
 

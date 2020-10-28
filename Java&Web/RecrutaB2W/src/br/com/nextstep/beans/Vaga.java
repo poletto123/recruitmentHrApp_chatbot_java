@@ -6,9 +6,32 @@ public class Vaga implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	private int id;
 	private String nomeVaga;
 	private String descVaga;
 	private double salario;
+
+	
+	//CONSTRUTORES
+	public Vaga(int id, String nomeVaga, String descVaga, double salario) {
+		super();
+		this.id = id;
+		this.nomeVaga = nomeVaga;
+		this.descVaga = descVaga;
+		this.salario = salario;
+	}
+	
+	public Vaga() {
+		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNomeVaga() {
 		return nomeVaga;
@@ -28,23 +51,10 @@ public class Vaga implements Serializable{
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
-	
-	
-	//CONSTRUTORES
-	public Vaga() {
-		super();
-	}
-	public Vaga(int numeroVaga, String nomeVaga, String descVaga, double salario) {
-		super();
-		this.nomeVaga = nomeVaga;
-		this.descVaga = descVaga;
-		this.salario = salario;
-	}
 
-	
 	@Override
 	public String toString() {
-		return "Vaga [nomeVaga=" + nomeVaga + ", descVaga=" + descVaga + ", salario=" + salario + "]";
+		return "Vaga [id=" + id + ", nomeVaga=" + nomeVaga + ", descVaga=" + descVaga + ", salario=" + salario + "]";
 	}
-		
+			
 }

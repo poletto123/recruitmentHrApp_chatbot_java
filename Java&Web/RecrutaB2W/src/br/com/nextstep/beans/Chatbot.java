@@ -6,6 +6,8 @@ import java.util.ArrayList;
 public class Chatbot implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private int id;
     private ArrayList<String> respostas = new ArrayList<String>();
 
 	public ArrayList<String> getRespostas() {return respostas;}
@@ -15,14 +17,15 @@ public class Chatbot implements Serializable {
 	//CONSTRUTORES
 	public Chatbot() {}
 	
-	public Chatbot(ArrayList<String> respostas) {
+	public Chatbot(int id, ArrayList<String> respostas) {
 		super();
+		this.id = id;
 		this.respostas = respostas;
 	}
 	
 	@Override
 	public String toString() {
-		return "Chatbot [respostas=" + respostas + "]";
+		return "Chatbot [id=" + id + ", respostas=" + respostas + "]";
 	}
 	
 }	

@@ -1,7 +1,6 @@
 package br.com.nextstep.beans;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 public class AudioVideo implements Serializable{
 
@@ -19,9 +18,7 @@ public class AudioVideo implements Serializable{
 		this.pathVideo = pathVideo;
 	}
 
-    public AudioVideo(){
-    	
-    }
+    public AudioVideo(){}
     
 	public int getId() {
 		return id;
