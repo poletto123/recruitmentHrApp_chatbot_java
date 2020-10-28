@@ -29,10 +29,8 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	
 	@Override
 	public int add(Candidato objeto) throws Exception{
-			
-		RecrutadorDAO usuarioDAO = new RecrutadorDAO();
 
-		stmt = con.prepareStatement("INSERT INTO T_RBW_CANDIDATO (NR, CPF, DT_NASCIMENTO, NM_CADIDATO, NM_SENHA, DS_EMAIL) VALUES(?, ?, ?, ?, ?)");
+		stmt = con.prepareStatement("INSERT INTO T_RBW_CANDIDATO (NR_CPF, DT_NASCIMENTO, NM_CANDIDATO, NM_SENHA, DS_EMAIL) VALUES(?, ?, ?, ?, ?)");
 		
 		stmt.setString(1, objeto.getCpf());
 		stmt.setString(2, objeto.getDataNascimento());
