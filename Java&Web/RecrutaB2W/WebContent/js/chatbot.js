@@ -12,11 +12,12 @@ const carregarDados = () => {
 	input.value = '';
 
 	fetch(
-		`http://localhost:1880/chat?mensagem=${mensagem}&session_id=${session_id}`
+		`https://nodered-nextstep.mybluemix.net/chat?mensagem=${mensagem}&session_id=${session_id}`
 	)
 		.then((resultado) => resultado.json())
 		.then((dados) => {
-			dados.respostas.forEach((resposta) => {
+			console.log(dados)
+			dados.forEach((resposta) => {
 				if (resposta.text) criaLinha(resposta.text, 'bot');
 			});
 			session_id = dados.session_id;
@@ -38,7 +39,7 @@ const criaBalaoConversa = (texto, tipo) => {
 	const balao = document.createElement('div');
 	balao.classList.add('chat');
 	balao.classList.add(tipo);
-	balao.innerHTML = texto;
+	balao.innerHTML = `<p class="texto">${texto}</p>`;
 	return balao;
 };
 
