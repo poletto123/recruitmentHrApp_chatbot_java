@@ -17,7 +17,7 @@
 
   <header>
     <figure>
-      <a href="index.html"><img src="./img/B2W_Digital_logo.png" class="logo" alt=""></a> </figure>
+      <a href="index.jsp"><img src="./img/B2W_Digital_logo.png" class="logo" alt=""></a> </figure>
     <span class="mobile-btn"></span>
     <nav class="menu-nav mobile-menu">
       <ul class="title-list">
@@ -59,7 +59,7 @@
         </div>
 
         <button class="teste-sistema">
-          <a href="login.html">Teste o sistema</a>
+          <a href="login.jsp">Teste o sistema</a>
         </button>
       </div>
 

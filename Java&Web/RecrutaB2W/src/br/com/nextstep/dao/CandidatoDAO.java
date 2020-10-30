@@ -80,7 +80,9 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public Candidato getById(int id) throws Exception{
 		
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO WHERE CD_CANDIDATO=?");
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO INNER JOIN T_RBW_VAGA "
+								+ "ON T_RBW_CANDIDATO.NR_VAGA = T_RBW_VAGA.NR_VAGA "
+								+ "WHERE CD_CANDIDATO=?");
 		stmt.setInt(1, id);
 		
 		rs = stmt.executeQuery();
@@ -113,7 +115,8 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public List<Candidato> getAll() throws Exception {
 
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO");
+//		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO INNER JOIN T_RBW_VAGA "
+//				+ "ON T_RBW_CANDIDATO.NR_VAGA = T_RBW_VAGA.NR_VAGA ");
 	
 		rs = stmt.executeQuery();
 		

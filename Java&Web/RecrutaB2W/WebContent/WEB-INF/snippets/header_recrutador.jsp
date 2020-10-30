@@ -8,18 +8,18 @@
 		<ul class="title-list">
 			<li>
 				<h1>
-					<a href="candidatos">Candidatos</a>
+					<a href="paginacao?pag=recrutador_candidatos.jsp">Candidatos</a>
 				</h1>
 			</li>
 			<li>
 				<h1>
-					<a href="ranking">Ranking</a>
+					<a href="paginacao?pag=recrutador_ranking.jsp">Ranking</a>
 				</h1>
 			</li>
 		</ul>
 	</nav>
 	<div class="logcontrol">
 		<p>Bem-Vindo ${objUsu.nome}</p>
-		<a href="index.html">Sair</a>
+		<a href="login.jsp">Sair</a>
 	</div>
 </header>

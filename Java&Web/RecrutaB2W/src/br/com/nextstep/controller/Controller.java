@@ -15,7 +15,7 @@ import br.com.nextstep.bo.CandidatoBO;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/ranking"})
+@WebServlet(urlPatterns = {"/ranking", "/login", "/paginacao"})
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,10 +36,12 @@ public class Controller extends HttpServlet {
 			
 			switch (request.getRequestURI()) {
 		
-				case "/RecrutaB2W/ranking":
-					mostraRanking(request, response);
+				case "/RecrutaB2W/login":
+					realizaLogin(request, response);
 					break;
-					
+				case "/RecrutaB2W/paginacao":
+					paginacao(request, response);
+					break;
 				default:
 					response.sendRedirect("index.jsp");
 			} 
@@ -51,18 +53,37 @@ public class Controller extends HttpServlet {
 	
 	}
 
-	private void mostraRanking(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private void paginacao(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		List<Candidato> listaCandidatos = CandidatoBO.mostraCandidato();
-		
-		if (listaCandidatos == null) {
-			response.sendRedirect("ranking.jsp?msgStatus=Não existem candidatos");
+		if (request.getParameter("pag").equals("candidato_ranking.jsp")) {
+			mostraRanking(request, response, "candidato_ranking.jsp");
+		} else if (request.getParameter("pag").equals("recrutador_ranking.jsp")) {
+			mostraRanking(request, response, "recrutador_ranking.jsp");
 		} else {
-			request.setAttribute("listaCandidatos", listaCandidatos);
-			request.getRequestDispatcher("ranking.jsp").forward(request, response);
+		request.getRequestDispatcher("./WEB-INF/" + request.getParameter("pag")).forward(request, response);		
 		}
-		
+	}
+
+	private void realizaLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		 if (request.getParameter("cpmail").equals("candidato")) {
+			 request.getRequestDispatcher("./WEB-INF/candidato_ranking.jsp").forward(request,response);
+		 } else if (request.getParameter("cpmail").equals("recrutador")) {
+			 request.getRequestDispatcher("./WEB-INF/recrutador_index.jsp").forward(request,response);
+		 }
 		
 	}
 
-}
+	private void mostraRanking(HttpServletRequest request, HttpServletResponse response, String path) throws Exception {
+		
+		List<Candidato> listaCandidatos = CandidatoBO.mostraCandidato();
+		
+		if (listaCandidatos.isEmpty() == true) {
+			request.getRequestDispatcher("./WEB-INF/" + path).forward(request, response);
+		} else {
+			request.setAttribute("listaCandidatos", listaCandidatos);
+			request.getRequestDispatcher("./WEB-INF/" + path).forward(request, response);
+		}
+	}
+		
+		
+	}

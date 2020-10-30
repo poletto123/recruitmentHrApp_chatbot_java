@@ -30,15 +30,13 @@
             <th>Nome</th>
 <!--             <th>Chatbot</th>
             <th>Áudio / VÃ­deo</th> -->
-            <th>PTS</th>
+            <th>Medalhas</th>
           </tr>
      	<c:forEach var="cand" items="${listaCandidatos}" varStatus="id">
           <tr class="pos">
             <td>${id.count}</td>
             <td>${cand.nome}</td>
-<!--             <td>OK</td>
-            <td>OK</td> -->
-            <td>${cand.pontuacao}</td>
+            <td>${cand.numeroMedalha}</td>
           </tr>
          </c:forEach>
         </table>
