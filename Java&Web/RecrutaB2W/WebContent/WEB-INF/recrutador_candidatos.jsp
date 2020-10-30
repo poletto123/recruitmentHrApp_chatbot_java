@@ -14,7 +14,7 @@
 	<!--<main class="general">-->
 		<table class="table table-dark table-hover">
 			<tr>
-				<th>ID</th>
+				<th>#</th>
 				<th>Nome</th>
 				<th>Dt Nasc</th>
 				<th>Gênero</th>
