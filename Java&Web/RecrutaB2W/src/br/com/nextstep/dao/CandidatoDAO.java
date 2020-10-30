@@ -118,6 +118,8 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 //		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO INNER JOIN T_RBW_VAGA "
 //				+ "ON T_RBW_CANDIDATO.NR_VAGA = T_RBW_VAGA.NR_VAGA ");
 	
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO");
+		
 		rs = stmt.executeQuery();
 		
 		List<Candidato> listaCandidatos = new ArrayList<Candidato>();
@@ -129,10 +131,10 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 					rs.getInt("CD_CANDIDATO"),
 					rs.getString("DT_NASCIMENTO"),
 					new Vaga(
-							rs.getInt("NR_VAGA"),
-							rs.getString("NM_VAGA"),
-							rs.getString("DS_VAGA"),
-							rs.getDouble("VL_SALARIO")
+//							rs.getInt("NR_VAGA"),
+//							rs.getString("NM_VAGA"),
+//							rs.getString("DS_VAGA"),
+//							rs.getDouble("VL_SALARIO")
 							),
 					rs.getInt("NR_MEDALHA"),
 					rs.getString("NM_CANDIDATO"),
