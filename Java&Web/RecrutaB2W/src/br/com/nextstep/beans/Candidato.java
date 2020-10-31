@@ -15,6 +15,8 @@ public class Candidato implements Serializable{
     private int numeroMedalha;
     private String cpf;
     private Recrutador recrutador;
+    //private Chatbot chatbot;
+    //private AudioVideo audioVideo;
 	
 	//CONSTRUTORES	
 	public Candidato(int id, String dataNascimento, Vaga vaga, int numeroMedalha, String nome, String email, String senha, String cpf, Recrutador recrutador) {
@@ -44,7 +46,22 @@ public class Candidato implements Serializable{
 	}
 
 
-
+//	public Candidato(int id, String nome, String email, String senha, String dataNascimento, Vaga vaga,
+//			int numeroMedalha, String cpf, Recrutador recrutador, Chatbot chatbot, AudioVideo audioVideo) {
+//		super();
+//		this.id = id;
+//		this.nome = nome;
+//		this.email = email;
+//		this.senha = senha;
+//		this.dataNascimento = dataNascimento;
+//		this.vaga = vaga;
+//		this.numeroMedalha = numeroMedalha;
+//		this.cpf = cpf;
+//		this.recrutador = recrutador;
+//		this.chatbot = chatbot;
+//		this.audioVideo = audioVideo;
+//	}
+//	
 	public Candidato() {
 		super();
 	}
@@ -128,4 +145,29 @@ public class Candidato implements Serializable{
 				+ ", recrutador=" + recrutador + "]";
 	}
 		
+	
+	
+	
+//	public Chatbot getChatbot() {
+//		return chatbot;
+//	}
+//
+//	public void setChatbot(Chatbot chatbot) {
+//		this.chatbot = chatbot;
+//	}
+//
+//	public AudioVideo getAudioVideo() {
+//		return audioVideo;
+//	}
+//
+//	public void setAudioVideo(AudioVideo audioVideo) {
+//		this.audioVideo = audioVideo;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "Candidato [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", dataNascimento="
+//				+ dataNascimento + ", vaga=" + vaga + ", numeroMedalha=" + numeroMedalha + ", cpf=" + cpf
+//				+ ", recrutador=" + recrutador + ", chatbot=" + chatbot + ", audioVideo=" + audioVideo + "]";
+//	}
 }

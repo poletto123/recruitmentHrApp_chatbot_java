@@ -9,7 +9,7 @@ public class Chatbot implements Serializable {
 	
 	private int id;
     private ArrayList<String> respostas = new ArrayList<String>();
-
+    //	private String respostas;
 
     
 	//CONSTRUTORES
@@ -21,12 +21,29 @@ public class Chatbot implements Serializable {
 		this.respostas = respostas;
 	}
 	
+
+//	public Chatbot(int id, String respostas) {
+//		super();
+//		this.id = id;
+//		this.respostas = respostas;
+//	}
+//	
+	
 	public ArrayList<String> getRespostas() {
 		return respostas;
 	}
 	public void setRespostas(ArrayList<String> resposta) {
 		this.respostas = resposta;
 	}
+	
+//	public String getRespostas() {
+//		return respostas;
+//	}
+//	public void setRespostas(String resposta) {
+//		this.respostas = resposta;
+//	}
+//	
+	
 	public void addRespostas(String resposta) {
 		respostas.add(resposta);
 	}
