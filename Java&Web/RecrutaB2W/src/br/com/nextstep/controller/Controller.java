@@ -66,7 +66,7 @@ public class Controller extends HttpServlet {
 
 	private void realizaLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		 if (request.getParameter("cpmail").equals("candidato")) {
-			 request.getRequestDispatcher("./WEB-INF/candidato_ranking.jsp").forward(request,response);
+			 request.getRequestDispatcher("./WEB-INF/candidato_index.jsp").forward(request,response);
 		 } else if (request.getParameter("cpmail").equals("recrutador")) {
 			 request.getRequestDispatcher("./WEB-INF/recrutador_index.jsp").forward(request,response);
 		 }

@@ -19,8 +19,15 @@ public class Recrutador implements Serializable{
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-	}
+	}	
 	
+	public Recrutador(int id, String nome, String email) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+	}
+
 	public Recrutador() {
 		super();
 	}

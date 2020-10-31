@@ -9,6 +9,7 @@ import java.util.List;
 import br.com.nextstep.beans.AudioVideo;
 import br.com.nextstep.beans.Candidato;
 import br.com.nextstep.beans.Chatbot;
+import br.com.nextstep.beans.Recrutador;
 import br.com.nextstep.beans.Vaga;
 import br.com.nextstep.conexao.ConectaBanco;
 import br.com.nextstep.util.PadraoDAO;
@@ -80,8 +81,11 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public Candidato getById(int id) throws Exception{
 		
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO INNER JOIN T_RBW_VAGA "
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO "
+								+ "INNER JOIN T_RBW_VAGA "
 								+ "ON T_RBW_CANDIDATO.NR_VAGA = T_RBW_VAGA.NR_VAGA "
+								+ "INNER JOIN T_RBW_RECRUTADOR "
+								+ "ON T_RBW_CANDIDATO.CD_RECRUTADOR = T_RBW_RECRUTADOR.CD_RECRUTADOR"
 								+ "WHERE CD_CANDIDATO=?");
 		stmt.setInt(1, id);
 		
@@ -92,6 +96,8 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 			return new Candidato(
 					
 					rs.getInt("CD_CANDIDATO"),
+					rs.getString("NM_CANDIDATO"),
+					rs.getString("DS_EMAIL"),
 					rs.getString("DT_NASCIMENTO"),
 					new Vaga(
 							rs.getInt("NR_VAGA"),
@@ -100,13 +106,13 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 							rs.getDouble("VL_SALARIO")
 							),
 					rs.getInt("NR_MEDALHA"),
-					rs.getString("NM_CANDIDATO"),
-					rs.getString("DS_EMAIL"),
-				    rs.getString("NM_SENHA"),
 				    rs.getString("NR_CPF"),
-				    rs.getInt("CD_RECRUTADOR")
-					);
-
+					new Recrutador(
+							rs.getInt("CD_RECRUTADOR"),
+							rs.getString("NM_RECRUTADOR"),
+							rs.getString("DS_EMAIL")
+					));
+					
 		}
 		
 		return new Candidato();
@@ -115,38 +121,55 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	@Override
 	public List<Candidato> getAll() throws Exception {
 
-//		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO INNER JOIN T_RBW_VAGA "
-//				+ "ON T_RBW_CANDIDATO.NR_VAGA = T_RBW_VAGA.NR_VAGA ");
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO "
+				+ "INNER JOIN T_RBW_VAGA "
+				+ "ON T_RBW_CANDIDATO.NR_VAGA = T_RBW_VAGA.NR_VAGA "
+				+ "INNER JOIN T_RBW_RECRUTADOR "
+				+ "ON T_RBW_CANDIDATO.CD_RECRUTADOR = T_RBW_RECRUTADOR.CD_RECRUTADOR");
 	
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO");
 		
 		rs = stmt.executeQuery();
 		
-		List<Candidato> listaCandidatos = new ArrayList<Candidato>();
+		List<Candidato> listaMedalhaZero = new ArrayList<Candidato>();
+		List<Candidato> listaMedalhaUm = new ArrayList<Candidato>();
+		List<Candidato> listaMedalhaDois = new ArrayList<Candidato>();
+
 		
 		while(rs.next()) {
 			
 			Candidato candidato = new Candidato(
 					
 					rs.getInt("CD_CANDIDATO"),
-					rs.getString("DT_NASCIMENTO"),
-					new Vaga(
-//							rs.getInt("NR_VAGA"),
-//							rs.getString("NM_VAGA"),
-//							rs.getString("DS_VAGA"),
-//							rs.getDouble("VL_SALARIO")
-							),
-					rs.getInt("NR_MEDALHA"),
 					rs.getString("NM_CANDIDATO"),
 					rs.getString("DS_EMAIL"),
-				    rs.getString("NM_SENHA"),
+					rs.getString("DT_NASCIMENTO"),
+					new Vaga(
+							rs.getInt("NR_VAGA"),
+							rs.getString("NM_VAGA"),
+							rs.getString("DS_VAGA"),
+							rs.getDouble("VL_SALARIO")
+							),
+					rs.getInt("NR_MEDALHA"),
 				    rs.getString("NR_CPF"),
-				    rs.getInt("CD_RECRUTADOR")
-					);
-		
-			listaCandidatos.add(candidato);
-
+					new Recrutador(
+							rs.getInt("CD_RECRUTADOR"),
+							rs.getString("NM_RECRUTADOR"),
+							rs.getString("DS_EMAIL")
+					));
+			
+			if (candidato.getNumeroMedalha() == 0) {
+				listaMedalhaZero.add(candidato);
+			} else if (candidato.getNumeroMedalha() == 1) {
+				listaMedalhaUm.add(candidato);
+			} else if (candidato.getNumeroMedalha() == 2) {
+				listaMedalhaDois.add(candidato);
+			}
 		}
+		
+		List<Candidato> listaCandidatos = new ArrayList<Candidato>();
+		listaCandidatos.addAll(listaMedalhaDois);
+		listaCandidatos.addAll(listaMedalhaUm);
+		listaCandidatos.addAll(listaMedalhaZero);
 		
 		return listaCandidatos;
 	}

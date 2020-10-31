@@ -14,10 +14,10 @@ public class Candidato implements Serializable{
     private Vaga vaga; 
     private int numeroMedalha;
     private String cpf;
-    private int codigoRecrutador;
+    private Recrutador recrutador;
 	
 	//CONSTRUTORES	
-	public Candidato(int id, String dataNascimento, Vaga vaga, int numeroMedalha, String nome, String email, String senha, String cpf, int codigoRecrutador) {
+	public Candidato(int id, String dataNascimento, Vaga vaga, int numeroMedalha, String nome, String email, String senha, String cpf, Recrutador recrutador) {
 		super();
 		this.id = id;
 		this.dataNascimento = dataNascimento;
@@ -27,8 +27,23 @@ public class Candidato implements Serializable{
 		this.email = email;
 		this.senha = senha;
 		this.cpf = cpf;
-		this.codigoRecrutador = codigoRecrutador;
+		this.recrutador = recrutador;
+	}	
+
+	public Candidato(int id, String nome, String email, String dataNascimento, Vaga vaga, int numeroMedalha, String cpf,
+			Recrutador recrutador) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.dataNascimento = dataNascimento;
+		this.vaga = vaga;
+		this.numeroMedalha = numeroMedalha;
+		this.cpf = cpf;
+		this.recrutador = recrutador;
 	}
+
+
 
 	public Candidato() {
 		super();
@@ -97,21 +112,20 @@ public class Candidato implements Serializable{
 	public void setNumeroMedalha(int numeroMedalha) {
 		this.numeroMedalha = numeroMedalha;
 	}
-
-	public int getCodigoRecrutador() {
-		return codigoRecrutador;
+	
+	public Recrutador getRecrutador() {
+		return recrutador;
 	}
 
-	public void setCodigoRecrutador(int codigoRecrutador) {
-		this.codigoRecrutador = codigoRecrutador;
+	public void setRecrutador(Recrutador recrutador) {
+		this.recrutador = recrutador;
 	}
 
 	@Override
 	public String toString() {
 		return "Candidato [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", dataNascimento="
 				+ dataNascimento + ", vaga=" + vaga + ", numeroMedalha=" + numeroMedalha + ", cpf=" + cpf
-				+ ", codigoRecrutador=" + codigoRecrutador + "]";
+				+ ", recrutador=" + recrutador + "]";
 	}
-
 		
 }
