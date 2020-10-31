@@ -5,7 +5,7 @@
     <nav class="menu-nav mobile-menu">
       <ul class="title-list">
         <li>
-          <h1><a href="paginacao?pag=candidato_chatbot.html">Chatbot</a></h1>
+          <h1><a href="paginacao?pag=candidato_chatbot.jsp">Chatbot</a></h1>
         </li>
         <li>
           <h1><a href="paginacao?pag=candidato_video.jsp">Vídeo</a></h1>
