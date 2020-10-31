@@ -5,56 +5,86 @@
 <head>
 <%@ include file="./snippets/imports/libs-head.jsp"%>
 <title>Recruta B2W</title>
-<link rel="stylesheet" href="./css/recrutador_main.css">
+<link rel="stylesheet" href="./css/recrutador_candidatos.css">
 </head>
 <body>
 
 	<%@ include file="./snippets/header_recrutador.jsp"%>
-		
-	<!--<main class="general">-->
-		<table class="table table-dark table-hover">
-			<tr>
-				<th>#</th>
-				<th>Nome</th>
-				<th>Dt Nasc</th>
-				<th>Gênero</th>
-				<th>Tel</th>
-				<th colspan="2">Editar</th>
-			</tr>
-			<%-- Criando a estrutura para receber o atributo com a lista de clientes --%>
 
-				<tr>
-					<td>teste</td>
-					<td>teste</td>
-
-					<td><f:formatDate value="04/10/2020"
-							pattern="EEE dd/MMM/yyyy" /></td>
-					
-					<td>Masculino</td>
-					
-
-					<td>teste</td>
-					<td>teste
-					
-					<svg width="1em" height="1em"
-								viewBox="0 0 16 16" class="bi bi-pencil-square"
-								fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-								<path
-									d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-								<path fill-rule="evenodd"
-									d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" /></svg></a></td>
-					<td><a href="excluir?id-cli=${cli.id}">
-					
-					<svg width="1em" height="1em" viewBox="0 0 16 16"
-							class="bi bi-trash" fill="currentColor"
-							xmlns="http://www.w3.org/2000/svg">d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path
-								fill-rule="evenodd"
-								d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" /></svg></a></td>					
-				</tr>
-		</table>
+	<main class="general">
+			<div class="candidatos">
+				<table class="tabela">
+					<tr class="col">
+						<th>Id</th>
+						<th>Nome</th>
+						<th>E-mail</th>
+						<th>Data de Nascimento</th>
+						<th>Vaga</th>
+						<th>CPF</th>
+						<th>Recrutador</th>
+						<th colspan="2">Processos</th>
+					</tr>
+					<%-- Criando a estrutura para receber o atributo com a lista de candidatos --%>
+					<c:forEach var="cand" items="${listaCandidatos}" varStatus="id">
+						<tr class="pos">
+							<td>${id.count}</td>
+							<td>${cand.nome}</td>
+							<td>${cand.email}</td>
+							<td><f:formatDate value="${cand.dataNascimento}" pattern="dd/MM/yyyy"/></td>
+							<td>${cand.vaga}</td>
+							<td>${cand.cpf}</td>
+							<td>${cand.recrutador}</td>
+							<td>
+								<c:choose>
+									<c:when test="${cand.audioVideo eq null}">
+										<img alt="" class="link-disable" src="./img/videoCamera.png">
+									</c:when>
+									<c:otherwise>
+										<a href="audioVideo?id-cand=${cand.id}"><img alt="" src="./img/videoCamera.png"></a>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when test="${cand.chatbot eq null}">
+										<img alt="" class="link-disable" src="./img/historico.png">
+									</c:when>
+									<c:otherwise>
+										<a href="historico?id-cand=${cand.id}"><img alt="" src="./img/historico.png"></a>
+									</c:otherwise>
+								</c:choose>
+							</td>
+						</tr>
+					</c:forEach>
+					<tr class="pos">
+						<td>Id</td>
+						<td>Nome</td>
+						<td>E-mail</td>
+						<td>Data de Nascimento</td>
+						<td>Vaga</td>
+						<td>CPF</td>
+						<td>Recrutador</td>
+						<td colspan="2">
+						<a href="audioVideo?id-cand=${cand.id}"><img alt="" src="./img/videoCamera.png"></a>
+						<a href="historico?id-cand=${cand.id}"><img alt="" src="./img/historico.png"></a>
+						</td>
+					</tr>
+					<tr class="pos">
+						<td>Id2</td>
+						<td>Nome2</td>
+						<td>E-mail2</td>
+						<td>Data de Nascimento2</td>
+						<td>Vaga2</td>
+						<td>CPF2</td>
+						<td>Recrutador2</td>
+						<td colspan="2">
+						<img alt="" class="link-disable" src="./img/videoCamera.png">
+						<img alt="" class="link-disable" src="./img/historico.png">
+						</td>
+					</tr>
+				</table>
+			</div>
 	</main>
-	<%@ include file="./snippets/footer.html" %>
-	<%@ include file="./snippets/imports/libs-footer.jsp" %>
+	<%@ include file="./snippets/footer.html"%>
+	<%@ include file="./snippets/imports/libs-footer.jsp"%>
 </body>
 
 </html>
