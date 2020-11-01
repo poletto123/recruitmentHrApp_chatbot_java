@@ -112,6 +112,37 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 							rs.getString("NM_RECRUTADOR"),
 							rs.getString("DS_EMAIL")
 					));
+			
+//			return new Candidato(
+//					
+//					rs.getInt("CD_CANDIDATO"),
+//					rs.getString("NM_CANDIDATO"),
+//					rs.getString("DS_EMAIL"),
+//					rs.getString("NM_SENHA"),
+//					rs.getString("DT_NASCIMENTO"),
+//					new Vaga(
+//							rs.getInt("NR_VAGA"),
+//							rs.getString("NM_VAGA"),
+//							rs.getString("DS_VAGA"),
+//							rs.getDouble("VL_SALARIO")
+//							),
+//					rs.getInt("NR_MEDALHA"),
+//				    rs.getString("NR_CPF"),
+//					new Recrutador(
+//							rs.getInt("CD_RECRUTADOR"),
+//							rs.getString("NM_RECRUTADOR"),
+//							rs.getString("DS_EMAIL")
+//							),
+//					new Chatbot(
+//							rs.getInt("CD_CHATBOT"),
+//							rs.getString("DS_RESPOSTA")
+//							),
+//					new AudioVideo(
+//							rs.getString("FL_AUDIO"),
+//							rs.getString("FL_VIDEO"),
+//							rs.getInt("CD_AUDIO_VIDEO")
+//							)
+//					);
 					
 		}
 		
@@ -156,6 +187,37 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 							rs.getString("NM_RECRUTADOR"),
 							rs.getString("DS_EMAIL")
 					));
+			
+//			Candidato candidato = new Candidato(
+//					
+//					rs.getInt("CD_CANDIDATO"),
+//					rs.getString("NM_CANDIDATO"),
+//					rs.getString("DS_EMAIL"),
+//					rs.getString("NM_SENHA"),
+//					rs.getString("DT_NASCIMENTO"),
+//					new Vaga(
+//							rs.getInt("NR_VAGA"),
+//							rs.getString("NM_VAGA"),
+//							rs.getString("DS_VAGA"),
+//							rs.getDouble("VL_SALARIO")
+//							),
+//					rs.getInt("NR_MEDALHA"),
+//				    rs.getString("NR_CPF"),
+//					new Recrutador(
+//							rs.getInt("CD_RECRUTADOR"),
+//							rs.getString("NM_RECRUTADOR"),
+//							rs.getString("DS_EMAIL")
+//							),
+//					new Chatbot(
+//							rs.getInt("CD_CHATBOT"),
+//							rs.getString("DS_RESPOSTA")
+//							),
+//					new AudioVideo(
+//							rs.getString("FL_AUDIO"),
+//							rs.getString("FL_VIDEO"),
+//							rs.getInt("CD_AUDIO_VIDEO")
+//							)
+//					);
 			
 			if (candidato.getNumeroMedalha() == 0) {
 				listaMedalhaZero.add(candidato);

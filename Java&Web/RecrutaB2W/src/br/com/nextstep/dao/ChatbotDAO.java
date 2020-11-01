@@ -34,6 +34,7 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 
 		stmt = con.prepareStatement("INSERT INTO T_RBW_CHATBOT (DS_RESPOSTA) VALUES (?)");
 		stmt.setArray(1, (Array) chatbot.getRespostas());
+		//stmt.setString(1,chatbot.getRespostas());
 
 		return stmt.executeUpdate();
 	}
@@ -69,6 +70,7 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 			return new Chatbot(
 					rs.getInt("CD_CHATBOT"),
 					(ArrayList<String>) rs.getArray("DS_RESPOSTA")
+					//rs.getString("DS_RESPOSTA")
 					);
 		}
 		
