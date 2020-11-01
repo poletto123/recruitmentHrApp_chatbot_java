@@ -63,8 +63,8 @@
 						<td>CPF</td>
 						<td>Recrutador</td>
 						<td colspan="2">
-						<a href="audioVideo?id-cand=${cand.id}"><img alt="" src="./img/videoCamera.png"></a>
-						<a href="historico?id-cand=${cand.id}"><img alt="" src="./img/historico.png"></a>
+						<a href="audioVideo?id-cand=4"><img alt="" src="./img/videoCamera.png"></a>
+						<a href="historico?id-cand=4"><img alt="" src="./img/historico.png"></a>
 						</td>
 					</tr>
 					<tr class="pos">
