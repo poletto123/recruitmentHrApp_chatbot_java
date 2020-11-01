@@ -19,22 +19,22 @@
 	<main>
 		<div class="general">
 
-			<div class="chatbot">
+			<form action ="chat" class="chatbot">
 				<div class="conversa">
 					<span>Digitando ...</span>
 				</div>
-				<textarea type="text" id="pergunta" name="pergunta" class="campo"
-					placeholder="Digite aqui"></textarea>
-				<button id="enviar" onclick="carregarDados()">Enviar</button>
-
-			</div>
+				<input type="text" id="pergunta" name="pergunta" class="campo"
+					placeholder="Digite aqui"></input>
+				<p>${resposta}</p>
+				<button type="submit" id="enviar" onclick="carregarDados()">Enviar</button>
+			</form>
 		</div>
 	</main>
 	
 	<%@ include file="./snippets/footer.html" %>
 	<%@ include file="./snippets/imports/libs-footer.jsp" %>
   
-	<script type="text/javascript" src="./js/chatbot.js"></script>
+<!-- 	<script type="text/javascript" src="./js/chatbot.js"></script> -->
 
   	
 </body>
