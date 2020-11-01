@@ -34,6 +34,20 @@ public class CandidatoBO {
 		return candidato;
 	}
 	
+	public static boolean mostraLogin(String email,String senha) throws Exception{
+		
+		if(email == null) {
+			return false;
+		}
+		
+		CandidatoDAO dao = new CandidatoDAO();
+		boolean isValidado = dao.getByLogin(email,senha);
+		
+		dao.fechar();
+		
+		return isValidado;
+	}
+	
 	public static List<Candidato> mostraCandidato() throws Exception{
 			
 		CandidatoDAO dao = new CandidatoDAO();

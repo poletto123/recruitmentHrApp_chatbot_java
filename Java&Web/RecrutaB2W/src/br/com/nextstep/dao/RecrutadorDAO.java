@@ -68,7 +68,7 @@ public class RecrutadorDAO implements PadraoDAO<Recrutador> {
 			
 			return new Recrutador(
 					
-					rs.getInt("NR_ID"),
+					rs.getInt("CD_RECRUTADOR"),
 					rs.getString("NM_RECRUTADOR"),
 					rs.getString("DS_EMAIL"),
 					rs.getString("NM_SENHA")
@@ -92,7 +92,7 @@ public class RecrutadorDAO implements PadraoDAO<Recrutador> {
 			
 			Recrutador usuario = new Recrutador(
 					
-					rs.getInt("NR_ID"),
+					rs.getInt("CD_RECRUTADOR"),
 					rs.getString("NM_RECRUTADOR"),
 					rs.getString("DS_EMAIL"),
 					rs.getString("NM_SENHA")
@@ -104,6 +104,18 @@ public class RecrutadorDAO implements PadraoDAO<Recrutador> {
 		}
 		
 		return listaUsuarios;
+	}
+	
+	public boolean getByLogin(String email, String senha) throws Exception{
+		
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_RECRUTADOR WHERE DS_EMAIL='" + email +  "' AND NM_SENHA='"+ senha +"'");
+	
+		rs = stmt.executeQuery();
+		
+		if(rs.next()) {
+			return true;					
+		}
+		return false;
 	}
 	
 	

@@ -24,7 +24,7 @@
     <div class="general">
         <div class="login">
             <h2>Login de Acesso</h2>
-            <form action="login">
+            <form action="login" method="post">
                 <div class="field">
                     <label for="idmail">E-mail:*</label>
                     <input type="text" name="cpmail" id="IDMAIL" placeholder="Digite seu e-mail" required="required">
@@ -33,11 +33,15 @@
                 <div class="field">
                     <label for="idpass">Senha:*</label>
                     <div class="input-password">
-                        <input type="password" id="pass" placeholder="Digite sua senha">
+                        <input type="password" name="cppass" id="pass" placeholder="Digite sua senha">
                         <img src="./img/olho.webp" id="olho" class="olho">
                     </div>
                 </div>
-
+                
+                 <div class="field">
+                 	<p>${msgErro}</p>
+                 </div>
+                
                 <div class="acessar">
                     <input type="submit" value="Acessar" class="btn-acessar">
                 </div>

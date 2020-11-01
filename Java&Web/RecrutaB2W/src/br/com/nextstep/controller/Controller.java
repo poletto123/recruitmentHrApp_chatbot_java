@@ -19,7 +19,9 @@ import com.ibm.watson.assistant.v2.model.MessageResponse;
 import com.ibm.watson.assistant.v2.model.SessionResponse;
 
 import br.com.nextstep.beans.Candidato;
+import br.com.nextstep.beans.Recrutador;
 import br.com.nextstep.bo.CandidatoBO;
+import br.com.nextstep.bo.RecrutadorBO;
 
 /**
  * Servlet implementation class Controller
@@ -128,13 +130,38 @@ public class Controller extends HttpServlet {
 		}
 	}
 
-	private void realizaLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		 if (request.getParameter("cpmail").equals("candidato")) {
-			 request.getRequestDispatcher("./WEB-INF/candidato_index.jsp").forward(request,response);
-		 } else if (request.getParameter("cpmail").equals("recrutador")) {
-			 request.getRequestDispatcher("./WEB-INF/recrutador_index.jsp").forward(request,response);
+	private void realizaLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, Exception {
+		
+		
+		String email = request.getParameter("cpmail");
+		String senha = request.getParameter("cppass");
+		
+		 if (email.substring(0,3).equals("rc_")) {
+			 
+			 if(RecrutadorBO.mostraLogin(email, senha)) {
+				 request.getRequestDispatcher("./WEB-INF/recrutador_index.jsp").forward(request,response);	 
+			 }
+			 
+			 else {
+				 request.setAttribute("msgErro", "Login inválido!");
+				 request.getRequestDispatcher("./login.jsp").forward(request, response);
+			 }
+	        
+
+		 } 
+		 
+		 else {
+			 if(CandidatoBO.mostraLogin(email, senha)) {
+				 request.getRequestDispatcher("./WEB-INF/candidato_index.jsp").forward(request,response);	 
+			 }
+			 
+			 else {
+				 request.setAttribute("msgErro", "Login inválido!");
+				 request.getRequestDispatcher("./login.jsp").forward(request, response);
+			 }
 		 }
 		
+		 
 	}
 
 	private void mostraRanking(HttpServletRequest request, HttpServletResponse response, String path) throws Exception {

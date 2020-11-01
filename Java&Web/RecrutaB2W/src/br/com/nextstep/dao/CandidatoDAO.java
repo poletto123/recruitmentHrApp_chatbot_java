@@ -148,7 +148,21 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		
 		return new Candidato();
 	}
-
+	
+	public boolean getByLogin(String email, String senha) throws Exception{
+		
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO WHERE DS_EMAIL='" + email +  "' AND NM_SENHA='"+ senha +"'");
+	
+		rs = stmt.executeQuery();
+		
+		if(rs.next()) {
+			return true;					
+		}
+		return false;
+	}
+	
+	
+	
 	@Override
 	public List<Candidato> getAll() throws Exception {
 
