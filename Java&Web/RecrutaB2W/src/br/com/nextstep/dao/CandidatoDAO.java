@@ -14,25 +14,82 @@ import br.com.nextstep.beans.Vaga;
 import br.com.nextstep.conexao.ConectaBanco;
 import br.com.nextstep.util.PadraoDAO;
 
+/**
+ * Nesta classe, por meio do Design Pattern Data Access Object, manipularemos a tabela T_RBW_CANDIDATO, a classe principal deste sistema, a qual possui CD_CANDIDATO como chave primária.
+ * Todos os candidatos serão armazenados nesta tabela, e ela também faz referência com todas as demais tabelas dos sistema
+ * por meio de chave estrangeira.<br>
+ * Chaves Estrangeiras:<br>
+ * NR_VAGA<br>
+ * CD_AUDIO_VIDEO<br>
+ * CD_CHATBOT<br>
+ * CD_RECRUTADOR<br>
+ * 
+ * Estas FKs foram criadas passíveis de receber valores nulos, tendo em vista que elas somente serão manipuladas no momento
+ * em que o Candidato realizar o respectivo teste.
+ * 
+ * Criamos três atributos para armazenar os componentes do JDBC.
+ * 
+ * @author Rogerio Pizzo dos Santos
+ * @author William Butler Poletto
+ * @author Eduardo Vinícius Benigno da Costa
+ * @version 1.0
+ * @see br.com.nextstep.beans.Candidato
+ * @see br.com.nextstep.bo.CandidatoBO
+ * @see br.com.nextstep.util.PadraoDAO
+ */
+
 public class CandidatoDAO implements PadraoDAO<Candidato> {
 
 	private Connection con;
 	private PreparedStatement stmt;
 	private ResultSet rs;
 	
+	/**
+	 * O método construtor atua estabelecendo uma conexão com o  Banco de Dados
+	 * @author Eduardo Vinícius Benigno da Costa
+	 * @throws Exception
+	 */
+	
 	public CandidatoDAO() throws Exception{
 		con = ConectaBanco.conectar();
 	}
+	
+	/**
+	 * Este método efetua o desligamento de conexão com o Banco de Dados.
+	 * @author Eduardo Vinícius Benigno da Costa
+	 * @see br.com.nextstep.util.PadraoDAO
+	 * @since 1.0
+	 * @throws Exception
+	 */
 	
 	@Override
 	public void fechar() throws Exception{
 		con.close();
 	}
 	
+	/**
+	 * Método para inserir uma linha na tabela T_RBW_CANDIDATO.<br>
+	 * A coluna CD_CANDIDATO é a chave primária e está sendo inserida através de uma SEQUENCE.<br>
+	 * As colunas CD_AUDIO_VIDEO, CD_CHATBOT, CD_RECRUTADOR e NR_VAGA são opcionais pois só serão preenchidas quando o Candidato realizar estas atividade.<br>
+	 * A quantidade máxima de caracteres das colunas VARCHAR são:<br>
+	 * NR_CPF = 11<br>
+	 * NM_CANDIDATO = 100<br>
+	 * DS_EMAIL = 100<br>
+	 * NM_SENHA = 16<br>
+	 * @param objeto Este objeto deve conter todas as informações do Candidato.
+	 * @return Retorna a quantidade de linhas modificadas
+	 * @author Rogerio Pizzo dos Santos
+	 * @see br.com.nextstep.util.PadraoDAO
+	 * @see br.com.nextstep.beans.Candidato
+	 * @see br.com.nextstep.bo.CandidatoBO
+	 * @since 1.0
+	 * @throws Exception
+	 */
+	
 	@Override
 	public int add(Candidato objeto) throws Exception{
 
-		stmt = con.prepareStatement("INSERT INTO T_RBW_CANDIDATO (NR_CPF, DT_NASCIMENTO, NR_MEDALHA, NM_CANDIDATO, NM_SENHA, DS_EMAIL) VALUES(?, TO_DATE(?,'YYYY-MM-DD'), ?, ?, ?, ?)");
+		stmt = con.prepareStatement("INSERT INTO T_RBW_CANDIDATO (CD_CANDIDATO, NR_CPF, DT_NASCIMENTO, NR_MEDALHA, NM_CANDIDATO, NM_SENHA, DS_EMAIL) VALUES(SQ_RBW_CANDIDATO.NEXTVAL, ?, TO_DATE(?,'YYYY-MM-DD'), ?, ?, ?, ?)");
 		
 		stmt.setString(1, objeto.getCpf());
 		stmt.setString(2, objeto.getDataNascimento());
@@ -44,6 +101,19 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		return stmt.executeUpdate();
 	}
 	
+	/**
+	 * Método para deletar uma linha na tabela T_RBW_CANDIDATO.<br>
+	 * A linha que será deletada deve ser indicada pelo seu ID. 
+	 * @param id ID da linha do Banco de Dados que será removida.
+	 * @return Retorna a quantidade de linhas modificadas
+	 * @author William Butler Poletto
+	 * @see br.com.nextstep.util.PadraoDAO
+	 * @see br.com.nextstep.beans.Candidato
+	 * @see br.com.nextstep.bo.CandidatoBO
+	 * @since 1.0
+	 * @throws Exception
+	 */
+	
 	@Override
 	public int deleteById(int id) throws Exception{
 		
@@ -54,6 +124,19 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		
 	}
 	
+	/**
+	 * Método para atualizar uma linha na tabela T_RBW_CANDIDATO.<br>
+	 * Este método tem como função alterar o email de um Candidato já existente.
+	 * @param id ID da linha do Banco de Dados que será alterada.
+	 * @param objeto Este objeto deve conter o novo email do Candidato.
+	 * @return Retorna a quantidade de linhas modificadas
+	 * @author Rogerio Pizzo dos Santos
+	 * @see br.com.nextstep.beans.Candidato
+	 * @see br.com.nextstep.bo.CandidatoBO
+	 * @since 1.0
+	 * @throws Exception
+	 */
+	
 	public int modifyEmail(int id, String email) throws Exception {
 		stmt = con.prepareStatement("UPDATE T_RBW_CANDIDATO SET DS_EMAIL=? WHERE CD_CANDIDATO=?");
 		stmt.setString(1, email);
@@ -61,6 +144,19 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		
 		return stmt.executeUpdate();
 	}
+	
+	/**
+	 * Método para atualizar uma linha na tabela T_RBW_CANDIDATO.<br>
+	 * Este método tem como função inserir no Candidato um código de Chatbot, o qual é feito após o Candidato realizar esta atividade.
+	 * @param cpf Indica qual linha do Banco de Dados que será alterada.
+	 * @param objeto Este objeto deve conter os dados do Chatbot realizado pelo Candidato.
+	 * @return Retorna a quantidade de linhas modificadas
+	 * @author William Butler Poletto
+	 * @see br.com.nextstep.beans.Candidato
+	 * @see br.com.nextstep.bo.CandidatoBO
+	 * @since 1.0
+	 * @throws Exception
+	 */
 	
 	public int modifyChatbot(int cpf, Chatbot objeto) throws Exception {
 		stmt = con.prepareStatement("UPDATE T_RBW_CANDIDATO SET CD_CHATBOT=? WHERE NR_CPF=?");
@@ -70,6 +166,19 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		return stmt.executeUpdate();
 	}
 	
+	/**
+	 * Método para atualizar uma linha na tabela T_RBW_CANDIDATO.<br>
+	 * Este método tem como função inserir no Candidato um código de AudioVideo, o qual é feito após o Candidato realizar esta atividade.
+	 * @param cpf Indica qual linha do Banco de Dados que será alterada.
+	 * @param objeto Este objeto deve conter a URL do áudio ou vídeo realizado pelo Candidato.
+	 * @return Retorna a quantidade de linhas modificadas
+	 * @author William Butler Poletto
+	 * @see br.com.nextstep.beans.Candidato
+	 * @see br.com.nextstep.bo.CandidatoBO
+	 * @since 1.0
+	 * @throws Exception
+	 */
+	
 	public int modifyAudioVideo(int cpf, AudioVideo objeto) throws Exception {
 		stmt = con.prepareStatement("UPDATE T_RBW_CANDIDATO SET CD_AUDIO_VIDEO=? WHERE NR_CPF=?");
 		stmt.setInt(1, objeto.getId());
@@ -77,6 +186,19 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		
 		return stmt.executeUpdate();
 	}
+	
+	/**
+	 * Método para buscar uma linha na tabela T_RBW_CANDIDATO.<br>
+	 * Este método tem como função buscar e mostrar um Candidato já existente.
+	 * @param id ID da linha do Banco de Dados que será pesquisada.
+	 * @return Retorna um objeto Candidato preenchido com suas respectivas informações.
+	 * @author Eduardo Vinícius Benigno da Costa
+	 * @see br.com.nextstep.util.PadraoDAO
+	 * @see br.com.nextstep.beans.Candidato
+	 * @see br.com.nextstep.bo.CandidatoBO
+	 * @since 1.0
+	 * @throws Exception
+	 */
 	
 	@Override
 	public Candidato getById(int id) throws Exception{
@@ -148,6 +270,17 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		
 		return new Candidato();
 	}
+<<<<<<< HEAD
+
+/**
+ * Método para buscar um Candidato na tabela T_RBW_CANDIDATO, com base no seu Email e Senha
+ * @param email Email do Candidato
+ * @param senha Senha do Candidato
+ * @return Retorna verdadeiro caso este login exista, e falso se não existir
+ * @throws Exception
+ */
+=======
+>>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
 	
 	public boolean getByLogin(String email, String senha) throws Exception{
 		
@@ -160,8 +293,23 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		}
 		return false;
 	}
+<<<<<<< HEAD
+
+	/**
+	 * Método para buscar todas as linhas na tabela T_RBW_CANDIDATO.<br>
+	 * Este método tem como função buscar e mostrar todos os candidatos existentes. 
+	 * @return Retorna uma lista de objetos Candidato com todas as informações presentes no Banco de Dados.
+	 * @author Eduardo Vinícius Benigno da Costa
+	 * @see br.com.nextstep.util.PadraoDAO
+	 * @see br.com.nextstep.beans.Candidato
+	 * @see br.com.nextstep.bo.CandidatoBO
+	 * @since 1.0
+	 * @throws Exception
+	 */
+=======
 	
 	
+>>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
 	
 	@Override
 	public List<Candidato> getAll() throws Exception {
