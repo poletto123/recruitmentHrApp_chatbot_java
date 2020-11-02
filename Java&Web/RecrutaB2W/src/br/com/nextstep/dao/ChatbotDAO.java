@@ -76,13 +76,14 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 		Gson gson = new Gson();
 
 		if(rs.next()) {
-			return new Chatbot(
-				rs.getInt("CD_CHATBOT"),
-				gson.fromJson
-				(rs.getString("DS_RESPOSTA"),
-				Map.class));
+		
+			int cd_chatbot = rs.getInt("CD_CHATBOT");
+			Map<String, String> respostas
+				= gson.fromJson(rs.getString("DS_RESPOSTA"), Map.class);
 
+			return new Chatbot(cd_chatbot, respostas);
 		}
+		
 		
 		return new Chatbot();
 	}

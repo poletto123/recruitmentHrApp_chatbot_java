@@ -56,7 +56,7 @@ public class Controller extends HttpServlet {
 					paginacao(request, response);
 					break;
 				case "/RecrutaB2W/chat":
-					chat(request,response);
+					realizaChatbot(request,response);
 					break;
 				default:
 					response.sendRedirect("index.jsp");
@@ -68,18 +68,34 @@ public class Controller extends HttpServlet {
 			
 	
 	}
+	
+	private void paginacao(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		if (request.getParameter("pag").equals("candidato_ranking.jsp")) {
+			mostraRanking(request, response, "candidato_ranking.jsp");
+		} else if (request.getParameter("pag").equals("recrutador_ranking.jsp")) {
+			mostraRanking(request, response, "recrutador_ranking.jsp");
+		} else if (request.getParameter("pag").equals("candidato_chatbot.jsp")) {
+			// parâmetro pergunta foi mandado vazio aqui para que o nó inicial de bem-vindo seja mostrado ao clicar na aba Chatbot, caso contrário ele não seria mostrado
+			response.sendRedirect("chat?resposta=");	
+		} else if (request.getParameter("pag").equals("recrutador_chatbot.jsp")) {
+			mostraChatbot(request, response);	
+		} else {
+		request.getRequestDispatcher("./WEB-INF/" + request.getParameter("pag")).forward(request, response);		
+		}
+	}
 
-	private void chat(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	private void realizaChatbot(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		// Resposta do candidato
 		String resposta = request.getParameter("resposta");
 		// Pergunta do chatbot
-		String pergunta = conversationAPI(resposta);
+		String pergunta = recebeWatson(resposta);
 		request.setAttribute("pergunta", pergunta);
 		request.getRequestDispatcher("./WEB-INF/candidato_chatbot.jsp").forward(request, response);
 	}
 	
-	private String conversationAPI(String resposta) throws Exception {
+	private String recebeWatson(String resposta) throws Exception {
 		
 		ctx = getServletContext();
 
@@ -147,18 +163,20 @@ public class Controller extends HttpServlet {
 		
 	}
 	
-	private void paginacao(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+
+	private void mostraChatbot(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		// o objeto chatbot já está na memória, na verdade
+		// não precisaria buscar no banco de dados, mas
+		// estou forçando a busca pois vamos precisar buscar ele
+		// no momento de criar a sessão. Isto é temporário
 		
-		if (request.getParameter("pag").equals("candidato_ranking.jsp")) {
-			mostraRanking(request, response, "candidato_ranking.jsp");
-		} else if (request.getParameter("pag").equals("recrutador_ranking.jsp")) {
-			mostraRanking(request, response, "recrutador_ranking.jsp");
-		} else if (request.getParameter("pag").equals("candidato_chatbot.jsp")) {
-			// parâmetro pergunta foi mandado vazio aqui para que o nó inicial de bem-vindo seja mostrado ao clicar na aba Chatbot, caso contrário ele não seria mostrado
-			response.sendRedirect("chat?resposta=");	
-		} else {
-		request.getRequestDispatcher("./WEB-INF/" + request.getParameter("pag")).forward(request, response);		
-		}
+		Chatbot chatbotDoBancoDeDados = ChatbotBO.pesquisarChatbot(3);
+		
+		request.setAttribute("chatbot", chatbotDoBancoDeDados);
+		request.getRequestDispatcher("./WEB-INF/recrutador_chatbot.jsp").forward(request,response);
+		
 	}
 
 	private void realizaLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, Exception {

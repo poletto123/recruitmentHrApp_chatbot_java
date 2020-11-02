@@ -16,6 +16,11 @@
 					<a href="paginacao?pag=recrutador_ranking.jsp">Ranking</a>
 				</h1>
 			</li>
+			<li>
+				<h1>
+					<a href="paginacao?pag=recrutador_chatbot.jsp">Chatbot</a>
+				</h1>
+			</li>
 		</ul>
 	</nav>
 	<div class="logcontrol">

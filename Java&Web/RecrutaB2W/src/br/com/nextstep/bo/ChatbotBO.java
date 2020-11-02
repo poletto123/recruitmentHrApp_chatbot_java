@@ -25,11 +25,11 @@ public class ChatbotBO {
 		}
 		
 		ChatbotDAO dao = new ChatbotDAO();
-		Chatbot resposta = dao.getById(id);
+		Chatbot chatbot = dao.getById(id);
 		
 		dao.fechar();
 		
-		return resposta;
+		return chatbot;
 	}
 	
 	public static int atualizaChatbot(int id, Chatbot chat)throws Exception{
