@@ -46,7 +46,7 @@ public class Controller extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
 			
@@ -55,9 +55,6 @@ public class Controller extends HttpServlet {
 				case "/RecrutaB2W/login":
 					realizaLogin(request, response);
 					break;
-				case "/RecrutaB2W/logout":
-					logout(request, response);
-					break;
 				case "/RecrutaB2W/paginacao":
 					paginacao(request, response);
 					break;
@@ -65,6 +62,7 @@ public class Controller extends HttpServlet {
 					realizaChatbot(request,response);
 					break;
 				case "/RecrutaB2W/audioVideo":
+					System.out.println("Passo audioVideo");
 					enviaAudioVideo(request, response);
 					break;
 				default:
@@ -78,24 +76,23 @@ public class Controller extends HttpServlet {
 	
 	}
 	
-	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {		
-		HttpSession session = request.getSession();
-		System.out.println(session.getId());// PARA TESTES, AQUI DEVE APARECER O ID DA SESSÃO
-		session.invalidate();
-		session = request.getSession(false);
-			
-		response.sendRedirect("./login.jsp");
-	}
-
-	private void enviaAudioVideo(HttpServletRequest request, HttpServletResponse response) {
-//		AudioVideo av = new AudioVideo();
-//		
-//		if(AudioVideoBO.novoAudioVideo(av)) {
-//			
-//		}else {
-//			 request.setAttribute("msgErro", "Login inválido!");
-//			 request.getRequestDispatcher("./WEB-INF/candidato_video.jsp").forward(request, response);
-//		}
+	private void enviaAudioVideo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		AudioVideo av = new AudioVideo();
+		String path = request.getParameter("myFile");
+		av.setPathVideo(path);
+		
+		AudioVideoBO.novoAudioVideo(av);
+		
+		/*
+		 * if(AudioVideoBO.novoAudioVideo(av) == "Cadastrado") {
+		 * System.out.println("Salve Salve");
+		 * request.getRequestDispatcher("./WEB-INF/candidato_index.jsp").forward(
+		 * request, response); }else { request.setAttribute("msgErro",
+		 * "Login inválido!");
+		 * request.getRequestDispatcher("./WEB-INF/candidato_video.jsp").forward(
+		 * request, response); }
+		 */
 	}
 
 	private void paginacao(HttpServletRequest request, HttpServletResponse response) throws Exception {
