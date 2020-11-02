@@ -1,0 +1,8 @@
+Funcionalidades implementadas:
+
+CHATBOT - O Chatbot foi implementado para substituir o papel do Recrutador em relação às perguntas básicas e comuns para todos 
+os candidatos.
+ 
+ENVIO DE AUDIO E VIDEO - Para um melhor conhecimento do Candidato, implementamos um sistema de envio de áudio e vídeo para um
+breve pitch de apresentação do mesmo. Fizemos um sistema de "drag and drop", no qual fará a URL do arquivo ser registrada no
+Banco de Dados, caso esteja de acordo com as normas estabelecidas (a URL não pode exceder 200 caracteres)
