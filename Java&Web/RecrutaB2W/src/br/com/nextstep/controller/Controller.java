@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ibm.cloud.sdk.core.security.IamAuthenticator;
 import com.ibm.watson.assistant.v2.Assistant;
@@ -29,7 +30,7 @@ import br.com.nextstep.bo.RecrutadorBO;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/ranking", "/login", "/paginacao", "/chat", "/audioVideo"})
+@WebServlet(urlPatterns = {"/ranking", "/login","/logout", "/paginacao", "/chat", "/audioVideo"})
 public class Controller extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -54,6 +55,9 @@ public class Controller extends HttpServlet {
 				case "/RecrutaB2W/login":
 					realizaLogin(request, response);
 					break;
+				case "/RecrutaB2W/logout":
+					logout(request, response);
+					break;
 				case "/RecrutaB2W/paginacao":
 					paginacao(request, response);
 					break;
@@ -74,6 +78,15 @@ public class Controller extends HttpServlet {
 	
 	}
 	
+	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {		
+		HttpSession session = request.getSession();
+		System.out.println(session.getId());// PARA TESTES, AQUI DEVE APARECER O ID DA SESS�O
+		session.invalidate();
+		session = request.getSession(false);
+			
+		response.sendRedirect("./login.jsp");
+	}
+
 	private void enviaAudioVideo(HttpServletRequest request, HttpServletResponse response) {
 //		AudioVideo av = new AudioVideo();
 //		
@@ -92,7 +105,7 @@ public class Controller extends HttpServlet {
 		} else if (request.getParameter("pag").equals("recrutador_ranking.jsp")) {
 			mostraCandidatos(request, response, "recrutador_ranking.jsp");
 		} else if (request.getParameter("pag").equals("recrutador_candidatos.jsp")) {
-			mostraCandidatos(request, response, "recrutador.candidatos.jsp");
+			mostraCandidatos(request, response, "recrutador_candidatos.jsp");
 		} else if (request.getParameter("pag").equals("candidato_chatbot.jsp")) {
 			// parâmetro pergunta foi mandado vazio aqui para que o nó inicial de bem-vindo seja mostrado ao clicar na aba Chatbot, caso contrário ele não seria mostrado
 			response.sendRedirect("chat?resposta=");	
@@ -206,8 +219,14 @@ public class Controller extends HttpServlet {
 		
 		 if (email.substring(0,3).equals("rc_")) {
 			 
-			 if(RecrutadorBO.mostraLogin(email, senha)) {
-				 request.getRequestDispatcher("./WEB-INF/recrutador_index.jsp").forward(request,response);	 
+			 if(RecrutadorBO.mostraLogin(email, senha).getId() != 0) {
+				 
+				HttpSession session = request.getSession();
+				
+				session.setAttribute("recrutador", RecrutadorBO.mostraLogin(email, senha));
+				session.setMaxInactiveInterval(3600);
+				 
+				request.getRequestDispatcher("./WEB-INF/recrutador_index.jsp").forward(request,response);	 
 			 }
 			 
 			 else {
@@ -219,7 +238,14 @@ public class Controller extends HttpServlet {
 		 } 
 		 
 		 else {
-			 if(CandidatoBO.mostraLogin(email, senha)) {
+			 if(CandidatoBO.mostraLogin(email, senha).getId() != 0) {
+				 
+				HttpSession session = request.getSession();
+				
+				session.setAttribute("candidato", CandidatoBO.mostraLogin(email, senha));
+
+				session.setMaxInactiveInterval(3600);
+				 
 				 request.getRequestDispatcher("./WEB-INF/candidato_index.jsp").forward(request,response);	 
 			 }
 			 

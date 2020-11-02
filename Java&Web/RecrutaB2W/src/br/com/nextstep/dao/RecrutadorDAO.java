@@ -174,16 +174,24 @@ public class RecrutadorDAO implements PadraoDAO<Recrutador> {
 	 * @throws Exception
 	 */
 	
-	public boolean getByLogin(String email, String senha) throws Exception{
+	public Recrutador getByLogin(String email, String senha) throws Exception{
 		
 		stmt = con.prepareStatement("SELECT * FROM T_RBW_RECRUTADOR WHERE DS_EMAIL='" + email +  "' AND NM_SENHA='"+ senha +"'");
 	
 		rs = stmt.executeQuery();
 		
 		if(rs.next()) {
-			return true;					
+			return new Recrutador(
+					
+					rs.getInt("CD_RECRUTADOR"),
+					rs.getString("NM_RECRUTADOR"),
+					rs.getString("DS_EMAIL"),
+					rs.getString("NM_SENHA")
+	
+					);
+					
 		}
-		return false;
+		return new Recrutador();
 	}
 	
 	/**

@@ -14,7 +14,7 @@
           <h1><a href="paginacao?pag=candidato_ranking.jsp">Ranking</a></h1>
         </li>
         <li>
-          <h1><a href="login.jsp">Log Out</a></h1>
+          <h1><a href="login.jsp" action="logout">Log Out</a></h1>
         </li>
       </ul>
     </nav>

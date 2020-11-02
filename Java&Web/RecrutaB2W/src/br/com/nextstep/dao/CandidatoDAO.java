@@ -278,16 +278,34 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
  * @throws Exception
  */
 	
-	public boolean getByLogin(String email, String senha) throws Exception{
+	public Candidato getByLogin(String email, String senha) throws Exception{
 		
 		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO WHERE DS_EMAIL='" + email +  "' AND NM_SENHA='"+ senha +"'");
 	
 		rs = stmt.executeQuery();
 		
 		if(rs.next()) {
-			return true;					
+			return new Candidato(
+					
+					rs.getInt("CD_CANDIDATO"),
+					rs.getString("NM_CANDIDATO"),
+					rs.getString("DS_EMAIL"),
+					rs.getString("DT_NASCIMENTO"),
+					new Vaga(
+							rs.getInt("NR_VAGA"),
+							rs.getString("NM_VAGA"),
+							rs.getString("DS_VAGA"),
+							rs.getDouble("VL_SALARIO")
+							),
+					rs.getInt("NR_MEDALHA"),
+				    rs.getString("NR_CPF"),
+					new Recrutador(
+							rs.getInt("CD_RECRUTADOR"),
+							rs.getString("NM_RECRUTADOR"),
+							rs.getString("DS_EMAIL")
+					));					
 		}
-		return false;
+		return new Candidato();
 	}
 
 	/**

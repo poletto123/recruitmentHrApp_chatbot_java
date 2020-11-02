@@ -76,18 +76,18 @@ public class CandidatoBO {
 	 * @throws Exception
 	 */
 
-	public static boolean mostraLogin(String email,String senha) throws Exception{
+	public static Candidato mostraLogin(String email,String senha) throws Exception{
 		
 		if(email == null) {
-			return false;
+			return new Candidato();
 		}
 		
 		CandidatoDAO dao = new CandidatoDAO();
-		boolean isValidado = dao.getByLogin(email,senha);
+		Candidato candidato = dao.getByLogin(email,senha);
 		
 		dao.fechar();
 		
-		return isValidado;
+		return candidato;
 	}
 	
 	/**

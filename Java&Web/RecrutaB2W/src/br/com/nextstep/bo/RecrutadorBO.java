@@ -99,18 +99,18 @@ public class RecrutadorBO {
 	 * @throws Exception
 	 */
 
-	public static boolean mostraLogin(String email,String senha) throws Exception{
+	public static Recrutador mostraLogin(String email,String senha) throws Exception{
 		
 		if(email == null) {
-			return false;
+			return new Recrutador();
 		}
 		
 		RecrutadorDAO dao = new RecrutadorDAO();
-		boolean isValidado = dao.getByLogin(email,senha);
+		Recrutador recrutador = dao.getByLogin(email,senha);
 		
 		dao.fechar();
 		
-		return isValidado;
+		return recrutador;
 	}
 	
 	/**
