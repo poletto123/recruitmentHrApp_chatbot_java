@@ -111,7 +111,6 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 		
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Método para atualizar uma linha na tabela T_RBW_CHATBOT.<br>
 	 * Este método tem como função alterar o conteúdo de uma conversa já existente.
@@ -124,9 +123,7 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 	 * @since 1.0
 	 * @throws Exception
 	 */
-	
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
+
 	public int modifyConversa(Chatbot chatbot, int numero) throws Exception {
 		
 		Gson gson = new Gson();
@@ -138,8 +135,7 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 		
 		return stmt.executeUpdate();
 	}
-	
-<<<<<<< HEAD
+
 	/**
 	 * Método para buscar uma linha na tabela T_RBW_CHATBOT.<br>
 	 * Este método tem como função buscar e mostrar uma conversa de determinado Candidato com o Chatbot, sendo acessado 
@@ -153,9 +149,7 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 	 * @since 1.0
 	 * @throws Exception
 	 */
-	
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public Chatbot getById(int id) throws Exception{

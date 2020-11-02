@@ -185,6 +185,7 @@ public class RecrutadorDAO implements PadraoDAO<Recrutador> {
 		}
 		return false;
 	}
+	
 	/**
 	 * Método para buscar todas as linhas na tabela T_RBW_RECRUTADOR.<br>
 	 * Este método tem como função buscar e retornar uma lista de recrutadores existentes no Banco de Dados.
@@ -222,19 +223,5 @@ public class RecrutadorDAO implements PadraoDAO<Recrutador> {
 		}
 		
 		return listaUsuarios;
-	}
-	
-	public boolean getByLogin(String email, String senha) throws Exception{
-		
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_RECRUTADOR WHERE DS_EMAIL='" + email +  "' AND NM_SENHA='"+ senha +"'");
-	
-		rs = stmt.executeQuery();
-		
-		if(rs.next()) {
-			return true;					
-		}
-		return false;
-	}
-	
-	
+	}	
 }

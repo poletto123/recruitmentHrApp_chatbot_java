@@ -14,7 +14,6 @@ import br.com.nextstep.dao.ChatbotDAO;
 
 public class ChatbotBO {
 
-<<<<<<< HEAD
 	/**
 	 * Este método irá verificar se os dados que foram inseridos para o Chatbot são válidos de acordo com o estabelecido 
 	 * no Banco de Dados, e irá inserir um Chatbot, onde:<br>
@@ -27,8 +26,6 @@ public class ChatbotBO {
 	 * @throws Exception
 	 */
 	
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
 	public static int novoChatbot(Chatbot chat) throws Exception{
 
 		if(chat.getRespostas() == null) {
@@ -67,7 +64,6 @@ public class ChatbotBO {
 		return chatbot;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Este método irá verificar se o ID que foi inserido para o Chatbot é válido de acordo com o estabelecido 
 	 * no Banco de Dados, e atualizará um Chatbot.
@@ -80,8 +76,6 @@ public class ChatbotBO {
 	 * @throws Exception
 	 */
 	
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
 	public static int atualizaChatbot(int id, Chatbot chat)throws Exception{
 		if(id < 1) {
 			return 0;

@@ -270,8 +270,6 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		
 		return new Candidato();
 	}
-<<<<<<< HEAD
-
 /**
  * Método para buscar um Candidato na tabela T_RBW_CANDIDATO, com base no seu Email e Senha
  * @param email Email do Candidato
@@ -279,8 +277,6 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
  * @return Retorna verdadeiro caso este login exista, e falso se não existir
  * @throws Exception
  */
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
 	
 	public boolean getByLogin(String email, String senha) throws Exception{
 		
@@ -293,7 +289,6 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 		}
 		return false;
 	}
-<<<<<<< HEAD
 
 	/**
 	 * Método para buscar todas as linhas na tabela T_RBW_CANDIDATO.<br>
@@ -306,10 +301,6 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	 * @since 1.0
 	 * @throws Exception
 	 */
-=======
-	
-	
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
 	
 	@Override
 	public List<Candidato> getAll() throws Exception {

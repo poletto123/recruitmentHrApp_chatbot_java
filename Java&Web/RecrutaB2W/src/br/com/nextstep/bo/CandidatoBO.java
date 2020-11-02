@@ -65,7 +65,6 @@ public class CandidatoBO {
 		return candidato;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Este método irá verificar se o email e senha que foram inseridos para o Candidato são válidos de acordo com o estabelecido 
 	 * no Banco de Dados, e pesquisará uma Candidato.
@@ -76,9 +75,7 @@ public class CandidatoBO {
 	 * @author Eduardo Vinícius Benigno da Costa
 	 * @throws Exception
 	 */
-	
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
+
 	public static boolean mostraLogin(String email,String senha) throws Exception{
 		
 		if(email == null) {
@@ -93,7 +90,6 @@ public class CandidatoBO {
 		return isValidado;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Este método irá verificar se o ID que foi inserido para o Candidato é válido de acordo com o estabelecido 
 	 * no Banco de Dados, e pesquisará uma lista de Candidatos.
@@ -103,9 +99,7 @@ public class CandidatoBO {
 	 * @author Eduardo Vinícius Benigno da Costa
 	 * @throws Exception
 	 */
-	
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
+
 	public static List<Candidato> mostraCandidato() throws Exception{
 			
 		CandidatoDAO dao = new CandidatoDAO();

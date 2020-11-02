@@ -3,10 +3,8 @@ package br.com.nextstep.bo;
 import java.util.List;
 
 import br.com.nextstep.beans.Recrutador;
-import br.com.nextstep.dao.CandidatoDAO;
 import br.com.nextstep.dao.RecrutadorDAO;
 
-<<<<<<< HEAD
 /**
  * Esta classe é responsável por conter as regras de negócio de tudo aquilo que diz respeito ao Recrutador.
  * É ela que possui os métodos que se comunicam com o Front-End e também com o DAO, para que estes não interajam diretamente.<br>
@@ -28,11 +26,7 @@ public class RecrutadorBO {
  	 * @author Guilherme Rodriguero de Souza
 	 * @throws Exception
 	 */
-	
-=======
-public class RecrutadorBO {
 
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
 	public static String apagarRecrutador(int id) throws Exception{
 		if(id < 1) {
 			return "ID inválido";
@@ -48,7 +42,6 @@ public class RecrutadorBO {
 	
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Este método irá verificar se o ID que foi inserido para o Recrutador é válido de acordo com o estabelecido 
 	 * no Banco de Dados, e pesquisará um Recrutador.
@@ -59,9 +52,7 @@ public class RecrutadorBO {
  	 * @author Guilherme Rodriguero de Souza
 	 * @throws Exception
 	 */
-	
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
+
 	public static Recrutador mostraRecrutador(int id) throws Exception{
 		if(id < 1) {
 			return new Recrutador();
@@ -75,7 +66,6 @@ public class RecrutadorBO {
 		return recrutador;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Este método irá pesquisar uma lista de  Recrutadores.
 	 * @return Retorna uma lista de Recrutadores totalmente preenchido.
@@ -84,9 +74,7 @@ public class RecrutadorBO {
  	 * @author Guilherme Rodriguero de Souza
 	 * @throws Exception
 	 */
-	
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
+
 	public static List<Recrutador> mostraRecrutador() throws Exception{
 			
 		RecrutadorDAO dao = new RecrutadorDAO();
@@ -100,7 +88,6 @@ public class RecrutadorBO {
 		
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Este método irá verificar se o email e senha que foram inseridos para o Recrutador são válidos de acordo com o estabelecido 
 	 * no Banco de Dados, e pesquisará uma Recrutador.
@@ -111,9 +98,7 @@ public class RecrutadorBO {
 	 * @author Eduardo Vinícius Benigno da Costa
 	 * @throws Exception
 	 */
-	
-=======
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
+
 	public static boolean mostraLogin(String email,String senha) throws Exception{
 		
 		if(email == null) {
@@ -128,7 +113,6 @@ public class RecrutadorBO {
 		return isValidado;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Este método irá verificar se o email e a senha que foram inseridos para o Recrutador são válidos de acordo com o estabelecido 
 	 * no Banco de Dados, e atualizará um Recrutador.
@@ -142,10 +126,7 @@ public class RecrutadorBO {
 	 */
 	
 	public static String atualizaSenha(String email, String senha, Recrutador recrutador) throws Exception{
-=======
-	public static String atualizaEmail(String email, String senha, Recrutador recrutador) throws Exception{
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
-		
+
 		if(recrutador.getEmail() == null) {
 			return "Email nulo";
 		}
@@ -156,20 +137,12 @@ public class RecrutadorBO {
 				
 		RecrutadorDAO dao = new RecrutadorDAO();
 
-<<<<<<< HEAD
 		dao.modifySenha(recrutador.getEmail(),recrutador.getSenha());
 		
-		return "Senha atualizada";
-=======
-		dao.modifyEmail(recrutador.getEmail(),recrutador.getSenha());
-		
 		return "Email atualizado";
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
-	
 				
 	}
-	
-<<<<<<< HEAD
+
 	/**
 	 * Este método irá verificar se os dados que foram inseridos para o Recrutador são válidos de acordo com o estabelecido 
 	 * no Banco de Dados, e cadastrará um Recrutador, onde:<br>
@@ -216,28 +189,5 @@ public class RecrutadorBO {
 		dao.add(recrutador);
 		dao.fechar();
 		return "Cadastrado";
-=======
-	public static String add(Recrutador recrutador) throws Exception {
-		
-		if(recrutador.getNome() == null) {
-			return "Nome nulo";
-		}
-		
-		if(recrutador.getEmail() == null) {
-			return "Email nulo";
-		}
-		
-		if(recrutador.getSenha() == null) {
-			return "Senha nula";
-		}
-				
-		RecrutadorDAO dao = new RecrutadorDAO();
-
-		dao.add(recrutador);
-		dao.fechar();
-		return "Cadastrado";
-
->>>>>>> 69aa0b4475487c4db5cc8f9c139e349fbadd9245
 	}
-
 }
