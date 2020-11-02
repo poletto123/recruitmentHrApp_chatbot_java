@@ -19,8 +19,9 @@ import com.ibm.watson.assistant.v2.model.MessageResponse;
 import com.ibm.watson.assistant.v2.model.SessionResponse;
 
 import br.com.nextstep.beans.Candidato;
-import br.com.nextstep.beans.Recrutador;
+import br.com.nextstep.beans.Chatbot;
 import br.com.nextstep.bo.CandidatoBO;
+import br.com.nextstep.bo.ChatbotBO;
 import br.com.nextstep.bo.RecrutadorBO;
 
 /**
@@ -30,13 +31,13 @@ import br.com.nextstep.bo.RecrutadorBO;
 public class Controller extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	       
+	private ServletContext ctx;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public Controller() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -68,25 +69,27 @@ public class Controller extends HttpServlet {
 	
 	}
 
-	private void chat(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void chat(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		String message = request.getParameter("pergunta");
-		String resposta = conversationAPI(message);
-//		Chat chat = new Chat();
-//		chat.addUserMessage(message);
-		request.setAttribute("resposta", resposta);
+		// Resposta do candidato
+		String resposta = request.getParameter("resposta");
+		// Pergunta do chatbot
+		String pergunta = conversationAPI(resposta);
+		request.setAttribute("pergunta", pergunta);
 		request.getRequestDispatcher("./WEB-INF/candidato_chatbot.jsp").forward(request, response);
 	}
 	
-	private String conversationAPI(String resposta) {
+	private String conversationAPI(String resposta) throws Exception {
 		
-		ServletContext ctx = getServletContext();
+		ctx = getServletContext();
 
 		IamAuthenticator authenticator = new IamAuthenticator("QjJRIw8chC1WJ5Ae99A3neY0QzQeq_0L829-Mqaqc9ab");
 		Assistant assistant = new Assistant("2020-11-31", authenticator);
 		assistant.setServiceUrl("https://api.us-south.assistant.watson.cloud.ibm.com/instances/214ecc19-d036-4afb-a3d2-a0efeabca4bd");
 		
 		String chatbotSessionId = null;
+		
+		Chatbot chatbot = null;
 		
 		if (ctx.getAttribute("ChatbotSessionId") == null) {
 			CreateSessionOptions sessionOptions = new CreateSessionOptions.Builder("ebfbc50b-c9f5-455f-8513-6fb54cba070a").build();
@@ -98,10 +101,11 @@ public class Controller extends HttpServlet {
 			
 			chatbotSessionId = sessionResponse.getSessionId();
 			
+			chatbot = new Chatbot();
+			
 		} else {
-			
 			chatbotSessionId = (String) ctx.getAttribute("ChatbotSessionId");
-			
+			chatbot = (Chatbot) ctx.getAttribute("chatbot");
 		}
 			
 		MessageInput input = new MessageInput.Builder()
@@ -115,7 +119,31 @@ public class Controller extends HttpServlet {
 
 		MessageResponse msgResponse = assistant.message(MsgOptions).execute().getResult();
 		
-		return msgResponse.getOutput().getGeneric().get(0).text();
+		String novaPergunta = msgResponse.getOutput().getGeneric().get(0).text();
+
+		String ultimaPergunta = (String) ctx.getAttribute("ultimaPergunta");
+		
+		// caso tenha um input do usuário, ou seja, quando ele responder
+		// o nó de bem-vindo
+		if (!resposta.equals("")) {	
+			// adiciona no dicionário a última pergunta feita, junto
+			// com a sua resposta
+			chatbot.addRespostas(ultimaPergunta, resposta);
+		}
+		
+		// Depois de adicionada no mapa,
+		// seta a última pergunta como a pergunta atual (nova)
+		ctx.setAttribute("ultimaPergunta", novaPergunta);
+		
+		ctx.setAttribute("chatbot", chatbot);
+		
+		if (novaPergunta.equals("Entendi, obrigado pelo feedback.")) {
+			int linhasAlteradas = ChatbotBO.novoChatbot(chatbot);
+			
+			return novaPergunta + " Agora a conversa será salva no banco de dados." + "Linhas alteradas: " + linhasAlteradas;
+		}
+
+		return novaPergunta;
 		
 	}
 	
@@ -125,6 +153,9 @@ public class Controller extends HttpServlet {
 			mostraRanking(request, response, "candidato_ranking.jsp");
 		} else if (request.getParameter("pag").equals("recrutador_ranking.jsp")) {
 			mostraRanking(request, response, "recrutador_ranking.jsp");
+		} else if (request.getParameter("pag").equals("candidato_chatbot.jsp")) {
+			// parâmetro pergunta foi mandado vazio aqui para que o nó inicial de bem-vindo seja mostrado ao clicar na aba Chatbot, caso contrário ele não seria mostrado
+			response.sendRedirect("chat?resposta=");	
 		} else {
 		request.getRequestDispatcher("./WEB-INF/" + request.getParameter("pag")).forward(request, response);		
 		}
@@ -143,7 +174,7 @@ public class Controller extends HttpServlet {
 			 }
 			 
 			 else {
-				 request.setAttribute("msgErro", "Login inv�lido!");
+				 request.setAttribute("msgErro", "Login inválido!");
 				 request.getRequestDispatcher("./login.jsp").forward(request, response);
 			 }
 	        
@@ -156,7 +187,7 @@ public class Controller extends HttpServlet {
 			 }
 			 
 			 else {
-				 request.setAttribute("msgErro", "Login inv�lido!");
+				 request.setAttribute("msgErro", "Login inválido!");
 				 request.getRequestDispatcher("./login.jsp").forward(request, response);
 			 }
 		 }

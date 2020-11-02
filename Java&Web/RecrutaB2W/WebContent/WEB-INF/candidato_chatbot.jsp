@@ -23,9 +23,10 @@
 				<div class="conversa">
 					<span>Digitando ...</span>
 				</div>
-				<input type="text" id="pergunta" name="pergunta" class="campo"
+				<input type="text" id="pergunta" name="resposta" class="campo"
 					placeholder="Digite aqui"></input>
-				<p>${resposta}</p>
+				<p>${pergunta}</p>
+				<p>${chatbot.respostas}</p>
 				<button type="submit" id="enviar" onclick="carregarDados()">Enviar</button>
 			</form>
 		</div>

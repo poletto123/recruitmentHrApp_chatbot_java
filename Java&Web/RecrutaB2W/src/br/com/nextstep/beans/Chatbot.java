@@ -1,64 +1,55 @@
 package br.com.nextstep.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Chatbot implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
-    private ArrayList<String> respostas = new ArrayList<String>();
-    //	private String respostas;
-
+    private Map<String, String> respostas
+    	= new LinkedHashMap<String, String>();;
     
 	//CONSTRUTORES
 	public Chatbot() {}
 	
-	public Chatbot(int id, ArrayList<String> respostas) {
+	
+	public Chatbot(int id, Map<String, String> respostas) {
 		super();
 		this.id = id;
 		this.respostas = respostas;
 	}
-	
 
-//	public Chatbot(int id, String respostas) {
-//		super();
-//		this.id = id;
-//		this.respostas = respostas;
-//	}
-//	
-	
-	public ArrayList<String> getRespostas() {
-		return respostas;
-	}
-	public void setRespostas(ArrayList<String> resposta) {
-		this.respostas = resposta;
-	}
-	
-//	public String getRespostas() {
-//		return respostas;
-//	}
-//	public void setRespostas(String resposta) {
-//		this.respostas = resposta;
-//	}
-//	
-	
-	public void addRespostas(String resposta) {
-		respostas.add(resposta);
-	}
-	
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
+	}
+
+
+	public Map<String, String> getRespostas() {
+		return respostas;
+	}
+
+
+	public void setRespostas(Map<String, String> respostas) {
+		this.respostas = respostas;
+	}
+	
+	public void addRespostas(String s1, String s2) {
+		this.respostas.put(s1, s2);
 	}
 
 	@Override
 	public String toString() {
 		return "Chatbot [id=" + id + ", respostas=" + respostas + "]";
 	}
+
+	
 	
 }	

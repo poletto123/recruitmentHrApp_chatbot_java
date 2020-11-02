@@ -1,11 +1,12 @@
 package br.com.nextstep.dao;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import com.google.gson.Gson;
 
 import br.com.nextstep.beans.Chatbot;
 import br.com.nextstep.conexao.ConectaBanco;
@@ -31,10 +32,12 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 	public int add(Chatbot chatbot) throws Exception{
 
 		con = ConectaBanco.conectar();
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(chatbot.getRespostas());
 
-		stmt = con.prepareStatement("INSERT INTO T_RBW_CHATBOT (DS_RESPOSTA) VALUES (?)");
-		stmt.setArray(1, (Array) chatbot.getRespostas());
-		//stmt.setString(1,chatbot.getRespostas());
+		stmt = con.prepareStatement("INSERT INTO T_RBW_CHATBOT (CD_CHATBOT, DS_RESPOSTA) VALUES (T_RBW_CHATBOT_SEQ.NEXTVAL, ?)");
+		stmt.setString(1, json);
 
 		return stmt.executeUpdate();
 	}
@@ -50,28 +53,35 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 		
 	}
 	
-	public int modifyConversa(ArrayList<String> conversa, int numero) throws Exception {
+	public int modifyConversa(Chatbot chatbot, int numero) throws Exception {
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(chatbot.getRespostas());
+		
 		stmt = con.prepareStatement("UPDATE T_RBW_CHATBOT SET DS_RESPOSTA=? WHERE CD_CHATBOT=?");
-		stmt.setArray(1, (Array) conversa);
+		stmt.setString(1, json);
 		stmt.setInt(2, numero);
 		
 		return stmt.executeUpdate();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Chatbot getById(int id) throws Exception{
 		stmt = con.prepareStatement("SELECT * FROM T_RBW_CHATBOT WHERE CD_CHATBOT=?");
 		stmt.setInt(1, id);
-		
+				
 		rs = stmt.executeQuery();
 		
+		Gson gson = new Gson();
+
 		if(rs.next()) {
-			
 			return new Chatbot(
-					rs.getInt("CD_CHATBOT"),
-					(ArrayList<String>) rs.getArray("DS_RESPOSTA")
-					//rs.getString("DS_RESPOSTA")
-					);
+				rs.getInt("CD_CHATBOT"),
+				gson.fromJson
+				(rs.getString("DS_RESPOSTA"),
+				Map.class));
+
 		}
 		
 		return new Chatbot();

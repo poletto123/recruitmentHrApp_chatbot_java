@@ -5,17 +5,17 @@ import br.com.nextstep.dao.ChatbotDAO;
 
 public class ChatbotBO {
 
-	public static String novoChatbot(Chatbot chat) throws Exception{
+	public static int novoChatbot(Chatbot chat) throws Exception{
 
 		if(chat.getRespostas() == null) {
-			return "Conversa de chatbot não foi realizada";
+			return 0;
 		}
 		
 		ChatbotDAO dao = new ChatbotDAO();
 
-		dao.add(chat);
+		int linhasAlteradas = dao.add(chat);
 		dao.fechar();
-		return "Cadastrado";
+		return linhasAlteradas;
 	}
 
 	public static Chatbot pesquisarChatbot(int id) throws Exception{
@@ -32,21 +32,21 @@ public class ChatbotBO {
 		return resposta;
 	}
 	
-	public static String atualizaChatbot(int id, Chatbot chat)throws Exception{
+	public static int atualizaChatbot(int id, Chatbot chat)throws Exception{
 		if(id < 1) {
-			return "ID inválido";
+			return 0;
 		}
 		
 		if(chat.getRespostas() == null) {
-			return "Arquivo inexistente de vídeo";
+			return 0;
 		}
 		
 		ChatbotDAO dao = new ChatbotDAO();
 
-		dao.modifyConversa(chat.getRespostas(), id);
+		int linhasAlteradas = dao.modifyConversa(chat, id);
 		dao.fechar();
 		
-		return "Conversa de chatbot atualizada";
+		return linhasAlteradas;
 	}
 	
 	
