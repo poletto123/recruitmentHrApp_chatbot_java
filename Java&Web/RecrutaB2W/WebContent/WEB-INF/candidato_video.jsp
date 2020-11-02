@@ -40,7 +40,7 @@
                     <span class="drop-zone__prompt">Clique para enviar ou arraste o vÃ­deo aqui</span>
                     <input type="file" name="myFile" class="drop-zone__input">
                 </div>
-                <button type="submit" class="btn-enviar">Enviar</button>
+                <button type="submit" class="btn-enviar" action="audioVideo" method="post">Enviar</button>
             </div>
         </div>
     </div>

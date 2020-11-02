@@ -134,7 +134,7 @@ public class AudioVideoBO {
 	 * no Banco de Dados, e irá inserir um áudio ou vídeo, onde:<br>
 	 * PathAudio <= 200 and > 0<br>
 	 * PathVideo <= 200 and > 0<br>
-	 * @param vaga Este objeto deve conter todas as informações do Vaga.
+	 * @param av Este objeto deve conter todas as informações do AudioVideo.
 	 * @return Retorna uma String dizendo qual o que ocorreu ao executar o método.
 	 * @see br.com.nextstep.dao.VagaDAO;
  	 * @see br.com.nextstep.beans.Vaga;

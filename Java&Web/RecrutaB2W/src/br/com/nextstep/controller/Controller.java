@@ -18,8 +18,10 @@ import com.ibm.watson.assistant.v2.model.MessageOptions;
 import com.ibm.watson.assistant.v2.model.MessageResponse;
 import com.ibm.watson.assistant.v2.model.SessionResponse;
 
+import br.com.nextstep.beans.AudioVideo;
 import br.com.nextstep.beans.Candidato;
 import br.com.nextstep.beans.Chatbot;
+import br.com.nextstep.bo.AudioVideoBO;
 import br.com.nextstep.bo.CandidatoBO;
 import br.com.nextstep.bo.ChatbotBO;
 import br.com.nextstep.bo.RecrutadorBO;
@@ -27,7 +29,7 @@ import br.com.nextstep.bo.RecrutadorBO;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns = {"/ranking", "/login", "/paginacao", "/chat"})
+@WebServlet(urlPatterns = {"/ranking", "/login", "/paginacao", "/chat", "/audioVideo"})
 public class Controller extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -58,6 +60,9 @@ public class Controller extends HttpServlet {
 				case "/RecrutaB2W/chat":
 					realizaChatbot(request,response);
 					break;
+				case "/RecrutaB2W/audioVideo":
+					enviaAudioVideo(request, response);
+					break;
 				default:
 					response.sendRedirect("index.jsp");
 			} 
@@ -69,6 +74,17 @@ public class Controller extends HttpServlet {
 	
 	}
 	
+	private void enviaAudioVideo(HttpServletRequest request, HttpServletResponse response) {
+//		AudioVideo av = new AudioVideo();
+//		
+//		if(AudioVideoBO.novoAudioVideo(av)) {
+//			
+//		}else {
+//			 request.setAttribute("msgErro", "Login inválido!");
+//			 request.getRequestDispatcher("./WEB-INF/candidato_video.jsp").forward(request, response);
+//		}
+	}
+
 	private void paginacao(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		if (request.getParameter("pag").equals("candidato_ranking.jsp")) {
@@ -228,5 +244,5 @@ public class Controller extends HttpServlet {
 		}
 	}
 		
-		
+	
 	}
