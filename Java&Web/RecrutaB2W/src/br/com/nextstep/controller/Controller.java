@@ -72,14 +72,17 @@ public class Controller extends HttpServlet {
 	private void paginacao(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		if (request.getParameter("pag").equals("candidato_ranking.jsp")) {
-			mostraRanking(request, response, "candidato_ranking.jsp");
+			mostraCandidatos(request, response, "candidato_ranking.jsp");
 		} else if (request.getParameter("pag").equals("recrutador_ranking.jsp")) {
-			mostraRanking(request, response, "recrutador_ranking.jsp");
+			mostraCandidatos(request, response, "recrutador_ranking.jsp");
+		} else if (request.getParameter("pag").equals("recrutador_candidatos.jsp")) {
+			mostraCandidatos(request, response, "recrutador.candidatos.jsp");
 		} else if (request.getParameter("pag").equals("candidato_chatbot.jsp")) {
 			// parâmetro pergunta foi mandado vazio aqui para que o nó inicial de bem-vindo seja mostrado ao clicar na aba Chatbot, caso contrário ele não seria mostrado
 			response.sendRedirect("chat?resposta=");	
 		} else if (request.getParameter("pag").equals("recrutador_chatbot.jsp")) {
 			mostraChatbot(request, response);	
+
 		} else {
 		request.getRequestDispatcher("./WEB-INF/" + request.getParameter("pag")).forward(request, response);		
 		}
@@ -213,7 +216,7 @@ public class Controller extends HttpServlet {
 		 
 	}
 
-	private void mostraRanking(HttpServletRequest request, HttpServletResponse response, String path) throws Exception {
+	private void mostraCandidatos(HttpServletRequest request, HttpServletResponse response, String path) throws Exception {
 		
 		List<Candidato> listaCandidatos = CandidatoBO.mostraCandidato();
 		
