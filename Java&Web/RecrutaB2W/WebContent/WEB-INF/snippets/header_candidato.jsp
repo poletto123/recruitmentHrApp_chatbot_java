@@ -8,7 +8,7 @@
           <h1><a href="paginacao?pag=candidato_chatbot.jsp">Chatbot</a></h1>
         </li>
         <li>
-          <h1><a href="paginacao?pag=candidato_video.jsp">VÃ­deo</a></h1>
+          <h1><a href="paginacao?pag=candidato_video.jsp">Vídeo</a></h1>
         </li>
         <li>
           <h1><a href="paginacao?pag=candidato_ranking.jsp">Ranking</a></h1>

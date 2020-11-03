@@ -101,7 +101,7 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 		} else if (request.getParameter("pag").equals("recrutador_candidatos.jsp")) {
 			mostraCandidatos(request, response, "recrutador_candidatos.jsp");
 		} else if (request.getParameter("pag").equals("candidato_chatbot.jsp")) {
-			// par√¢metro pergunta foi mandado vazio aqui para que o n√≥ inicial de bem-vindo seja mostrado ao clicar na aba Chatbot, caso contr√°rio ele n√£o seria mostrado
+			// par√¢metro pergunta foi mandado vazio aqui para que o nÛ inicial de bem-vindo seja mostrado ao clicar na aba Chatbot, caso contr·rio ele n„o seria mostrado
 			response.sendRedirect("chat?resposta=");	
 		} else if (request.getParameter("pag").equals("recrutador_chatbot.jsp")) {
 			mostraChatbot(request, response);	
@@ -165,10 +165,10 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 
 		String ultimaPergunta = (String) ctx.getAttribute("ultimaPergunta");
 		
-		// caso tenha um input do usu√°rio, ou seja, quando ele responder
-		// o n√≥ de bem-vindo
+		// caso tenha um input do usu·rio, ou seja, quando ele responder
+		// o nÛ de bem-vindo
 		if (!resposta.equals("")) {	
-			// adiciona no dicion√°rio a √∫ltima pergunta feita, junto
+			// adiciona no dicion·rio a √∫ltima pergunta feita, junto
 			// com a sua resposta
 			chatbot.addRespostas(ultimaPergunta, resposta);
 		}
@@ -193,10 +193,10 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 
 	private void mostraChatbot(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		// o objeto chatbot j√° est√° na mem√≥ria, na verdade
-		// n√£o precisaria buscar no banco de dados, mas
-		// estou for√ßando a busca pois vamos precisar buscar ele
-		// no momento de criar a sess√£o. Isto √© tempor√°rio
+		// o objeto chatbot j· est· na memÛria, na verdade
+		// n„o precisaria buscar no banco de dados, mas
+		// estou forÁando a busca pois vamos precisar buscar ele
+		// no momento de criar a sess„o. Isto È tempor·rio
 		
 		Chatbot chatbotDoBancoDeDados = ChatbotBO.pesquisarChatbot(3);
 		
@@ -224,7 +224,7 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 			 }
 			 
 			 else {
-				 request.setAttribute("msgErro", "Login inv√°lido!");
+				 request.setAttribute("msgErro", "Login inv·lido!");
 				 request.getRequestDispatcher("./login.jsp").forward(request, response);
 			 }
 	        
@@ -244,7 +244,7 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 			 }
 			 
 			 else {
-				 request.setAttribute("msgErro", "Login inv√°lido!");
+				 request.setAttribute("msgErro", "Login inv·lido!");
 				 request.getRequestDispatcher("./login.jsp").forward(request, response);
 			 }
 		 }

@@ -31,7 +31,7 @@ public class VagaBO {
 	public static String novaVaga(Vaga vaga) throws Exception{
 
 		if(vaga.getNomeVaga() == null) {
-			return "Nome da vaga nÃ£o foi preenchido";
+			return "Nome da vaga não foi preenchido";
 		}
 		
 		if(vaga.getNomeVaga().length() > 50) {
@@ -99,11 +99,11 @@ public class VagaBO {
 	
 	public static String atualizarVaga(int id, String novaDescricao)throws Exception{
 		if(id < 1) {
-			return "ID invÃ¡lido";
+			return "ID inválido";
 		}
 		
 		if(novaDescricao == null) {
-			return "DescriÃ§Ã£o inexistente";
+			return "Descrição inexistente";
 		}
 		
 		if(novaDescricao.length() > 400) {
@@ -131,7 +131,7 @@ public class VagaBO {
 	
 	public static String apagarVaga(int id) throws Exception{
 		if(id < 1) {
-			return "ID invÃ¡lido";
+			return "ID inválido";
 		}
 		
 		VagaDAO dao = new VagaDAO();

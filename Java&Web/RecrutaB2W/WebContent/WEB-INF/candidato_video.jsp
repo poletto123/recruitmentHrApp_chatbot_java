@@ -19,23 +19,23 @@
 		<div class="video">
 			<div class="texto">
 				<div class="txt-1">
-					<h2>VÃ­deo IntrodutÃ³rio</h2>
-					<p>Nos conte mais sobre vocÃª e da pessoa que vocÃª Ã©:</p>
-					<p>VocÃª poderÃ¡ nos mandar um vÃ­deo se descrevendo dizendo
+					<h2>Vídeo Introdutório</h2>
+					<p>Nos conte mais sobre você e da pessoa que você é:</p>
+					<p>Você poderá nos mandar um vídeo se descrevendo dizendo
 						coisas como:</p>
 					<li>
 						<ul>Descrever o momento mais importante da sua vida;
 						</ul>
-						<ul>Dizer quais sÃ£o as 3 coisas mais importantes pra vocÃª;
+						<ul>Dizer quais são as 3 coisas mais importantes pra você;
 						</ul>
 						<ul></ul>
 					</li>
 				</div>
 				<div class="txt-2">
 					<p>
-						* O vÃ­deo deve estar nos <u>formatos de mp4, mkv, avi</u> com a <u>resoluÃ§Ã£o
-							mÃ­nima de 1280x720(HD)</u> e com o som audÃ­vel, <u>tamanho
-							mÃ¡ximo de 100mb.</u>
+						* O vídeo deve estar nos <u>formatos de mp4, mkv, avi</u> com a <u>resolução
+							mínima de 1280x720(HD)</u> e com o som audível, <u>tamanho
+							máximo de 100mb.</u>
 					</p>
 				</div>
 			</div>

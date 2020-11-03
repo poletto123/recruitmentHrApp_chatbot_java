@@ -106,7 +106,7 @@ public class ChatbotBO {
 	
 	public static String apagarChatbot(int id) throws Exception{
 		if(id < 1) {
-			return "ID invÃ¡lido";
+			return "ID inválido";
 		}
 		
 		ChatbotDAO dao = new ChatbotDAO();

@@ -29,7 +29,7 @@ public class CandidatoBO {
 	
 	public static String apagarCandidato(int id) throws Exception{
 		if(id < 1) {
-			return "ID invÃ¡lido";
+			return "ID inválido";
 		}
 		
 		CandidatoDAO dao = new CandidatoDAO();
@@ -128,7 +128,7 @@ public class CandidatoBO {
 	
 	public static String atualizaEmail(int id, Candidato candidato) throws Exception{
 		if(id < 1) {
-			return "ID invÃ¡lido";
+			return "ID inválido";
 		}
 		
 		if(candidato.getEmail() == null) {
@@ -159,9 +159,9 @@ public class CandidatoBO {
 	public static String add(Candidato candidato) throws Exception {
 
 		if(candidato.getCpf().length() < 11) {
-			return "CPF invÃ¡lido";
+			return "CPF inválido";
 		} else if (candidato.getVaga() == null) {
-			return "Uma vaga Ã© necessÃ¡ria para adicionar o candidato";
+			return "Uma vaga é necessária para adicionar o candidato";
 		}
 				
 		CandidatoDAO dao = new CandidatoDAO();

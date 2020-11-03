@@ -10,11 +10,11 @@ public class Excecao extends Exception{
 		if(e instanceof NullPointerException) {
 			return "Objeto Nulo";
 		}else if (e instanceof NumberFormatException) {
-			return "N√∫mero inv√°lido";
+			return "N√∫mero inv·lido";
 		}else if(e instanceof SQLException){
 			return "Erro no banco de dados";
 		}else {
-			return "Exce√ß√£o desconhecida";
+			return "ExceÁ„o desconhecida";
 		}
 	}
 }

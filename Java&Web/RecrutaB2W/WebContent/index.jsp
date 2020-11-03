@@ -28,7 +28,7 @@
           <h1><a href="#problema">Problema</a></h1>
         </li>
         <li>
-          <h1><a href="#solucao">SoluÃ§Ã£o</a></h1>
+          <h1><a href="#solucao">Solução</a></h1>
         </li>
         <li>
           <h1><a href="#contato">Contato</a></h1>
@@ -42,14 +42,14 @@
     <section class="content-background">
 
       <div class="saudacoes">
-        <h1>OlÃ¡ B2W,<br /> somos
+        <h1>Olá B2W,<br /> somos
           <span class="txt-type" data-wait="3000" data-words='["desenvolvedores","entusiastas","a NextStep"]'></span>
         </h1>
       </div>
 
       <div class="slogan">
         <h2>
-          Junto com vocÃª no seu prÃ³ximo passo!
+          Junto com você no seu próximo passo!
         </h2>
       </div>
 
@@ -74,24 +74,24 @@
           <h2>Um pouco sobre a maior empresa e-commerce brasileira</h2>
 
           <p>
-            O propÃ³sito da B2W Ã© <strong>conectar pessoas, negÃ³cios, produtos e serviÃ§os em uma mesma plataforma
-              digital</strong>. Por isso, a B2W Digital quer, cada vez mais, estar sempre prÃ³xima dos clientes,
+            O propósito da B2W é <strong>conectar pessoas, negócios, produtos e serviços em uma mesma plataforma
+              digital</strong>. Por isso, a B2W Digital quer, cada vez mais, estar sempre próxima dos clientes,
             oferecendo
-            a melhor experiÃªncia de compra e desenvolvendo os melhores talentos.
+            a melhor experiência de compra e desenvolvendo os melhores talentos.
           </p>
         </div>
 
         <div class="content-infos__text--hidden">
           <p>
-            LÃ­der na AmÃ©rica Latina, a B2W Digital tem um modelo de negÃ³cio Ãºnico, multicanal, multimarca e
-            multinegÃ³cio.
+            Líder na América Latina, a B2W Digital tem um modelo de negócio Ãºnico, multicanal, multimarca e
+            multinegócio.
             A Companhia atua nas seguintes frentes: e-commerce nas marcas Americanas.com, Submarino, Shoptime e Sou
-            Barato; plataformas de serviÃ§os de crÃ©dito ao consumidor, com o Submarino Finance e o Digital Finance;
-            plataforma de tecnologia; plataforma de logÃ­stica, distribuiÃ§Ã£o e atendimento ao cliente; e Marketplace.
+            Barato; plataformas de serviços de crédito ao consumidor, com o Submarino Finance e o Digital Finance;
+            plataforma de tecnologia; plataforma de logística, distribuição e atendimento ao cliente; e Marketplace.
           </p>
 
           <p>
-            VocÃª pode conhecer mais detalhes sobre a Companhia no site <a href="https://ri.b2w.digital/">
+            Você pode conhecer mais detalhes sobre a Companhia no site <a href="https://ri.b2w.digital/">
               <strong>www.b2wdigital.com</strong></a>
           </p>
         </div>
@@ -112,27 +112,27 @@
         <div class="content-infos__text--visible">
           <h1>Problema</h1>
           <h2>
-            Atuaremos no recrutamento, apÃ³s o algoritmo de filtragem e antes da entrevista.
+            Atuaremos no recrutamento, após o algoritmo de filtragem e antes da entrevista.
           </h2>
 
           <p>
-            Existe uma lacuna nessa entre a filtragem e a entrevista, onde a companhia tem uma visÃ£o que contempla
+            Existe uma lacuna nessa entre a filtragem e a entrevista, onde a companhia tem uma visão que contempla
             <i>hard
-              skills</i>, sem conhecer traÃ§os da personalidade do candidato.
+              skills</i>, sem conhecer traços da personalidade do candidato.
           </p>
         </div>
 
         <div class="content-infos__text--hidden">
 
           <p>
-            Isso gera uma pressÃ£o no recrutador jÃ¡ que a entrevista, que Ã© um espaÃ§o de tempo curto, Ã© o principal
+            Isso gera uma pressão no recrutador já que a entrevista, que é um espaço de tempo curto, é o principal
             momento
             para se ter um contato mais pessoal com o candidato.
           </p>
 
-          <p>AlÃ©m disso, o recrutador tambÃ©m deve verificar informaÃ§Ãµes bÃ¡sicas sobre o candidato na hora da entrevista,
+          <p>Além disso, o recrutador também deve verificar informações básicas sobre o candidato na hora da entrevista,
             o
-            que acaba reduzindo o tempo Ãºtil da entrevista, alÃ©m de sua qualidade.</p>
+            que acaba reduzindo o tempo Ãºtil da entrevista, além de sua qualidade.</p>
           <p>
         </div>
 
@@ -152,16 +152,16 @@
       <div class="content-infos__text">
 
         <div class="content-infos__text--visible">
-          <h1>SoluÃ§Ã£o - Recruta B2W</h1>
+          <h1>Solução - Recruta B2W</h1>
 
           <h2>
-            Queremos coletar informaÃ§Ãµes sobre as <i>soft skills</i> do candidato, antes da entrevista, e atravÃ©s de um
+            Queremos coletar informações sobre as <i>soft skills</i> do candidato, antes da entrevista, e através de um
             app
           </h2>
 
 
           <p>
-            Essa informaÃ§Ãµes coletadas serÃ£o disponibilizadas para o recrutamento a fim de proporcionar uma visÃ£o mais
+            Essa informações coletadas serão disponibilizadas para o recrutamento a fim de proporcionar uma visão mais
             ampla sobre o candidato.
           </p>
         </div>
@@ -169,15 +169,15 @@
 
         <div class="content-infos__text--hidden">
           <p>
-            Algumas respostas bÃ¡sicas de entrevista tambÃ©m serÃ£o coletadas, permitindo assim ao recrutador focar-se em
-            detalhes, ou em questÃµes que nÃ£o foram abordadas no app.
+            Algumas respostas básicas de entrevista também serão coletadas, permitindo assim ao recrutador focar-se em
+            detalhes, ou em questões que não foram abordadas no app.
           </p>
 
 
           <p>
-            O app contarÃ¡ com um teste de personalidade, um chatbot para a coleta geral de informaÃ§Ãµes referentes Ã 
-            entrevista, e um vÃ­deo de apresentaÃ§Ã£o, o qual terÃ¡ tanto vÃ­deo quanto Ã¡udio analisados por um algoritmo de
-            detecÃ§Ã£o de modos de fala e de emoÃ§Ãµes.
+            O app contará com um teste de personalidade, um chatbot para a coleta geral de informações referentes à 
+            entrevista, e um vídeo de apresentação, o qual terá tanto vídeo quanto áudio analisados por um algoritmo de
+            detecção de modos de fala e de emoções.
           </p>
         </div>
 
@@ -205,10 +205,10 @@
 
         <ul>
           <li>Celso L. da Silva Filho, <br />RM 86158 - <strong>Banco de dados.</strong> </li>
-          <li>Eduardo VinÃ­cius B. Costa, <br />RM 85915 - <strong>Front-end.</strong> </li>
+          <li>Eduardo Vinícius B. Costa, <br />RM 85915 - <strong>Front-end.</strong> </li>
           <li>Guilherme R. De Souza, <br />RM 85499 - <strong>Back-end.</strong> </li>
           <li>Rogerio Pizzo dos Santos, <br /> RM 84088 - <strong>Infraestrutura.</strong> </li>
-          <li>William Butler Poletto, <br /> RM 85008 - <strong>GestÃ£o.</strong></li>
+          <li>William Butler Poletto, <br /> RM 85008 - <strong>Gestão.</strong></li>
         </ul>
       </div>
     </section>
