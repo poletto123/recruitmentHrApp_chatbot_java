@@ -182,10 +182,10 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 		
 		ctx.setAttribute("chatbot", chatbot);
 		
-		if (novaPergunta.equals("Entendi, obrigado pelo feedback.")) {
+		if (novaPergunta.equals("Onde você mora atualmente, e quanto tempo levaria para chegar ao escritório da B2W?")) {
 			int linhasAlteradas = ChatbotBO.novoChatbot(chatbot);
 			
-			return novaPergunta + " Agora a conversa serÃ¡ salva no banco de dados." + "Linhas alteradas: " + linhasAlteradas;
+			return novaPergunta + " Agora a conversa serao salva no banco de dados." + "Linhas alteradas: " + linhasAlteradas;
 		}
 
 		return novaPergunta;

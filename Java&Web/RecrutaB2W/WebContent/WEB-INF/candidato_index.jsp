@@ -17,7 +17,7 @@
 		<section class="content-infos">
 			<div class="content-infos__text">
 				<div class="content-infos__text--visible">
-					<strong>Seja Bem-Vindo(a) a Recruta B2W, ${cand.nome}.</strong>
+					<strong>Seja Bem-Vindo(a) a Recruta B2W, ${candidato.nome}.</strong>
 					<p>Escolha acima a funcionalidade que esteja procurando.</p>
 				</div>
 			</div>

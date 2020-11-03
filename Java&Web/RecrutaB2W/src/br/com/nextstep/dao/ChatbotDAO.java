@@ -81,7 +81,7 @@ public class ChatbotDAO implements PadraoDAO<Chatbot> {
 		Gson gson = new Gson();
 		String json = gson.toJson(chatbot.getRespostas());
 
-		stmt = con.prepareStatement("INSERT INTO T_RBW_CHATBOT (CD_CHATBOT, DS_RESPOSTA) VALUES (T_RBW_CHATBOT_SEQ.NEXTVAL, ?)");
+		stmt = con.prepareStatement("INSERT INTO T_RBW_CHATBOT (CD_CHATBOT, DS_RESPOSTA) VALUES (SQ_RBW_CHATBOT.NEXTVAL, ?)");
 		stmt.setString(1, json);
 
 		return stmt.executeUpdate();

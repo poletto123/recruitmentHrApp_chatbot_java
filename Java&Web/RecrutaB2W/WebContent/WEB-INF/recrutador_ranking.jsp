@@ -17,6 +17,8 @@
       <div class="ranking__title">
         <h1 class="ranking__title--content">Pontuação Geral</h1>
       </div>
+      
+      ${listaCandidatos}
 
       <div class="ranking__table">
         <table class="tabela">
