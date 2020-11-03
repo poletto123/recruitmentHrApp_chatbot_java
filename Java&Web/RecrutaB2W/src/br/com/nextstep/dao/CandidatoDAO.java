@@ -280,7 +280,16 @@ public class CandidatoDAO implements PadraoDAO<Candidato> {
 	
 	public Candidato getByLogin(String email, String senha) throws Exception{
 		
-		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO WHERE DS_EMAIL='" + email +  "' AND NM_SENHA='"+ senha +"'");
+		stmt = con.prepareStatement("SELECT * FROM T_RBW_CANDIDATO "
+					+ "INNER JOIN T_RBW_VAGA "
+					+ "ON T_RBW_CANDIDATO.NR_VAGA = T_RBW_VAGA.NR_VAGA "
+					+ "INNER JOIN T_RBW_RECRUTADOR "
+					+ "ON T_RBW_CANDIDATO.CD_RECRUTADOR = T_RBW_RECRUTADOR.CD_RECRUTADOR "
+					+ "WHERE T_RBW_CANDIDATO.DS_EMAIL='" + email +  
+					"' AND T_RBW_CANDIDATO.NM_SENHA='" + senha +"'"
+				);
+		
+
 	
 		rs = stmt.executeQuery();
 		

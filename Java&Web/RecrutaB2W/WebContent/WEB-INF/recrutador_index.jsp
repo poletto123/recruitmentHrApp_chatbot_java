@@ -5,7 +5,7 @@
 <head>
 <%@ include file="./snippets/imports/libs-head.jsp"%>
 <title>Recruta B2W</title>
-<link rel="stylesheet" href="./css/recrutador_main.css">
+<link rel="stylesheet" href="./css/user-index.css">
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 		<section class="content-infos">
 			<div class="content-infos__text">
 				<div class="content-infos__text--visible">
-					<h2>Seja Bem-Vindo(a) a Recruta B2W, ${objusu.nome}.</h2>
+					<strong>Seja Bem-Vindo(a) a Recruta B2W, ${recrutador.nome}.</strong>
 					<p>Escolha acima a funcionalidade que esteja procurando.</p>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 <header>
 	<figure>
-		<a href="index.html"><img src="./img/B2W_Digital_logo.png"
+		<a href="index.jsp"><img src="./img/B2W_Digital_logo.png"
 			class="logo" alt=""></a>
 	</figure>
 	<span class="mobile-btn"></span>
@@ -21,10 +21,11 @@
 					<a href="paginacao?pag=recrutador_chatbot.jsp">Chatbot</a>
 				</h1>
 			</li>
+			
+			<li>
+	          <h1><a href="login.jsp" action="logout">Log Out</a></h1>
+	        </li>
 		</ul>
 	</nav>
-	<div class="logcontrol">
-		<p>Bem-Vindo ${objUsu.nome}</p>
-		<a href="login.jsp">Sair</a>
-	</div>
+
 </header>

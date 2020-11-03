@@ -35,8 +35,8 @@
 	<%@ include file="./snippets/footer.html" %>
 	<%@ include file="./snippets/imports/libs-footer.jsp" %>
   
-<!-- 	<script type="text/javascript" src="./js/chatbot.js"></script> -->
-
+	<script type="text/javascript" src="./js/chatbot.js"></script> 
+	
   	
 </body>
 </html>

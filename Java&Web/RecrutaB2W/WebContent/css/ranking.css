@@ -4,9 +4,7 @@
 
 .ranking{
     min-width: 300px;
-    width: 50%;
     margin: 0 auto;
-    border: 1px solid #fff;
     min-height: 70%;
     padding: 30px 20px;
 }

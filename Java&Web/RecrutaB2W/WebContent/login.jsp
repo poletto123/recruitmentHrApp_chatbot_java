@@ -15,7 +15,7 @@
 
     <header>
         <figure>
-            <a href="index.html"><img src="./img/B2W_Digital_logo.png" class="logo" alt=""></a>
+            <a href="index.jsp"><img src="./img/B2W_Digital_logo.png" class="logo" alt=""></a>
         </figure>
         <span class="mobile-btn"></span>
         <nav class="menu-nav mobile-menu">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 
-                 <div class="field">
+                 <div class="field erro">
                  	<p>${msgErro}</p>
                  </div>
                 
