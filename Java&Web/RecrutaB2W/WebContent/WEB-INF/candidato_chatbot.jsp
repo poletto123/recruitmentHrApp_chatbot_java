@@ -21,13 +21,12 @@
 
 			<form action ="chat" class="chatbot">
 				<div class="conversa">
-					<span>Digitando ...</span>
+					<p>${pergunta}</p>
 				</div>
 				<input type="text" id="pergunta" name="resposta" class="campo"
 					placeholder="Digite aqui"></input>
-				<p>${pergunta}</p>
-				<p>${chatbot.respostas}</p>
-				<button type="submit" id="enviar" onclick="carregarDados()">Enviar</button>
+				
+				
 			</form>
 		</div>
 	</main>
@@ -35,7 +34,7 @@
 	<%@ include file="./snippets/footer.html" %>
 	<%@ include file="./snippets/imports/libs-footer.jsp" %>
   
-	<script type="text/javascript" src="./js/chatbot.js"></script> 
+	<script type="text/javascript" src="./js/chatbot2.js"></script> 
 	
   	
 </body>
