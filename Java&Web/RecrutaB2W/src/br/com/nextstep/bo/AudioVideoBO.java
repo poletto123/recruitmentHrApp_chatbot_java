@@ -143,13 +143,19 @@ public class AudioVideoBO {
 	 */
 	
 	public static String novoAudioVideo(AudioVideo av) throws Exception{
-
-		if(av.getPathVideo() == null || av.getPathAudio() == null) {
+		
+		if(av.getPathVideo() == null && av.getPathAudio() == null) {
 			return "Arquivo inexistente de Ã¡udio ou vÃ­deo";
 		}
-		
-		if(av.getPathAudio().length() > 200 || av.getPathVideo().length() > 200) {
-			return "O número de caracteres excede 200";
+		if(av.getPathAudio() != null) {
+			if (av.getPathAudio().length() > 200) {
+				return "O número de caracteres excede 200";
+			}
+		}
+		if(av.getPathVideo() != null) {
+			if (av.getPathVideo().length() > 200) {
+				return "O número de caracteres excede 200";
+			}
 		}
 		
 		AudioVideoDAO dao = new AudioVideoDAO();

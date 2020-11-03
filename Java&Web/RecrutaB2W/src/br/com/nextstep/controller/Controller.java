@@ -69,6 +69,7 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 					response.sendRedirect("index.jsp");
 			} 
 			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -79,20 +80,16 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 	private void enviaAudioVideo(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		AudioVideo av = new AudioVideo();
-		String path = request.getParameter("myFile");
+		String path = request.getParameter("url");
+		System.out.println("Path: " + path);
 		av.setPathVideo(path);
 		
-		AudioVideoBO.novoAudioVideo(av);
+		if(AudioVideoBO.novoAudioVideo(av) == "Cadastrado") {
+			request.getRequestDispatcher("./WEB-INF/candidato_video.jsp").forward(request, response);
+			request.setAttribute("msg", "Enviado!!");
+		}
 		
-		/*
-		 * if(AudioVideoBO.novoAudioVideo(av) == "Cadastrado") {
-		 * System.out.println("Salve Salve");
-		 * request.getRequestDispatcher("./WEB-INF/candidato_index.jsp").forward(
-		 * request, response); }else { request.setAttribute("msgErro",
-		 * "Login inválido!");
-		 * request.getRequestDispatcher("./WEB-INF/candidato_video.jsp").forward(
-		 * request, response); }
-		 */
+
 	}
 
 	private void paginacao(HttpServletRequest request, HttpServletResponse response) throws Exception {

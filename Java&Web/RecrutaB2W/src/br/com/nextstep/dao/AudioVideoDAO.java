@@ -71,14 +71,13 @@ public class AudioVideoDAO implements PadraoDAO<AudioVideo> {
 	 */
 	@Override
 	public int add(AudioVideo objeto) throws Exception{
-		
 		con = ConectaBanco.conectar();
 		
 		stmt = con.prepareStatement("INSERT INTO T_RBW_AUDIO_VIDEO (CD_AUDIO_VIDEO, FL_VIDEO, FL_AUDIO) VALUES (SQ_RBW_AUDIO_VIDEO.NEXTVAL, ?, ?)");
 
 		stmt.setString(1, objeto.getPathVideo());
 		stmt.setString(2, objeto.getPathAudio());
-		
+
 		return stmt.executeUpdate();
 	}
 	
