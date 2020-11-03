@@ -80,7 +80,8 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
 	private void enviaAudioVideo(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		AudioVideo av = new AudioVideo();
-		String path = request.getParameter("myFile");
+		String path = request.getParameter("url");
+		System.out.println("Path: " + path);
 		av.setPathVideo(path);
 		
 		if(AudioVideoBO.novoAudioVideo(av) == "Cadastrado") {

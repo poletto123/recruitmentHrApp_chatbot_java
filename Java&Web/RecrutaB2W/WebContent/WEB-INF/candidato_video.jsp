@@ -42,18 +42,17 @@
 			<div class="video__container">
 				<form action="audioVideo" method="get">
 					<div class="drop-zone">
-						<span class="drop-zone__prompt">Clique para enviar ou
-							arraste o vÃ­deo aqui</span> <input
-							value="http://techslides.com/demos/sample-videos/small.mp4"
-							type="text" name="myFile" class="drop-zone__input">
+
+						Select a file to upload:<input type="file" id="demo" size="50" name="url">
 					</div>
 					<button type="submit" class="btn-enviar" action="audioVideo"
-						method="post">Enviar</button>
+						method="post" onclick="myFunction()">Enviar</button>
 				</form>
 			</div>
 			${msg}
 		</div>
 	</div>
+
 
 	<%@ include file="./snippets/footer.html"%>
 
