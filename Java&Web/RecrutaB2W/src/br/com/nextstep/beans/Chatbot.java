@@ -10,7 +10,7 @@ public class Chatbot implements Serializable {
 	
 	private int id;
     private Map<String, String> respostas
-    	= new LinkedHashMap<String, String>();;
+    	= new LinkedHashMap<String, String>();
     
 	//CONSTRUTORES
 	public Chatbot() {}

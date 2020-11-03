@@ -1,0 +1,11 @@
+Funcionalidades implementadas:
+
+CHATBOT - O Chatbot foi implementado para substituir o papel do Recrutador em relação às perguntas básicas e comuns para todos 
+os candidatos. Para armazenamento no Banco de Dados, utilizamos o tipo CLOB, que é capaz de armazenar um grande quantidade de 
+caracteres, justamente para comportar todas as perguntas e respostas entre Candidato e Chatbot. No Beans, foi utilizado o 
+LinkedHashMap para a ordem das perguntas e respostas sejam respeitadas. Já no DAO, foi utilizado a biblioteca Gson, que transformará
+o Map em um JSON para ser armazenado no Banco de Dados.
+ 
+ENVIO DE AUDIO E VIDEO - Para um melhor conhecimento do Candidato, implementamos um sistema de envio de áudio e vídeo para um
+breve pitch de apresentação do mesmo. Fizemos um sistema de "drag and drop", no qual fará a URL do arquivo ser registrada no
+Banco de Dados, caso esteja de acordo com as normas estabelecidas (a URL não pode exceder 200 caracteres).
