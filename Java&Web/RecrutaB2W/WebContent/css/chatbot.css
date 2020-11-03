@@ -37,17 +37,9 @@ input::placeholder {
 	border: 1px solid #3a3a3b;
 }
 
-.conversa span {
-	width: 90%;
-	background-color: #fff;
-	color: #000;
-	position: fixed;
-	bottom: 122px;
-	left: 16px;
-	transition: all 1s ease-in;
-	display: none;
-	z-index: 10;
-	padding: 10px 0;
+.conversa p {
+	color: #fff;
+	margin: 8px;
 }
 
 .conversa::-webkit-scrollbar, .campo::-webkit-scrollbar {
