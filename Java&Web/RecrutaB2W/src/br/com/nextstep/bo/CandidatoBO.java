@@ -68,7 +68,8 @@ public class CandidatoBO {
 	/**
 	 * Este método irá verificar se o email e senha que foram inseridos para o Candidato são válidos de acordo com o estabelecido 
 	 * no Banco de Dados, e pesquisará uma Candidato.
-	 * @param id Indica qual linha do Banco de Dados que será pesquisada.
+	 * @param email Indica qual linha do Banco de Dados que será pesquisada.
+	 * @param senha Indica a senha do Candidato.
 	 * @return Retorna um Candidato totalmente preenchido.
 	 * @see br.com.nextstep.dao.CandidatoDAO;
  	 * @see br.com.nextstep.beans.Candidato;

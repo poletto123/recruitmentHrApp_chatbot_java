@@ -51,6 +51,7 @@
 						method="post">Enviar</button>
 				</form>
 			</div>
+			${msg}
 		</div>
 	</div>
 
