@@ -11,10 +11,11 @@ This was done in late 2020, in the context of a challenge at FIAP university, wh
 The following technologies were used:
 
 - Java 8
-- IBM Watson's chatbot (API)
+- IBM Watson
+- IBM Speech-To-Text and Language Translator
+- NodeRED
 - JSP
 - Javascript
 - Oracle database
-- Node Red ()
 
 The MVC architecture was used with the Spring Framework.
