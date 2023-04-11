@@ -1,0 +1,270 @@
+{
+    "_id": "noderedwilliamfiap/flow",
+    "_rev": "42-b7030387f207a437f360581dc40d72f2",
+    "flow": [
+      {
+        "id": "3ef60c03.9e7f64",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+      },
+      {
+        "id": "c60a03c0.bd0a5",
+        "type": "http in",
+        "z": "3ef60c03.9e7f64",
+        "name": "Entrada do bot 2",
+        "url": "/chat2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 100,
+        "wires": [
+          [
+            "a8826738.7e94f8"
+          ]
+        ]
+      },
+      {
+        "id": "20e4773b.b29ff8",
+        "type": "http response",
+        "z": "3ef60c03.9e7f64",
+        "name": "Resposta para o cliente",
+        "statusCode": "",
+        "headers": {
+          "Access-Control-Allow-Origin": "*"
+        },
+        "x": 1120,
+        "y": 80,
+        "wires": []
+      },
+      {
+        "id": "d14c1bb3.c411e8",
+        "type": "watson-assistant-v2",
+        "z": "3ef60c03.9e7f64",
+        "name": "Meu bot",
+        "service-endpoint": "",
+        "assistant_id": "a55fe18e-9682-4805-a7f8-04507110898f",
+        "debug": false,
+        "restart": false,
+        "return_context": true,
+        "alternate_intents": false,
+        "multisession": true,
+        "timeout": "",
+        "optout-learning": false,
+        "x": 710,
+        "y": 240,
+        "wires": [
+          [
+            "d9d1e28c.c432"
+          ]
+        ]
+      },
+      {
+        "id": "d9d1e28c.c432",
+        "type": "function",
+        "z": "3ef60c03.9e7f64",
+        "name": "Prepara resposta para o cliente",
+        "func": "msg.payload = {\n    'respostas': msg.payload.output.generic,\n    'session_id': msg.payload.session_id = msg.payload.session_id\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 960,
+        "y": 240,
+        "wires": [
+          [
+            "20e4773b.b29ff8",
+            "2a495171.cdff6e"
+          ]
+        ]
+      },
+      {
+        "id": "a8826738.7e94f8",
+        "type": "function",
+        "z": "3ef60c03.9e7f64",
+        "name": "Prepara mensagem para o bot",
+        "func": "session_id = msg.payload.session_id !== 'undefined' ? msg.payload.session_id : '';\n\n\nmsg.params = {\n    \"session_id\": session_id\n}\n\nmsg.payload = msg.payload.mensagem;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 220,
+        "wires": [
+          [
+            "d14c1bb3.c411e8"
+          ]
+        ]
+      },
+      {
+        "id": "8cd3d93f.20c5f8",
+        "type": "http in",
+        "z": "3ef60c03.9e7f64",
+        "name": "Entrada do bot 1",
+        "url": "/chat1",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 700,
+        "wires": [
+          [
+            "7897d82.40d9628"
+          ]
+        ]
+      },
+      {
+        "id": "5a820780.f3b3f8",
+        "type": "http response",
+        "z": "3ef60c03.9e7f64",
+        "name": "Resposta para o cliente",
+        "statusCode": "",
+        "headers": {},
+        "x": 1150,
+        "y": 760,
+        "wires": []
+      },
+      {
+        "id": "77883813.6d8f48",
+        "type": "watson-assistant-v2",
+        "z": "3ef60c03.9e7f64",
+        "name": "Meu bot",
+        "service-endpoint": "",
+        "assistant_id": "a55fe18e-9682-4805-a7f8-04507110898f",
+        "debug": false,
+        "restart": false,
+        "return_context": true,
+        "alternate_intents": false,
+        "multisession": false,
+        "timeout": "",
+        "optout-learning": false,
+        "x": 700,
+        "y": 760,
+        "wires": [
+          [
+            "3a83b03d.0665b"
+          ]
+        ]
+      },
+      {
+        "id": "7897d82.40d9628",
+        "type": "change",
+        "z": "3ef60c03.9e7f64",
+        "name": "Prepara mensagem para o bot",
+        "rules": [
+          {
+            "t": "set",
+            "p": "payload",
+            "pt": "msg",
+            "to": "payload.mensagem",
+            "tot": "str"
+          }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 780,
+        "wires": [
+          [
+            "77883813.6d8f48"
+          ]
+        ]
+      },
+      {
+        "id": "3a83b03d.0665b",
+        "type": "function",
+        "z": "3ef60c03.9e7f64",
+        "name": "Prepara resposta para o cliente",
+        "func": "msg.payload = msg.payload.output.generic;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 910,
+        "y": 820,
+        "wires": [
+          [
+            "5a820780.f3b3f8"
+          ]
+        ]
+      },
+      {
+        "id": "324a7b5c.4ee924",
+        "type": "watson-speech-to-text",
+        "z": "3ef60c03.9e7f64",
+        "name": "",
+        "alternatives": 1,
+        "speakerlabels": false,
+        "smartformatting": false,
+        "lang": "pt-BR",
+        "langhidden": "pt-BR",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "custom-weight": "0.5",
+        "band": "BroadbandModel",
+        "bandhidden": "",
+        "keywords": "",
+        "keywords-threshold": "0.5",
+        "word-confidence": false,
+        "password": "",
+        "apikey": "62d7oZWmJ6sjomzEqnPhfzcViCjkSXzuupF0C1eVyj0u",
+        "payload-response": true,
+        "streaming-mode": false,
+        "streaming-mute": true,
+        "auto-connect": false,
+        "discard-listening": false,
+        "disable-precheck": false,
+        "service-endpoint": "",
+        "x": 500,
+        "y": 360,
+        "wires": [
+          [
+            "41859477.ec6dfc",
+            "d14c1bb3.c411e8"
+          ]
+        ]
+      },
+      {
+        "id": "af10febb.e4347",
+        "type": "microphone",
+        "z": "3ef60c03.9e7f64",
+        "name": "",
+        "x": 260,
+        "y": 360,
+        "wires": [
+          [
+            "324a7b5c.4ee924"
+          ]
+        ]
+      },
+      {
+        "id": "41859477.ec6dfc",
+        "type": "debug",
+        "z": "3ef60c03.9e7f64",
+        "name": "Saída STT",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 910,
+        "y": 360,
+        "wires": []
+      },
+      {
+        "id": "2a495171.cdff6e",
+        "type": "debug",
+        "z": "3ef60c03.9e7f64",
+        "name": "Saída bot",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1230,
+        "y": 320,
+        "wires": []
+      }
+    ]
+  }
